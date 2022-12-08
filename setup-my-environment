@@ -7,6 +7,7 @@ mkdir -p files/home
 mkdir -p files/work
 grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> ~/.bashrc
 cd $HOME/files/home
+git config --global core.editor "vim"
 git clone https://github.com/edt11x/edt-btok.git
 git clone https://github.com/edt11x/edt-hp.git
 git clone https://github.com/edt11x/edt-jnk.git
