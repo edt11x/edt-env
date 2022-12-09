@@ -9,6 +9,7 @@ mkdir -p files/othersrc
 grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> ~/.bashrc
 cd $HOME/files/home
 git config --global core.editor "vim"
+git config pull.rebase false
 for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win edt-archivedirectory
 do
     if [ ! -d "$i" ]
