@@ -5,13 +5,30 @@ mkdir -p jnk
 mkdir -p tmp
 mkdir -p files/home
 mkdir -p files/work
+mkdir -p files/othersrc
 grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> ~/.bashrc
 cd $HOME/files/home
 git config --global core.editor "vim"
-git clone https://github.com/edt11x/edt-btok.git
-git clone https://github.com/edt11x/edt-hp.git
-git clone https://github.com/edt11x/edt-jnk.git
-git clone https://github.com/edt11x/edt-deleteShallow.git
-git clone https://github.com/edt11x/edt-par2win.git
-git clone https://github.com/edt11x/edt-archivedirectory.git
-
+for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win edt-archivedirectory
+do
+    if [ ! -d "$i" ]
+    then
+	git clone "https://github.com/edt11x/$i.git"
+    fi
+done
+if [ ! -f "$HOME/.vimrc" ]
+then
+    cp -ax edt-jnk/vim/vimrc "$HOME/.vimrc"
+fi
+if [ ! -d "$HOME/.vim" ]
+then
+    cp -ax edt-jnk/vim/vim "$HOME/.vim"
+fi
+cd $HOME/files/othersrc
+if [ ! -d "vim-plug" ]
+then
+    git clone https://github.com/junegunn/vim-plug.git
+fi
+echo "DIR 01;36" > $HOME/.dir_colors
+echo "DIR 01;36" > $HOME/.dircolors
+dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
