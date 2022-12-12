@@ -1,4 +1,26 @@
 #!/bin/bash
+echo "====== Make sure java is in the PATH ======"
+if [ -f /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java ]
+then
+    if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:"* ]]
+    then  
+        echo "Already there" > /dev/null
+    else  
+        echo PATH='"$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"' >> $HOME/.profile
+        PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"
+    fi    
+else
+    if [ -f /usr/lib/jvm/java-8-openjdk-amd64/bin/java ]
+    then  
+        if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/bin:"* ]]
+        then
+            echo "Already there" > /dev/null
+        else
+            echo 'PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin"' >> $HOME/.profile
+            PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin"
+        fi
+    fi    
+fi
 cd $HOME
 mkdir -p bin
 mkdir -p jnk
@@ -6,7 +28,7 @@ mkdir -p tmp
 mkdir -p files/home
 mkdir -p files/work
 mkdir -p files/othersrc
-grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> ~/.bashrc
+grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> $HOME/.bashrc
 cd $HOME/files/home/edt-env
 git config --global core.editor "vim"
 git config pull.rebase false
