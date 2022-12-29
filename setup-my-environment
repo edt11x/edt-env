@@ -48,6 +48,11 @@ if [ ! -d "$HOME/.vim" ]
 then
     cp -ax edt-jnk/vim/vim "$HOME/.vim"
 fi
+if [ -f edt-archivedirectory/archivedirectory ]
+then
+    cp -ax edt-archivedirectory/archivedirectory "$HOME/bin"
+fi
+
 cd $HOME/files/othersrc
 if [ ! -d "vim-plug" ]
 then
@@ -55,4 +60,7 @@ then
 fi
 echo "DIR 01;36" > $HOME/.dir_colors
 echo "DIR 01;36" > $HOME/.dircolors
-dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
+# -q is quiet
+# -F is plain string
+grep -qF 'LS_COLORS=' $HOME/.bashrc || dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
+
