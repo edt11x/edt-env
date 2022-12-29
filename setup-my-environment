@@ -64,5 +64,5 @@ echo "DIR 01;36" > $HOME/.dircolors
 # -q is quiet
 # -F is plain string
 grep -qF 'LS_COLORS=' $HOME/.bashrc || dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
-grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="$HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
-grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdr="$HOME/files/home"' >> $HOME/.bashrc
+grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="cd $HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
+grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdr="cd $HOME/files/home"' >> $HOME/.bashrc
