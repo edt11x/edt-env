@@ -26,7 +26,7 @@ mkdir -p bin
 mkdir -p jnk
 mkdir -p tmp
 mkdir -p files/home
-mkdir -p files/work
+mkdir -p files/work/Vertiv
 mkdir -p files/othersrc
 grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> $HOME/.bashrc
 cd $HOME/files/home/edt-env
@@ -58,9 +58,11 @@ if [ ! -d "vim-plug" ]
 then
     git clone https://github.com/junegunn/vim-plug.git
 fi
+
 echo "DIR 01;36" > $HOME/.dir_colors
 echo "DIR 01;36" > $HOME/.dircolors
 # -q is quiet
 # -F is plain string
 grep -qF 'LS_COLORS=' $HOME/.bashrc || dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
-
+grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="$HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
+grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdr="$HOME/files/home"' >> $HOME/.bashrc
