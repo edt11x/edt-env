@@ -34,7 +34,7 @@ cd $HOME/files/home/edt-env
 git config --global core.editor "vim"
 git config pull.rebase false
 cd $HOME/files/home
-for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win edt-archivedirectory edt-pictures
+for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win edt-archivedirectory edt-pictures edt-password
 do
     if [ ! -d "$i" ]
     then
