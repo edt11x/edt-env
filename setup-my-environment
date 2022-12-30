@@ -25,6 +25,7 @@ cd $HOME
 mkdir -p bin
 mkdir -p jnk
 mkdir -p tmp
+mkdir -p files/backups/Vertiv
 mkdir -p files/home
 mkdir -p files/work/Vertiv
 mkdir -p files/othersrc
