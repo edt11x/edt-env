@@ -60,6 +60,18 @@ then
     git clone https://github.com/junegunn/vim-plug.git
 fi
 
+# Check if a version of java is in /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+if [ -f /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java ]
+then
+    # look for it in the path
+    if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:"* ]]
+    then
+        echo "Already there" > /dev/null
+    else
+        echo 'PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"' >> ~/.bash_profile
+    fi
+fi
+
 echo "DIR 01;36" > $HOME/.dir_colors
 echo "DIR 01;36" > $HOME/.dircolors
 # -q is quiet
