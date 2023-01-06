@@ -29,6 +29,12 @@ mkdir -p files/backups/Vertiv
 mkdir -p files/home
 mkdir -p files/work/Vertiv
 mkdir -p files/othersrc
+mkdir -p .ssh
+chmod 700 .ssh
+if [ ! -f .ssh/id_rsa.pub ]
+then
+    ssh-keygen -t rsa -b 4096
+fi
 grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> $HOME/.bashrc
 cd $HOME/files/home/edt-env
 git config --global core.editor "vim"
@@ -36,7 +42,7 @@ git config pull.rebase false
 cd $HOME/files/home
 for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win \
     edt-archivedirectory edt-pictures edt-password \
-    edt-chess edt-riscv git_util
+    edt-chess edt-riscv
 do
     if [ ! -d "$i" ]
     then
