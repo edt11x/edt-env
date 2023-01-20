@@ -89,4 +89,4 @@ grep -qF 'alias cde=' $HOME/.bashrc || echo 'alias cde="cd $HOME/files/home/edt-
 grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdh="cd $HOME/files/home"' >> $HOME/.bashrc
 grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="cd $HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
 grep -qF 'alias cdv=' $HOME/.bashrc || echo 'alias cdv="cd $HOME/files/work/Vertiv"' >> $HOME/.bashrc
-grep -qF 'alias cdw=' $HOME/.bashrc || echo 'alias cdw=\'function _cdw() { cd $( dirname $( find . -name "$1" -type f -print -quit )) ; } ; _cdw\'' >> $HOME/.bashrc
+grep -qF 'alias cdw=' $HOME/.bashrc || echo -e 'alias cdw=\047function _cdw() { cd $( dirname $( find . -name "$1" -type f -print -quit )) ; } ; _cdw \047' >> $HOME/.bashrc
