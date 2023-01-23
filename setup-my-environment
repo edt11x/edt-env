@@ -91,4 +91,4 @@ grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdh="cd $HOME/files/home"' >>
 grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="cd $HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
 grep -qF 'alias cdv=' $HOME/.bashrc || echo 'alias cdv="cd $HOME/files/work/Vertiv"' >> $HOME/.bashrc
 grep -qF 'alias cdw=' $HOME/.bashrc || echo -e 'alias cdw=\047function _cdw() { cd $( dirname $( find . -name "$1" -type f -print -quit )) ; } ; _cdw \047' >> $HOME/.bashrc
-grep -qF 'alias screen=' $HOME/.bashrc || echo 'alias screen="/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_`date +%y%m%d_%H.%M.%S`.log"'
+grep -qF 'alias screen=' $HOME/.bashrc || echo 'alias screen="/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_`date +%y%m%d_%H.%M.%S`.log"' >> $HOME/.bashrc
