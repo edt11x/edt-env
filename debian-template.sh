@@ -3,10 +3,10 @@ if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
     try sudo apt-get remove oss4-dev
 fi
+sudo apt build-dep qemu
 sudo apt --ignore-missing install \
 astyle \
 autoconf \
-build-dep \
 build-essential \
 chrpath \
 clang \
@@ -24,7 +24,6 @@ gcc \
 gcc-multilib \
 gdb-multiarch \
 git \
-git-core \
 gnome-tweaks \
 graphviz \
 gzip \
@@ -51,7 +50,6 @@ ntpdate \
 nvidia-openjdk-8-jre \
 openvpn \
 par2 \
-pip \
 procps \
 pylint3 \
 python3 \
