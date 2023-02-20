@@ -60,6 +60,7 @@ python3-pip \
 python3-subunit \
 python3-virtualenv \
 qemu \
+qemu-system-arm \
 quilt \
 ruby \
 scons \
