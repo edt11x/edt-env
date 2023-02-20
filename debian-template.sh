@@ -1,4 +1,3 @@
-sudo apt remote oss4-dev
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
     try sudo apt-get remove oss4-dev
