@@ -93,3 +93,4 @@ grep -qF 'alias cdv=' $HOME/.bashrc || echo 'alias cdv="cd $HOME/files/work/Vert
 grep -qF 'alias cdw=' $HOME/.bashrc || echo -e 'alias cdw=\047function _cdw() { cd $( dirname $( find . -name "$1" -type f -print -quit )) ; } ; _cdw \047' >> $HOME/.bashrc
 grep -qF 'alias cdgen=' $HOME/.bashrc || echo -e 'alias cdgen=\047function _cdgen() { echo -e alias "$1"="\\047cd \\042$( readlink -f $2 )\\042\\047" >> ~/.bashrc ; } ; _cdgen\047' >> $HOME/.bashrc
 grep -qF 'alias screen=' $HOME/.bashrc || echo 'alias screen="/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_`date +%y%m%d_%H.%M.%S`.log"' >> $HOME/.bashrc
+grep -qF 'alias viw=' $HOME/.bashrc || echo -e 'alias viw=\047function _viw() { vim $( find . -name "$1" -type f -print -quit ) ; } ; _viw \047' >> $HOME/.bashrc
