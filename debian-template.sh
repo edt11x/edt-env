@@ -6,6 +6,7 @@ sudo apt build-dep qemu
 sudo apt --ignore-missing install \
 astyle \
 autoconf \
+bison \
 build-essential \
 chrpath \
 clang \
@@ -17,9 +18,11 @@ diffstat \
 doxygen \
 ethtool \
 file \
+flex \
 g++-multilib \
 gawk \
 gcc \
+gcc-aarch64-linux-gnu \
 gcc-multilib \
 gdb-multiarch \
 git \
@@ -36,6 +39,7 @@ libevent-dev \
 liblz4-tool \
 libsdl1.2-dev \
 libtool \
+libu2f-udev \
 locate \
 lzop \
 meld \
