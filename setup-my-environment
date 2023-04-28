@@ -48,6 +48,11 @@ do
     if [ ! -d "$i" ]
     then
 	git clone "https://github.com/edt11x/$i.git"
+    else
+        cd "$i"
+        git config pull.rebase false
+        git pull origin master
+        cd ..
     fi
 done
 if [ ! -f "$HOME/.vimrc" ]
