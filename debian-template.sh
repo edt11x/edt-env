@@ -66,6 +66,7 @@ python3-virtualenv \
 qemu \
 qemu-system-arm \
 quilt \
+rsync \
 ruby \
 scons \
 screen \
