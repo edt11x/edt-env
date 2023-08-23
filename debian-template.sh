@@ -6,6 +6,7 @@ sudo apt build-dep qemu
 sudo apt --ignore-missing install \
 astyle \
 autoconf \
+bc \
 bison \
 build-essential \
 ccache \
@@ -34,15 +35,19 @@ iperf3 \
 iputils-ping \
 iwyu \
 kpartx \
+libc6-dev \
 libegl1-mesa \
 libelf-dev \
 libevent-dev \
 liblz4-tool \
+libncurses5-dev \
 libsdl1.2-dev \
+libssl-dev \
 libtool \
 libu2f-udev \
 locate \
 lzop \
+make \
 meld \
 mesa-common-dev \
 mtd-utils \
@@ -73,6 +78,7 @@ scons \
 screen \
 socat \
 texinfo \
+u-boot-tools \
 unzip \
 vim \
 vim-gtk3 \
