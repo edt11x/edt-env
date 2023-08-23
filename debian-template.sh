@@ -8,6 +8,7 @@ astyle \
 autoconf \
 bison \
 build-essential \
+ccache \
 chrpath \
 clang \
 cpio \
