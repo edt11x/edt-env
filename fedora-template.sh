@@ -18,3 +18,27 @@ sudo dnf install google-roboto-slab-fonts
 sudo dnf install roboto-fontface-common
 sudo dnf install roboto-fontface-fonts
 sudo dnf install open-sans-fonts
+sudo dnf install google-arimo-fonts
+sudo dnf install google-carlito-fonts
+sudo dnf install google-cousine-fonts
+sudo dnf install google-crosextra-caladea-fonts
+sudo dnf install google-droid-fonts-all
+sudo dnf install google-droid-sans-fonts
+sudo dnf install google-droid-sans-mono-fonts
+sudo dnf install google-droid-serif-fonts
+sudo dnf install google-go-fonts
+sudo dnf install google-go-mono-fonts
+sudo dnf install google-go-smallcaps-fonts
+sudo dnf install google-roboto-condensed-fonts
+sudo dnf install google-roboto-fonts
+sudo dnf install google-roboto-mono-fonts
+sudo dnf install google-roboto-slab-fonts
+sudo dnf install google-rubik-fonts
+sudo dnf install google-tinos-fonts
+sudo dnf install mozilla-fira-fonts-common
+sudo dnf install mozilla-fira-mono-fonts
+sudo dnf install mozilla-fira-sans-fonts
+sudo dnf install mozilla-zilla-slab-fonts
+sudo dnf install mozilla-zilla-slab-fonts-common
+sudo dnf install mozilla-zilla-slab-highlight-fonts
+
