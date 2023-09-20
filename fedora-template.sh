@@ -41,4 +41,5 @@ sudo dnf install mozilla-fira-sans-fonts
 sudo dnf install mozilla-zilla-slab-fonts
 sudo dnf install mozilla-zilla-slab-fonts-common
 sudo dnf install mozilla-zilla-slab-highlight-fonts
+sudo dnf install docker
 
