@@ -42,4 +42,8 @@ sudo dnf install mozilla-zilla-slab-fonts
 sudo dnf install mozilla-zilla-slab-fonts-common
 sudo dnf install mozilla-zilla-slab-highlight-fonts
 sudo dnf install docker
+sudo dnf install docker-compose
+sudo dnf install docker-distribution
+sudo dnf install qemu-user-static
+sudo dnf install qemu-user-binfmt
 

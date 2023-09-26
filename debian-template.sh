@@ -7,6 +7,7 @@ sudo apt --ignore-missing install \
 astyle \
 autoconf \
 bc \
+binfmt-support \
 bison \
 build-essential \
 ccache \
@@ -17,6 +18,11 @@ cppcheck \
 curl \
 debianutils \
 diffstat \
+docker \
+docker-clean \
+docker-doc \
+docker-registry \
+docker-io \
 doxygen \
 ethtool \
 file \
@@ -70,6 +76,7 @@ python3-pip \
 python3-subunit \
 python3-virtualenv \
 qemu \
+qemu-user-static \
 qemu-system-arm \
 quilt \
 rsync \
