@@ -1,8 +1,17 @@
+echo Try to get a good update before we start
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
     try sudo apt-get remove oss4-dev
 fi
-sudo apt build-dep qemu
+echo A good chance of failures for these couple of packages
+sudo apt install build-dep
+sudo apt install qemu
+sudo apt install nvidia-openjdk-8-jre
+echo Try all the packages we think will succeed
 sudo apt --ignore-missing install \
 astyle \
 autoconf \
@@ -22,17 +31,14 @@ docker \
 docker-clean \
 docker-doc \
 docker-registry \
-docker-io \
+docker.io \
 doxygen \
 ethtool \
 file \
 flex \
-g++-multilib \
 gawk \
 gcc \
 gcc-aarch64-linux-gnu \
-gcc-multilib \
-gdb-multiarch \
 git \
 gnome-tweaks \
 graphviz \
@@ -62,7 +68,6 @@ node-grunt-cli \
 nodejs \
 npm \
 ntpdate \
-nvidia-openjdk-8-jre \
 openvpn \
 par2 \
 procps \
@@ -75,7 +80,6 @@ python3-pexpect \
 python3-pip \
 python3-subunit \
 python3-virtualenv \
-qemu \
 qemu-user-static \
 qemu-system-arm \
 quilt \
@@ -95,4 +99,5 @@ xz-utils \
 zlib1g \
 zlib1g-dev \
 zstd
-
+echo All done.
+exit 0
