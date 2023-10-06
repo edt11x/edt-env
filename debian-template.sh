@@ -72,7 +72,6 @@ ntpdate \
 openvpn \
 par2 \
 procps \
-pylint3 \
 python3 \
 python3-dev \
 python3-git \
