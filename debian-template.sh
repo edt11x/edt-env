@@ -46,6 +46,7 @@ gzip \
 iperf3 \
 iputils-ping \
 iwyu \
+kas \
 kpartx \
 libc6-dev \
 libegl1-mesa \
