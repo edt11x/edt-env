@@ -13,6 +13,7 @@ sudo apt install qemu
 sudo apt install nvidia-openjdk-8-jre
 echo Try all the packages we think will succeed
 sudo apt --ignore-missing install \
+apt-file \
 astyle \
 autoconf \
 bc \
