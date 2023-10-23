@@ -95,6 +95,7 @@ unzip \
 vim \
 vim-gtk3 \
 wget \
+xfce4 \
 xterm \
 xz-utils \
 zlib1g \
