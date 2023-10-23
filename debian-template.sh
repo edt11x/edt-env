@@ -96,6 +96,7 @@ vim \
 vim-gtk3 \
 wget \
 xfce4 \
+xrdp \
 xterm \
 xz-utils \
 zlib1g \
