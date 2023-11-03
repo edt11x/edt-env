@@ -60,6 +60,7 @@ libssl-dev \
 libtool \
 libu2f-udev \
 locate \
+lshw \
 lzop \
 make \
 meld \
