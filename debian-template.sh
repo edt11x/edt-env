@@ -71,6 +71,7 @@ node-grunt-cli \
 nodejs \
 npm \
 ntpdate \
+nvme-cli \
 openvpn \
 par2 \
 procps \
