@@ -8,9 +8,17 @@ then
     try sudo apt-get remove oss4-dev
 fi
 echo A good chance of failures for these couple of packages
-sudo apt install build-dep
-sudo apt install qemu
+echo "Things that might fail"
+sudo apt --fix-broken install
+sudo apt install qemu-system
+sudo apt install qemu 
+sudo apt install libgdk-pixbuf2
 sudo apt install nvidia-openjdk-8-jre
+sudo apt install java-common
+sudo apt install openjdk-17-jre-headless
+sudo apt install openjdk-17-jre
+sudo apt --fix-broken install
+echo "Done with things that might faile"
 echo Try all the packages we think will succeed
 sudo apt --ignore-missing install \
 apt-file \
@@ -27,6 +35,8 @@ cpio \
 cppcheck \
 curl \
 debianutils \
+default-jre \
+default-jre-headless \
 diffstat \
 docker \
 docker-clean \
@@ -72,6 +82,7 @@ nodejs \
 npm \
 ntpdate \
 nvme-cli \
+openjdk-17-jre \
 openvpn \
 par2 \
 procps \
@@ -105,5 +116,6 @@ xz-utils \
 zlib1g \
 zlib1g-dev \
 zstd
+sudo apt --fix-broken install
 echo All done.
 exit 0
