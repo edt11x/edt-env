@@ -1,4 +1,4 @@
-sudo apt --ignore-missing install
+sudo apt --ignore-missing install \
 astyle \
 build-essential \
 chrpath \
