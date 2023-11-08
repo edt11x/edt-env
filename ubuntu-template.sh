@@ -6,6 +6,7 @@ cpio \
 debianutils \
 diffstat \
 doxygen \
+htop \
 g++-multilib \
 gawk \
 gcc-multilib \
