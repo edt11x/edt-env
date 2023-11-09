@@ -1,4 +1,20 @@
 #!/bin/bash
+echo Try to get a good update before we start
+sudo apt update
+sudo apt upgrade
+sudo apt autoremove
+echo Try to get rid of the packages we do not want
+if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
+then
+    try sudo apt-get remove oss4-dev
+fi
+echo A good chance of failures for these couple of packages
+echo "Things that might fail"
+sudo apt --fix-broken install
+sudo apt install qemu-system
+sudo apt install qemu 
+echo "Done with things that might faile"
+echo Try all the packages we think will succeed
 sudo apt --ignore-missing install \
 astyle \
 build-essential \
@@ -31,7 +47,9 @@ python3-virtualenv \
 python3 \
 python3-pexpect \
 python3-pip \
-qemu \
+qemu-user-static \
+qemu-system-arm \
+quilt \
 ruby \
 scons \
 secure-delete \
