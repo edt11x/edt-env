@@ -1,3 +1,4 @@
+#!/bin/bash
 sudo apt --ignore-missing install \
 astyle \
 build-essential \
@@ -69,3 +70,5 @@ ubuntu-desktop \
 htop \
 glances
 
+sudo apt install wic || pip install wic
+exit 0

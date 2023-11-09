@@ -21,6 +21,17 @@ else
         fi
     fi    
 fi
+# now try to put ~/.local/bin in the path
+if [ -d ~/.local/bin ]
+then
+    if which readlink
+    then
+        PATH="$PATH:`readlink -f ~/.local/bin`"
+    else
+        # we will just try it blindly
+        PATH="$PATH:~/.local/bin"
+    fi
+fi
 cd $HOME
 mkdir -p bin
 mkdir -p jnk
