@@ -50,6 +50,7 @@ python3-pip \
 qemu-user-static \
 qemu-system-arm \
 quilt \
+ripgrep \
 ruby \
 scons \
 secure-delete \
