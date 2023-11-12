@@ -101,6 +101,7 @@ rsync \
 ruby \
 scons \
 screen \
+secure-delete \
 socat \
 texinfo \
 u-boot-tools \
