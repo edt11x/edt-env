@@ -75,6 +75,7 @@ lzop \
 make \
 meld \
 mesa-common-dev \
+minicom \
 mtd-utils \
 net-tools \
 node-grunt-cli \
@@ -86,6 +87,7 @@ openjdk-17-jre \
 openvpn \
 par2 \
 procps \
+putty \
 python3 \
 python3-dev \
 python3-git \

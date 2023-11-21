@@ -47,3 +47,4 @@ sudo dnf install docker-distribution
 sudo dnf install qemu-user-static
 sudo dnf install qemu-user-binfmt
 sudo dnf install libgnome
+sudo dnf install nautilus
