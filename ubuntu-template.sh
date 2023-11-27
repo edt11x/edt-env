@@ -58,6 +58,7 @@ socat \
 texinfo \
 unzip \
 wget \
+xclip \
 xterm \
 xz-utils \
 par2 \
