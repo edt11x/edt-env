@@ -88,7 +88,8 @@ iperf3 \
 gnome-session \
 ubuntu-desktop \
 htop \
-glances
+glances \
+p7zip-full
 
 sudo apt install wic || pip install wic
 exit 0
