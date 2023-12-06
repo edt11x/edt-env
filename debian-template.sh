@@ -83,7 +83,6 @@ nodejs \
 npm \
 ntpdate \
 nvme-cli \
-openjdk-17-jre \
 openvpn \
 par2 \
 procps \
