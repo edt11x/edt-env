@@ -89,7 +89,8 @@ gnome-session \
 ubuntu-desktop \
 htop \
 glances \
-p7zip-full
+p7zip-full \
+xsltproc
 
 sudo apt install wic || pip install wic
 exit 0
