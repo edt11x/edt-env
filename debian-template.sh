@@ -94,6 +94,7 @@ python3-jinja2 \
 python3-pexpect \
 python3-pip \
 python3-subunit \
+python3-tk \
 python3-virtualenv \
 qemu-user-static \
 qemu-system-arm \
