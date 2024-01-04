@@ -121,9 +121,5 @@ zlib1g \
 zlib1g-dev \
 zstd
 sudo apt --fix-broken install
-sudo snap install core
-sudo snap install hello-world
-sudo snap install snap-store
-sudo snap install dnsbench
 echo All done.
 exit 0
