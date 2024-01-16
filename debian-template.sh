@@ -40,6 +40,7 @@ default-jre-headless \
 diffstat \
 docker \
 docker-clean \
+docker-compose \
 docker-doc \
 docker-registry \
 docker.io \
