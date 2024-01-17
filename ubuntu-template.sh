@@ -22,6 +22,7 @@ chrpath \
 cpio \
 debianutils \
 diffstat \
+docker.io \
 doxygen \
 htop \
 g++-multilib \
