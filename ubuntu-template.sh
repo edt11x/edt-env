@@ -92,7 +92,10 @@ htop \
 glances \
 p7zip-full \
 xsltproc \
-tigervnc-standalone-server
+tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer \
+xrdp xorgxrdp \
+ubuntu-gnome-desktop \
+xfce4 xfce4-session
 
 sudo apt install wic || pip install wic
 exit 0
