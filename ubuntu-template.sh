@@ -91,7 +91,8 @@ ubuntu-desktop \
 htop \
 glances \
 p7zip-full \
-xsltproc
+xsltproc \
+tigervnc-standalone-server
 
 sudo apt install wic || pip install wic
 exit 0
