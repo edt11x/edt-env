@@ -66,6 +66,7 @@ libelf-dev \
 libevent-dev \
 liblz4-tool \
 libncurses5-dev \
+libperl-dev \
 libsdl1.2-dev \
 libssl-dev \
 libtool \
