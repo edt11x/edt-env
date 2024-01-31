@@ -44,3 +44,7 @@ sudo dnf install qemu-user-static
 sudo dnf install qemu-user-binfmt
 sudo dnf install libgnome
 sudo dnf install nautilus
+sudo dnf install mtr
+sudo dnf install mtr-gtk
+sudo dnf install traceroute
+sudo dnf install bind-utils

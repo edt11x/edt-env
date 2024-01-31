@@ -121,7 +121,12 @@ xterm \
 xz-utils \
 zlib1g \
 zlib1g-dev \
-zstd
+zstd \
+inetutils-ping \
+inetutils-tools \
+inetutils-traceroute \
+mtr
+
 sudo apt --fix-broken install
 echo All done.
 exit 0

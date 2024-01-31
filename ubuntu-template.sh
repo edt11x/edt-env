@@ -95,7 +95,11 @@ xsltproc \
 tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer \
 xrdp xorgxrdp \
 ubuntu-gnome-desktop \
-xfce4 xfce4-session
+xfce4 xfce4-session \
+inetutils-ping \
+inetutils-tools \
+inetutils-traceroute \
+mtr
 
 sudo apt install wic || pip install wic
 exit 0
