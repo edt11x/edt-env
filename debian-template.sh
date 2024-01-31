@@ -12,7 +12,6 @@ echo "Things that might fail"
 sudo apt --fix-broken install
 sudo apt install qemu-system
 sudo apt install qemu 
-sudo apt install libgdk-pixbuf2
 sudo apt install nvidia-openjdk-8-jre
 sudo apt install java-common
 sudo apt install openjdk-17-jre-headless
