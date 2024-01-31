@@ -122,7 +122,6 @@ xz-utils \
 zlib1g \
 zlib1g-dev \
 zstd \
-inetutils-ping \
 inetutils-tools \
 inetutils-traceroute \
 mtr
