@@ -19,6 +19,7 @@ sudo apt --ignore-missing install \
 astyle \
 build-essential \
 chrpath \
+containerd \
 cpio \
 debianutils \
 diffstat \
@@ -96,7 +97,6 @@ tigervnc-standalone-server tigervnc-xorg-extension tigervnc-viewer \
 xrdp xorgxrdp \
 ubuntu-gnome-desktop \
 xfce4 xfce4-session \
-inetutils-ping \
 inetutils-tools \
 inetutils-traceroute \
 mtr
