@@ -30,6 +30,7 @@ build-essential \
 ccache \
 chrpath \
 clang \
+cmake \
 cpio \
 cppcheck \
 curl \
@@ -61,9 +62,12 @@ iwyu \
 kas \
 keepassxc \
 kpartx \
+libc-ares-dev \
 libc6-dev \
+libcurl4-openssl-dev \
 libegl1-mesa \
 libelf-dev \
+libev-dev \
 libevent-dev \
 liblz4-tool \
 libncurses5-dev \

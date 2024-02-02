@@ -19,6 +19,7 @@ sudo apt --ignore-missing install \
 astyle \
 build-essential \
 chrpath \
+cmake \
 containerd \
 cpio \
 debianutils \
@@ -37,7 +38,10 @@ gzip \
 iputils-ping \
 keepassxc \
 kpartx \
+libc-ares-dev \
+libcurl4-openssl-dev \
 libelf-dev \
+libev-dev \
 libsdl1.2-dev \
 lzop \
 mtd-utils \
