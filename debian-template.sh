@@ -37,6 +37,7 @@ debianutils \
 default-jre \
 default-jre-headless \
 diffstat \
+dnsmasq \
 docker \
 docker-clean \
 docker-compose \
@@ -58,6 +59,7 @@ iperf3 \
 iputils-ping \
 iwyu \
 kas \
+keepassxc \
 kpartx \
 libc6-dev \
 libegl1-mesa \

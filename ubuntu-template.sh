@@ -23,6 +23,7 @@ containerd \
 cpio \
 debianutils \
 diffstat \
+dnsmasq \
 docker.io \
 doxygen \
 htop \
@@ -34,6 +35,7 @@ git-core \
 graphviz \
 gzip \
 iputils-ping \
+keepassxc \
 kpartx \
 libelf-dev \
 libsdl1.2-dev \
