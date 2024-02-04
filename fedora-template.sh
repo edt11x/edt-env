@@ -48,7 +48,9 @@ nautilus \
 mtr \
 mtr-gtk \
 traceroute \
-bind-utils
+bind-utils \
+gvfs-fuse \
+gvfs-smb
 do
     sudo dnf install "$i"
 done
