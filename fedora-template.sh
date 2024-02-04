@@ -50,7 +50,8 @@ mtr-gtk \
 traceroute \
 bind-utils \
 gvfs-fuse \
-gvfs-smb
+gvfs-smb \
+liberation-fonts
 do
     sudo dnf install "$i"
 done
