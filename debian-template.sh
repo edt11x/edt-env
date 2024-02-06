@@ -114,12 +114,14 @@ secure-delete \
 snapd \
 socat \
 texinfo \
+tightvncserver \
 u-boot-tools \
 unzip \
 vim \
 vim-gtk3 \
 wget \
 xfce4 \
+xfce4-goodies \
 xrdp \
 xsltproc \
 xterm \
