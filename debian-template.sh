@@ -71,6 +71,7 @@ libev-dev \
 libevent-dev \
 liblz4-tool \
 libncurses5-dev \
+libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
 libssl-dev \
@@ -97,6 +98,7 @@ putty \
 python3 \
 python3-dev \
 python3-git \
+python3-gpg \
 python3-jinja2 \
 python3-pexpect \
 python3-pip \
