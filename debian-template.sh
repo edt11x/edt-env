@@ -48,6 +48,7 @@ docker.io \
 doxygen \
 ethtool \
 file \
+firmware-linux \
 flex \
 gawk \
 gcc \
