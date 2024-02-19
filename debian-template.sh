@@ -10,16 +10,16 @@ fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail"
 sudo apt --fix-broken install
-sudo apt install qemu-system
-sudo apt install qemu 
-sudo apt install nvidia-openjdk-8-jre
-sudo apt install java-common
-sudo apt install openjdk-17-jre-headless
-sudo apt install openjdk-17-jre
+sudo -y apt install qemu-system
+sudo -y apt install qemu 
+sudo -y apt install nvidia-openjdk-8-jre
+sudo -y apt install java-common
+sudo -y apt install openjdk-17-jre-headless
+sudo -y apt install openjdk-17-jre
 sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
-sudo apt --ignore-missing install \
+sudo apt -y --ignore-missing install \
 apt-file \
 astyle \
 autoconf \
