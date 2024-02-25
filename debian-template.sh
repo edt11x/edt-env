@@ -10,12 +10,12 @@ fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail"
 sudo apt --fix-broken install
-sudo -y apt install qemu-system
-sudo -y apt install qemu 
-sudo -y apt install nvidia-openjdk-8-jre
-sudo -y apt install java-common
-sudo -y apt install openjdk-17-jre-headless
-sudo -y apt install openjdk-17-jre
+sudo apt -y install qemu-system
+sudo apt -y install qemu 
+sudo apt -y install nvidia-openjdk-8-jre
+sudo apt -y install java-common
+sudo apt -y install openjdk-17-jre-headless
+sudo apt -y install openjdk-17-jre
 sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
