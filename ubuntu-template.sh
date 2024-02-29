@@ -19,6 +19,9 @@ sudo apt --ignore-missing install \
 astyle \
 build-essential \
 chrpath \
+clang-11 \
+clang-tidy-11 \
+clang-tools-11 \
 cmake \
 containerd \
 cpio \
