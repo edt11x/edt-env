@@ -10,21 +10,19 @@ sudo dnf -y --best --allowerasing install microsoft-edge-stable
 sudo dnf -y --best --allowerasing install google-chrome-unstable
 for i in \
 meld vim-X11 vim-minimal \
-gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel texinfo chrpath ccache perl-Data-Dumper perl-Text-ParseWords perl-Thread-Queue perl-bignum socat python3-pexpect findutils which file cpio python python3-pip xz python3-GitPython python3-jinja2 SDL-devel xterm rpcgen mesa-libGL-devel perl-FindBin perl-File-Compare perl-File-Copy perl-locale zstd lz4 python3-matplotlib python3-pandas python3-tkinter snapd ripgrep \
+gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel \
+texinfo chrpath ccache perl-Data-Dumper perl-Text-ParseWords perl-Thread-Queue perl-bignum socat \
+python3-pexpect findutils which file cpio python python3-pip xz python3-GitPython python3-jinja2 \
+SDL-devel xterm rpcgen mesa-libGL-devel perl-FindBin perl-File-Compare perl-File-Copy perl-locale \
+zstd lz4 python3-matplotlib python3-pandas python3-tkinter snapd ripgrep \
 fira-code-fonts \
-gnu-free-sans-fonts \
-google-arimo-fonts \
-google-carlito-fonts \
-google-cousine-fonts \
-google-crosextra-caladea-fonts \
-google-droid-fonts-all \
+gnu-free-sans-fonts google-arimo-fonts google-carlito-fonts google-cousine-fonts google-crosextra-caladea-fonts google-droid-fonts-all \
 google-droid-sans-fonts \
 google-droid-sans-mono-fonts \
 google-droid-serif-fonts \
 google-go-fonts \
 google-go-mono-fonts \
 google-go-smallcaps-fonts \
-'google-noto-*' --exclude='*vf-fonts*' \
 google-roboto-condensed-fonts \
 google-roboto-fonts \
 google-roboto-mono-fonts \
@@ -34,7 +32,6 @@ google-tinos-fonts \
 mozilla-fira-fonts-common \
 mozilla-fira-mono-fonts \
 mozilla-fira-sans-fonts \
-mozilla-sans-fonts \
 mozilla-zilla-slab-fonts \
 mozilla-zilla-slab-fonts-common \
 mozilla-zilla-slab-highlight-fonts \
@@ -54,7 +51,9 @@ traceroute \
 bind-utils \
 gvfs-fuse \
 gvfs-smb \
-liberation-fonts
+liberation-fonts \
+tmux
 do
-    sudo dnf -y --best --allowerasing install "$i"
-done
+    echo $i   
+done | xargs sudo dnf -y --best --allowerasing install
+mkdir -p ~/.tmux
