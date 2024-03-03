@@ -51,8 +51,7 @@ traceroute \
 bind-utils \
 gvfs-fuse \
 gvfs-smb \
-liberation-fonts \
-tmux
+liberation-fonts
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
