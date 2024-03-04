@@ -51,7 +51,14 @@ traceroute \
 bind-utils \
 gvfs-fuse \
 gvfs-smb \
-liberation-fonts
+liberation-fonts \
+cmake \
+c-ares \
+c-ares-devel \
+libcurl \
+libcurl-devel \
+libev \
+libev-devel
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
