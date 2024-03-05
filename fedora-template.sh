@@ -58,7 +58,8 @@ c-ares-devel \
 libcurl \
 libcurl-devel \
 libev \
-libev-devel
+libev-devel \
+tmux
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
