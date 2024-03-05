@@ -134,7 +134,9 @@ zlib1g-dev \
 zstd \
 inetutils-tools \
 inetutils-traceroute \
-mtr
+mtr \
+tmux \
+tmux-plugin-manager
 
 sudo apt --fix-broken install
 echo All done.
