@@ -59,7 +59,9 @@ libcurl \
 libcurl-devel \
 libev \
 libev-devel \
-tmux
+tmux \
+htop \
+glances
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
