@@ -136,7 +136,9 @@ inetutils-tools \
 inetutils-traceroute \
 mtr \
 tmux \
-tmux-plugin-manager
+tmux-plugin-manager \
+dstat \
+sysstat
 
 sudo apt --fix-broken install
 echo All done.
