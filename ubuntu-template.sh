@@ -108,7 +108,9 @@ ubuntu-gnome-desktop \
 xfce4 xfce4-session \
 inetutils-tools \
 inetutils-traceroute \
-mtr
+mtr \
+tmux \
+tmux-plugin-manager
 
 sudo apt install wic || pip install wic
 exit 0

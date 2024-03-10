@@ -135,6 +135,10 @@ zstd \
 inetutils-tools \
 inetutils-traceroute \
 mtr \
+tmux \
+tmux-plugin-manager \
+dstat \
+sysstat \
 dclock
 
 sudo apt --fix-broken install

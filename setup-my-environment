@@ -112,3 +112,25 @@ grep -qF 'alias cdw=' $HOME/.bashrc || echo -e 'alias cdw=\047function _cdw() { 
 grep -qF 'alias cdgen=' $HOME/.bashrc || echo -e 'alias cdgen=\047function _cdgen() { echo -e alias "$1"="\\047cd \\042$( readlink -f $2 )\\042\\047" >> ~/.bashrc ; } ; _cdgen\047' >> $HOME/.bashrc
 grep -qF 'alias screen=' $HOME/.bashrc || echo 'alias screen="/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_`date +%y%m%d_%H.%M.%S`.log"' >> $HOME/.bashrc
 grep -qF 'alias viw=' $HOME/.bashrc || echo -e 'alias viw=\047function _viw() { vim $( find . -name "$1" -type f -print -quit ) ; } ; _viw \047' >> $HOME/.bashrc
+grep -qF 'docker:' /etc/group || sudo groupadd docker
+grep -q "docker:.*$USER" /etc/group || sudo usermod -aG docker "$USER"
+if [ ! -e $HOME/.tmux.conf ]
+then
+    cat > $HOME/.tmux.conf << !TMUX_CONF!
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'github_username/plugin_name#branch'
+# set -g @plugin 'git@github.com:user/plugin'
+# set -g @plugin 'git@bitbucket.com:user/plugin'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+# If prefix is 'C-a'
+set -g prefix C-a
+set -g mouse on
+!TMUX_CONF!
+fi
