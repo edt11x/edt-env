@@ -134,7 +134,8 @@ zlib1g-dev \
 zstd \
 inetutils-tools \
 inetutils-traceroute \
-mtr
+mtr \
+dclock
 
 sudo apt --fix-broken install
 echo All done.
