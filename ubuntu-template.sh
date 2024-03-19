@@ -62,7 +62,6 @@ iperf3 \
 iproute2 \
 iputils-ping \
 iwyu \
-kas \
 keepassxc \
 kpartx \
 libc-ares-dev \
@@ -141,4 +140,5 @@ zlib1g \
 zlib1g-dev \
 
 sudo apt install wic || pip install wic
+sudo apt install kas || pip install kas
 exit 0
