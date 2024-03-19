@@ -23,6 +23,7 @@ sudo apt -y --ignore-missing install \
 apt-file \
 astyle \
 autoconf \
+bash \
 bc \
 binfmt-support \
 bison \
@@ -55,13 +56,17 @@ flex \
 gawk \
 gcc \
 gcc-aarch64-linux-gnu \
+gdb \
 git \
+glances \
 gnome-tweaks \
 graphviz \
 gzip \
+htop \
 inetutils-tools \
 inetutils-traceroute \
 iperf3 \
+iproute2 \
 iputils-ping \
 iwyu \
 kas \
@@ -99,6 +104,7 @@ npm \
 ntpdate \
 nvme-cli \
 openvpn \
+p7zip-full \
 par2 \
 procps \
 putty \
