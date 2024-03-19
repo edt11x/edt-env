@@ -61,7 +61,13 @@ libev \
 libev-devel \
 tmux \
 htop \
-glances
+glances \
+google-android-emoji-fonts \
+google-noto-color-emoji-fonts \
+google-noto-emoji-fonts \
+default-fonts-core-emoji \
+twitter-twemoji-fonts \
+default-fonts-core
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
