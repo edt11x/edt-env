@@ -38,6 +38,7 @@ curl \
 debianutils \
 diffstat \
 dnsmasq \
+dnsutils \
 docker.io \
 doxygen \
 dstat \
