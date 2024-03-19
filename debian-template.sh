@@ -122,6 +122,7 @@ qemu-system-arm \
 qemu-user-static \
 quilt \
 rsync \
+ripgrep \
 ruby \
 scons \
 screen \
