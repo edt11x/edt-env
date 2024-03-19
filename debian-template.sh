@@ -139,8 +139,10 @@ tmux \
 tmux-plugin-manager \
 dstat \
 sysstat \
-dclock
+dclock \
+locales
 
 sudo apt --fix-broken install
+sudo locale-gen en_US.UTF-8
 echo All done.
 exit 0
