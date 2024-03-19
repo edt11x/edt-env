@@ -34,6 +34,7 @@ cmake \
 cpio \
 cppcheck \
 curl \
+dclock \
 debianutils \
 default-jre \
 default-jre-headless \
@@ -46,6 +47,7 @@ docker-doc \
 docker-registry \
 docker.io \
 doxygen \
+dstat \
 ethtool \
 file \
 firmware-linux \
@@ -57,6 +59,8 @@ git \
 gnome-tweaks \
 graphviz \
 gzip \
+inetutils-tools \
+inetutils-traceroute \
 iperf3 \
 iputils-ping \
 iwyu \
@@ -78,6 +82,7 @@ libsdl1.2-dev \
 libssl-dev \
 libtool \
 libu2f-udev \
+locales \
 locate \
 lshw \
 lzop \
@@ -86,6 +91,7 @@ meld \
 mesa-common-dev \
 minicom \
 mtd-utils \
+mtr \
 net-tools \
 node-grunt-cli \
 nodejs \
@@ -106,8 +112,8 @@ python3-pip \
 python3-subunit \
 python3-tk \
 python3-virtualenv \
-qemu-user-static \
 qemu-system-arm \
+qemu-user-static \
 quilt \
 rsync \
 ruby \
@@ -116,8 +122,13 @@ screen \
 secure-delete \
 snapd \
 socat \
+sudo \
+sysstat \
+tcpdump \
 texinfo \
 tightvncserver \
+tmux \
+tmux-plugin-manager \
 u-boot-tools \
 unzip \
 vim \
@@ -131,16 +142,7 @@ xterm \
 xz-utils \
 zlib1g \
 zlib1g-dev \
-zstd \
-inetutils-tools \
-inetutils-traceroute \
-mtr \
-tmux \
-tmux-plugin-manager \
-dstat \
-sysstat \
-dclock \
-locales
+zstd
 
 sudo apt --fix-broken install
 sudo locale-gen en_US.UTF-8
