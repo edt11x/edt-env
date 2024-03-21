@@ -23,6 +23,7 @@ sudo apt -y --ignore-missing install \
 apt-file \
 astyle \
 autoconf \
+baobab \
 bash \
 bc \
 binfmt-support \
