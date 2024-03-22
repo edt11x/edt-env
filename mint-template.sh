@@ -1,5 +1,6 @@
 #!/bin/bash
 echo Try to get a good update before we start
+sudo add-apt-repository ppa:mmacp/ripgrep
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
@@ -111,6 +112,7 @@ python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
 quilt \
+ripgrep \
 rsync \
 ripgrep \
 ruby \
