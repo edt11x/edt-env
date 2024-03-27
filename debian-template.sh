@@ -29,6 +29,7 @@ bc \
 binfmt-support \
 bison \
 build-essential \
+cargo \
 ccache \
 chrpath \
 clang \
@@ -125,6 +126,7 @@ quilt \
 rsync \
 ripgrep \
 ruby \
+rust \
 scons \
 screen \
 secure-delete \

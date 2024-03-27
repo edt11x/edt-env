@@ -69,7 +69,9 @@ default-fonts-core-emoji \
 twitter-twemoji-fonts \
 default-fonts-core \
 nodejs \
-nodejs-npm
+nodejs-npm \
+rust \
+cargo
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install

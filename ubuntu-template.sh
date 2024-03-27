@@ -25,6 +25,7 @@ binfmt-support \
 bison \
 build-essential \
 ccache \
+cargo \
 chrpath \
 clang \
 clang-11 \
@@ -111,9 +112,10 @@ python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
 quilt \
-rsync \
 ripgrep \
+rsync \
 ruby \
+rust-all \
 scons \
 screen \
 secure-delete \
