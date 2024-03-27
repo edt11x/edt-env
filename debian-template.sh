@@ -126,7 +126,7 @@ quilt \
 rsync \
 ripgrep \
 ruby \
-rust \
+rust-all \
 scons \
 screen \
 secure-delete \
