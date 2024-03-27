@@ -67,7 +67,9 @@ google-noto-color-emoji-fonts \
 google-noto-emoji-fonts \
 default-fonts-core-emoji \
 twitter-twemoji-fonts \
-default-fonts-core
+default-fonts-core \
+nodejs \
+nodejs-npm
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
