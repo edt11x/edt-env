@@ -71,7 +71,8 @@ default-fonts-core \
 nodejs \
 nodejs-npm \
 rust \
-cargo
+cargo \
+iptraf-ng
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
