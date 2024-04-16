@@ -141,6 +141,7 @@ xterm \
 xz-utils \
 zlib1g \
 zlib1g-dev \
+zstd \
 
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
