@@ -72,7 +72,9 @@ nodejs \
 nodejs-npm \
 rust \
 cargo \
-iptraf-ng
+iptraf-ng \
+lxc-devel \
+lxc-libs
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
