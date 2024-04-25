@@ -74,7 +74,9 @@ rust \
 cargo \
 iptraf-ng \
 lxc-devel \
-lxc-libs
+lxc-libs \
+lxc \
+lxc-templates
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
