@@ -80,7 +80,8 @@ iptraf-ng \
 lxc-devel \
 lxc-libs \
 lxc \
-lxc-templates
+lxc-templates \
+sshpass
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
