@@ -6,7 +6,11 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm 
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
 sudo rpm --import https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware || sudo rpm --import ./RPM-GPG-KEY-scootersoftware
 sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rpm --import ./rpm-public-key.asc
-sudo dnf -y --best --allowerasing install microsoft-edge-stable
+# sudo dnf -y --best --allowerasing install microsoft-edge-stable
+# Microsoft takes over PDFs
+sudo dnf remove microsoft-edge-stable
+sudo dnf remove microsoft-edge-dev
+sudo dnf remove microsoft-edge-beta
 sudo dnf -y --best --allowerasing install google-chrome-unstable
 for i in \
 meld vim-X11 vim-minimal \
