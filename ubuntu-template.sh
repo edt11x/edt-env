@@ -72,6 +72,7 @@ libcurl4-openssl-dev \
 libelf-dev \
 libev-dev \
 libevent-dev \
+libfile-dircompare-perl \
 liblz4-tool \
 libncurses5-dev \
 libpango1.0-0 \
