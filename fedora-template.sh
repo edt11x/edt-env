@@ -81,7 +81,8 @@ lxc-devel \
 lxc-libs \
 lxc \
 lxc-templates \
-sshpass
+sshpass \
+libreoffice-writer
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
