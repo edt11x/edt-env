@@ -60,6 +60,7 @@ gcc \
 gcc-aarch64-linux-gnu \
 gdb \
 git \
+git-filter-repo \
 glances \
 gnome-tweaks \
 graphviz \
