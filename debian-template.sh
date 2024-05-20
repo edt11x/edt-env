@@ -78,6 +78,7 @@ kpartx \
 libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
+libfile-dircompare-perl \
 libegl1-mesa \
 libelf-dev \
 libev-dev \
