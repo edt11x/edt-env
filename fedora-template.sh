@@ -82,7 +82,8 @@ lxc-libs \
 lxc \
 lxc-templates \
 sshpass \
-libreoffice-writer
+libreoffice-writer \
+perl-File-DirCompare
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
