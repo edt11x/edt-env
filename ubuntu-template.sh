@@ -121,6 +121,7 @@ scons \
 screen \
 secure-delete \
 socat \
+software-properties-common \
 sudo \
 sysstat \
 tcpdump \
