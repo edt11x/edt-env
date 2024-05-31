@@ -88,6 +88,8 @@ libncurses5-dev \
 libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
+libsqlite3-0 \
+libsqlite3-dev \
 libssl-dev \
 libtool \
 libu2f-udev \
