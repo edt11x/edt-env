@@ -117,6 +117,7 @@ python3 \
 python3-dev \
 python3-git \
 python3-gpg \
+python3-full \
 python3-jinja2 \
 python3-pexpect \
 python3-pip \
