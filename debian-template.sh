@@ -136,6 +136,8 @@ screen \
 secure-delete \
 snapd \
 socat \
+sqlite3 \
+sqlite3-tools \
 sudo \
 sysstat \
 tcpdump \
