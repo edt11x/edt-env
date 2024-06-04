@@ -20,4 +20,9 @@ set -x
 /bin/rm -f rpm-public-key.asc
 wget https://linux.dropbox.com/fedora/rpm-public-key.asc
 set +x
+echo "Attempt to update keyring for Debian librewolf"
+set -x
+/bin/rm -f librewolf.gpg
+wget -O- https://deb.librewolf.net/keyring.gpg | sudo gpg --dearmor -o ./librewolf.gpg
+set +x
 exit 0

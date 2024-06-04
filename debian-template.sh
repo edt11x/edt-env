@@ -21,6 +21,7 @@ echo "Done with things that might faile"
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
 apt-file \
+apt-transport-https \
 astyle \
 autoconf \
 baobab \
@@ -29,6 +30,7 @@ bc \
 binfmt-support \
 bison \
 build-essential \
+ca-certificates \
 cargo \
 ccache \
 chrpath \
@@ -63,6 +65,7 @@ git \
 git-filter-repo \
 glances \
 gnome-tweaks \
+gnupg \
 graphviz \
 gzip \
 htop \
@@ -87,6 +90,7 @@ liblz4-tool \
 libncurses5-dev \
 libpango1.0-0 \
 libperl-dev \
+librewolf \
 libsdl1.2-dev \
 libsqlite3-0 \
 libsqlite3-dev \
@@ -95,6 +99,7 @@ libtool \
 libu2f-udev \
 locales \
 locate \
+lsb-release \
 lshw \
 lxd \
 lzop \
