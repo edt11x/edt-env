@@ -1,6 +1,4 @@
 echo Try to get a good update before we start
-# This might fail the first time until packages are installed
-sudo add-apt-repository "deb https://mozilla.debian.net/ debian-test/ firefox-latest"
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
@@ -57,7 +55,6 @@ doxygen \
 dstat \
 ethtool \
 file \
-firefox \
 firmware-linux \
 flex \
 gawk \
@@ -172,6 +169,7 @@ zlib1g-dev \
 zstd
 
 sudo apt --fix-broken install
+# m
 sudo locale-gen en_US.UTF-8
 echo All done.
 exit 0
