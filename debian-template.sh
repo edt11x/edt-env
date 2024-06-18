@@ -1,4 +1,6 @@
 echo Try to get a good update before we start
+# This might fail the first time until packages are installed
+sudo add-apt-repository "deb https://mozilla.debian.net/ debian-test/ firefox-latest"
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
@@ -55,6 +57,7 @@ doxygen \
 dstat \
 ethtool \
 file \
+firefox \
 firmware-linux \
 flex \
 gawk \
@@ -143,6 +146,7 @@ screen \
 secure-delete \
 snapd \
 socat \
+software-properties-common \
 sqlite3 \
 sqlite3-tools \
 sudo \
