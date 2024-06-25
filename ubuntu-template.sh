@@ -79,6 +79,7 @@ libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
 libssl-dev \
+libsqlite3-dev \
 libtool \
 libu2f-udev \
 locales \
