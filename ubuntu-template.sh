@@ -90,6 +90,7 @@ make \
 meld \
 minicom \
 mtd-utils \
+mosh \
 mtr \
 net-tools \
 node-grunt-cli \
