@@ -2,8 +2,9 @@ echo Try to get a good update before we start
 # we want to look for active, not commented out, lines in 
 # /etc/apt/sources.list containing the word "main" and
 # if they do not contain "contrib" add that word to them.
-sudo sed -i '/^[^#]/ s/\(main\)/\1 non-free/g' /etc/apt/sources.list
-sudo sed -i '/^[^#]/ s/\bnon-free\b\(.*\)\bnon-free\b/non-free \1/' /etc/apt/sources.list
+sudo sed -i '/^[^#]/ s/\bnon-free\b///g' /etc/apt/sources.list
+sudo sed -i '/^[^#]/ s/\(main\)/\1 non-free-firmware/g' /etc/apt/sources.list
+sudo sed -i '/^[^#]/ s/\bnon-free-firmware\b\(.*\)\bnon-free-firmware\b/non-free-firmware \1/' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bcontrib\b\(.*\)\bcontrib\b/contrib \1/' /etc/apt/sources.list
 exit 0
