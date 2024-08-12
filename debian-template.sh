@@ -1,4 +1,10 @@
 echo Try to get a good update before we start
+# we want to look for active, not commented out, lines in 
+# /etc/apt/sources.list containing the word "main" and
+# if they do not contain "contrib" add that word to them.
+sudo sed -i '/^[^#].*non-free/ s/\(main\)/\1 non-free/g' /etc/apt/sources.list
+sudo sed -i '/^[^#].*contrib/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
+exit 0
 sudo apt update
 sudo apt upgrade
 sudo apt autoremove
@@ -55,7 +61,7 @@ doxygen \
 dstat \
 ethtool \
 file \
-firmware-linux \
+firmware-linux-nonfree \
 flex \
 gawk \
 gcc \
@@ -90,7 +96,6 @@ liblz4-tool \
 libncurses5-dev \
 libpango1.0-0 \
 libperl-dev \
-librewolf \
 libsdl1.2-dev \
 libsqlite3-0 \
 libsqlite3-dev \
