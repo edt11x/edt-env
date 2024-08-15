@@ -151,6 +151,7 @@ rust-all \
 scons \
 screen \
 secure-delete \
+shfmt \
 snapd \
 socat \
 software-properties-common \
