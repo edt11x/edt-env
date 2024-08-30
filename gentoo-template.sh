@@ -9,3 +9,4 @@ sudo emerge --ask dev-util/quilt
 sudo emerge --ask lsof
 sudo emerge --ask vim
 sudo emerge --ask npm
+sudo emerge --ask ethtool
