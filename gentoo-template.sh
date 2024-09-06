@@ -10,3 +10,4 @@ sudo emerge --ask lsof
 sudo emerge --ask vim
 sudo emerge --ask npm
 sudo emerge --ask ethtool
+sudo emerge --ask net-misc/mstpd
