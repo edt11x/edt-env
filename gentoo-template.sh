@@ -12,3 +12,4 @@ sudo emerge --ask npm
 sudo emerge --ask ethtool
 sudo emerge --ask net-misc/mstpd
 sudo emerge --ask strace
+sudo emerge --ask radvd
