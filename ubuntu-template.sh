@@ -67,6 +67,7 @@ iputils-ping \
 iwyu \
 keepassxc \
 kpartx \
+lld \
 libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
