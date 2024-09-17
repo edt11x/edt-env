@@ -9,11 +9,11 @@ then
     try sudo apt-get remove oss4-dev
 fi
 echo A good chance of failures for these couple of packages
-echo "Things that might fail"
+echo "Things that might fail..."
 sudo apt --fix-broken install
 sudo apt install qemu-system
 sudo apt install qemu 
-echo "Done with things that might faile"
+echo "Done with things that might fail."
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
 apt-file \
