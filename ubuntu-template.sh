@@ -70,7 +70,7 @@ libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
 libelf-dev \
-libenv-perl \
+libenv-path-perl \
 libev-dev \
 libevent-dev \
 libfile-dircompare-perl \
@@ -148,6 +148,7 @@ zlib1g \
 zlib1g-dev \
 zstd \
 
+sudo npm install -g npm || true
 sudo npm install -g snyk || true
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
