@@ -47,9 +47,11 @@ doxygen \
 dstat \
 ethtool \
 file \
-g++-multilib \
+g++-9-aarch64-linux-gnu \
+g++-aarch64-linux-gnu \
 gawk \
-gcc-multilib \
+gcc-9-aarch64-linux-gnu \
+gcc-aarch64-linux-gnu \
 gdb-multiarch \
 gdb \
 git \
@@ -151,8 +153,24 @@ zlib1g \
 zlib1g-dev \
 zstd \
 
+if [$? = 0]
+then
+    echo "Individual package install succeeded."
+else
+    echo "Something is WRONG with the individual package install"
+fi
+echo " "
+echo " "
+echo "=================================================="
+echo "Other package managers"
+echo "=================================================="
+echo "Trying npm"
+echo "=================================================="
 sudo npm install -g npm || true
 sudo npm install -g snyk || true
+echo "=================================================="
+echo "Trying pip"
+echo "=================================================="
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
 exit 0
