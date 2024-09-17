@@ -70,6 +70,7 @@ libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
 libelf-dev \
+libenv-perl \
 libev-dev \
 libevent-dev \
 libfile-dircompare-perl \
