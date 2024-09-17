@@ -36,6 +36,7 @@ cmake \
 containerd \
 cpio \
 cppcheck \
+crossbuild-essential-arm64 \
 curl \
 debianutils \
 diffstat \
