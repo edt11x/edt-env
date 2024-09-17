@@ -153,7 +153,7 @@ zlib1g \
 zlib1g-dev \
 zstd \
 
-if [$? = 0]
+if [ $? = 0 ]
 then
     echo "Individual package install succeeded."
 else
