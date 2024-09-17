@@ -22,6 +22,7 @@ autoconf \
 bash \
 bc \
 binfmt-support \
+binutils-aarch64-linux-gnu \
 bison \
 build-essential \
 ccache \
