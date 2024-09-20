@@ -14,3 +14,4 @@ sudo emerge --ask net-misc/mstpd
 sudo emerge --ask strace
 sudo emerge --ask radvd
 sudo emerge --ask gdb
+sudo emerge --ask hwloc
