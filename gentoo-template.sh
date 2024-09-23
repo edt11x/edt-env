@@ -16,3 +16,4 @@ sudo emerge --ask radvd
 sudo emerge --ask gdb
 sudo emerge --ask hwloc
 sudo emerge --ask tcpdump
+sudo emerge --ask lshw
