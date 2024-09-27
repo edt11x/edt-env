@@ -77,7 +77,6 @@ git-filter-repo \
 glances \
 gnome-tweaks \
 gnupg \
-grafana \
 graphviz \
 gzip \
 htop \
@@ -184,5 +183,9 @@ zstd
 sudo apt --fix-broken install
 # m
 sudo locale-gen en_US.UTF-8
+
+sudo snap install grafana || true
+sudo snap refresh || true
+
 echo All done.
 exit 0
