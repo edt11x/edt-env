@@ -77,6 +77,7 @@ git-filter-repo \
 glances \
 gnome-tweaks \
 gnupg \
+grafana \
 graphviz \
 gzip \
 htop \
@@ -129,6 +130,7 @@ openvpn \
 p7zip-full \
 par2 \
 procps \
+prometheus \
 putty \
 python3 \
 python3-dev \
