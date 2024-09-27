@@ -87,4 +87,5 @@ perl-File-DirCompare
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
+sudo snap refresh || true
 mkdir -p ~/.tmux

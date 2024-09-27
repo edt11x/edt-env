@@ -173,4 +173,6 @@ echo "Trying pip"
 echo "=================================================="
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
+
+sudo snap refresh || true
 exit 0
