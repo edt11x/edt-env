@@ -2,18 +2,20 @@
 sudo emerge --depclean
 sudo emerge --sync
 sudo emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
-sudo emerge --ask dev-util/gentoo-dev-tools
+sudo emerge dev-util/gentoo-dev-tools
 sudo emerge sys-devel/crossdev
-sudo emerge --ask gcc make dev-vcs/git
-sudo emerge --ask dev-util/quilt
-sudo emerge --ask lsof
-sudo emerge --ask vim
-sudo emerge --ask npm
-sudo emerge --ask ethtool
-sudo emerge --ask net-misc/mstpd
-sudo emerge --ask strace
-sudo emerge --ask radvd
-sudo emerge --ask gdb
-sudo emerge --ask hwloc
-sudo emerge --ask tcpdump
-sudo emerge --ask lshw
+sudo emerge gcc make dev-vcs/git
+sudo emerge dev-util/quilt
+sudo emerge lsof
+sudo emerge vim
+sudo emerge npm
+sudo emerge ethtool
+sudo emerge net-misc/mstpd
+sudo emerge strace
+sudo emerge radvd
+sudo emerge gdb
+sudo emerge hwloc
+sudo emerge tcpdump
+sudo emerge lshw
+sudo emerge htop
+sudo emerge atop
