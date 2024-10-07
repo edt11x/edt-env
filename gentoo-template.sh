@@ -19,3 +19,6 @@ sudo emerge tcpdump
 sudo emerge lshw
 sudo emerge htop
 sudo emerge atop
+sudo emerge glances
+sudo emerge iotop
+sudo emerge sysstat
