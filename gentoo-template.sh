@@ -23,3 +23,4 @@ sudo emerge atop
 sudo emerge glances
 sudo emerge iotop
 sudo emerge sysstat
+sudo emerge net-dns/bind-tools
