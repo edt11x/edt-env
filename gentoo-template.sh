@@ -2,6 +2,7 @@
 sudo emerge --depclean
 sudo emerge --sync
 sudo emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
+sudo emerge sudo
 sudo emerge dev-util/gentoo-dev-tools
 sudo emerge sys-devel/crossdev
 sudo emerge gcc make dev-vcs/git
