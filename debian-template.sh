@@ -68,6 +68,7 @@ ethtool \
 file \
 firmware-linux-nonfree \
 flex \
+fping \
 gawk \
 gcc \
 gcc-aarch64-linux-gnu \
