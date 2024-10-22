@@ -87,5 +87,14 @@ perl-File-DirCompare
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
+if [ ! -e /snap ]
+then
+    sudo ln -s /var/lib/snapd/snap /snap
+fi
+snap list | grep hello-world
+if [ $? != 0 ]
+then
+    sudo snap install hello-world
+fi
 sudo snap refresh || true
 mkdir -p ~/.tmux
