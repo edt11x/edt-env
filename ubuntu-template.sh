@@ -174,5 +174,15 @@ echo "=================================================="
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
 
+snap list | grep hello-world
+if [ $? != 0 ]
+then
+    sudo snap install hello-world
+fi
+snap list | grep dust
+if [ $? != 0 ]
+then
+    sudo snap install dust
+fi
 sudo snap refresh || true
 exit 0
