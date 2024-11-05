@@ -164,6 +164,7 @@ sysstat \
 tcpdump \
 texinfo \
 tightvncserver \
+tio \
 tmux \
 tmux-plugin-manager \
 u-boot-tools \
