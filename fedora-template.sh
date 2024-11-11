@@ -83,7 +83,9 @@ lxc \
 lxc-templates \
 sshpass \
 libreoffice-writer \
-perl-File-DirCompare
+perl-File-DirCompare \
+pip \
+python3-pip
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
@@ -96,5 +98,11 @@ if [ $? != 0 ]
 then
     sudo snap install hello-world
 fi
+echo "=================================================="
+echo "Trying pip"
+echo "=================================================="
+pip install wic
+pip install kas
+pip install anthropic
 sudo snap refresh || true
 mkdir -p ~/.tmux
