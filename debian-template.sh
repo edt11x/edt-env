@@ -145,6 +145,12 @@ python3-tk \
 python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
+qml-module-qtquick2 \
+qml-module-qtquick-controls2 \
+qml-module-qtquick-layouts \
+qml-module-qtquick-templates2 \
+qml-module-qtquick-window2 \
+qml-module-qtgraphicaleffects \
 quilt \
 rsync \
 ripgrep \
