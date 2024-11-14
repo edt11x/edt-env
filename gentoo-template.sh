@@ -26,4 +26,5 @@ sudo emerge sysstat
 sudo emerge net-dns/bind-tools
 sudo emerge dev-vcs/git
 sudo emerge i2c-tools
+sudo emerge app-portage/gentoolkit
 sudo emerge -av app-containers/docker app-containers/docker-cli
