@@ -85,7 +85,8 @@ sshpass \
 libreoffice-writer \
 perl-File-DirCompare \
 pip \
-python3-pip
+python3-pip \
+fuse
 do
     echo $i   
 done | xargs sudo dnf -y --best --allowerasing install
