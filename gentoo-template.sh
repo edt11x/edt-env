@@ -12,7 +12,7 @@ sudo emerge --noreplace  gcc make dev-vcs/git
 sudo emerge --noreplace  dev-util/quilt
 sudo emerge --noreplace  lsof
 sudo emerge --noreplace  vim
-sudo emerge --noreplace  npm
+sudo emerge --noreplace  nodejs
 sudo emerge --noreplace  ethtool
 sudo emerge --noreplace  net-misc/mstpd
 sudo emerge --noreplace  strace
