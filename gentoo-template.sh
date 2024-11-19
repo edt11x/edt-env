@@ -1,4 +1,6 @@
 #!/bin/bash
+# show what command line it is trying to do
+set -x
 # I want it to stop if there is problem
 set -e
 sudo emerge --depclean
