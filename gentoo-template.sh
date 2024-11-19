@@ -1,31 +1,32 @@
 #!/bin/bash
+# I want it to stop if there is problem
+set -e
 sudo emerge --depclean
 sudo emerge --sync
 sudo emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
-sudo emerge sudo
-sudo emerge dev-util/gentoo-dev-tools
-sudo emerge sys-devel/crossdev
-sudo emerge gcc make dev-vcs/git
-sudo emerge dev-util/quilt
-sudo emerge lsof
-sudo emerge vim
-sudo emerge npm
-sudo emerge ethtool
-sudo emerge net-misc/mstpd
-sudo emerge strace
-sudo emerge radvd
-sudo emerge gdb
-sudo emerge hwloc
-sudo emerge tcpdump
-sudo emerge lshw
-sudo emerge htop
-sudo emerge atop
-sudo emerge glances
-sudo emerge iotop
-sudo emerge sysstat
-sudo emerge net-dns/bind-tools
-sudo emerge dev-vcs/git
-sudo emerge i2c-tools
-sudo emerge app-portage/gentoolkit
-sudo emerge -av app-containers/docker app-containers/docker-cli
-sudo emerge xfce4-meta
+sudo emerge --noreplace  sudo
+sudo emerge --noreplace  sys-devel/crossdev
+sudo emerge --noreplace  gcc make dev-vcs/git
+sudo emerge --noreplace  dev-util/quilt
+sudo emerge --noreplace  lsof
+sudo emerge --noreplace  vim
+sudo emerge --noreplace  npm
+sudo emerge --noreplace  ethtool
+sudo emerge --noreplace  net-misc/mstpd
+sudo emerge --noreplace  strace
+sudo emerge --noreplace  radvd
+sudo emerge --noreplace  gdb
+sudo emerge --noreplace  hwloc
+sudo emerge --noreplace  tcpdump
+sudo emerge --noreplace  lshw
+sudo emerge --noreplace  htop
+sudo emerge --noreplace  atop
+sudo emerge --noreplace  glances
+sudo emerge --noreplace  iotop
+sudo emerge --noreplace  sysstat
+sudo emerge --noreplace  net-dns/bind-tools
+sudo emerge --noreplace  dev-vcs/git
+sudo emerge --noreplace  i2c-tools
+sudo emerge --noreplace  app-portage/gentoolkit
+sudo emerge --noreplace  app-containers/docker app-containers/docker-cli
+sudo emerge --noreplace  xfce4-meta
