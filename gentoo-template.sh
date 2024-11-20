@@ -32,7 +32,7 @@ sudo emerge --noreplace  i2c-tools
 sudo emerge --noreplace  app-portage/gentoolkit
 sudo emerge --noreplace  app-misc/screen
 sudo emerge --noreplace  tmux
-sudo emerge --noreplace  xfce4-meta
+sudo emerge --noreplace  xfce4-meta --autounmask-write
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
