@@ -30,5 +30,10 @@ sudo emerge --noreplace  net-dns/bind-tools
 sudo emerge --noreplace  dev-vcs/git
 sudo emerge --noreplace  i2c-tools
 sudo emerge --noreplace  app-portage/gentoolkit
-sudo emerge --noreplace  app-containers/docker app-containers/docker-cli
+sudo emerge --noreplace  app-misc/screen
+sudo emerge --noreplace  tmux
 sudo emerge --noreplace  xfce4-meta
+# Docker has file collisions
+sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
+echo "Done."
+exit 0
