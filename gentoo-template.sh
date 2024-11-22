@@ -5,6 +5,7 @@ set -x
 set -e
 sudo emerge --depclean
 sudo emerge --sync
+sudo emerge --oneshot sys-apps/portage
 sudo emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
 sudo emerge --noreplace  sudo
 sudo emerge --noreplace  sys-devel/crossdev
@@ -33,6 +34,7 @@ sudo emerge --noreplace  app-portage/gentoolkit
 sudo emerge --noreplace  app-misc/screen
 sudo emerge --noreplace  tmux
 sudo emerge --noreplace  xfce4-meta --autounmask-write
+sudo emerge --noreplace  firefox
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
