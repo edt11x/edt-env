@@ -9,7 +9,7 @@ then
 fi
 if [ ! -e /etc/portage/repos.conf/gentoo.conf ]
 then
-    cat > /etc/portage/repos.conf/gentoo.conf < !EOF!
+    cat > /etc/portage/repos.conf/gentoo.conf << !EOF!
 [DEFAULT]
 main-repo = gentoo
 
@@ -18,7 +18,7 @@ location = /var/db/repos/gentoo
 sync-type = webrsync
 sync-uri = rsync://rsync.gentoo.org/gentoo-portage
 auto-sync = yes
-EOF
+!EOF!
 fi
 sudo emerge --depclean
 sudo emerge --sync
