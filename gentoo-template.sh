@@ -3,6 +3,23 @@
 set -x
 # I want it to stop if there is problem
 set -e
+if [ ! -d /etc/portage/repos.conf ]
+then
+    mkdir -p /etc/portage/repos.conf
+fi
+if [ ! -e /etc/portage/repos.conf/gentoo.conf ]
+then
+    cat > /etc/portage/repos.conf/gentoo.conf < !EOF!
+[DEFAULT]
+main-repo = gentoo
+
+[gentoo]
+location = /var/db/repos/gentoo
+sync-type = webrsync
+sync-uri = rsync://rsync.gentoo.org/gentoo-portage
+auto-sync = yes
+EOF
+fi
 sudo emerge --depclean
 sudo emerge --sync
 sudo emerge --oneshot sys-apps/portage
