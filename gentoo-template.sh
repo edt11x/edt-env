@@ -7,6 +7,10 @@ if [ ! -d /etc/portage/repos.conf ]
 then
     mkdir -p /etc/portage/repos.conf
 fi
+if [ ! -s /etc/portage/repos.conf/gentoo.conf ]
+then
+    /bin/rm -f /etc/portage/repos.conf/gentoo.conf
+fi
 if [ ! -e /etc/portage/repos.conf/gentoo.conf ]
 then
     cat > /etc/portage/repos.conf/gentoo.conf << !EOF!
