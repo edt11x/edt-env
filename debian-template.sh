@@ -27,6 +27,7 @@ sudo apt -y install nvidia-openjdk-8-jre
 sudo apt -y install java-common
 sudo apt -y install openjdk-17-jre-headless
 sudo apt -y install openjdk-17-jre
+set -e
 sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
@@ -139,7 +140,6 @@ prometheus \
 putty \
 python3 \
 python3-dev \
-python3-env \
 python3-git \
 python3-gpg \
 python3-full \
@@ -204,5 +204,5 @@ sudo locale-gen en_US.UTF-8
 sudo snap install grafana || true
 sudo snap refresh || true
 
-echo All done.
+echo "Done."
 exit 0
