@@ -31,6 +31,8 @@ sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
+2to3 \
+apache2 \
 apt-file \
 apt-transport-https \
 astyle \
@@ -98,11 +100,13 @@ libegl1-mesa \
 libelf-dev \
 libev-dev \
 libevent-dev \
+libffi-dev \
 liblz4-tool \
 libncurses5-dev \
 libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
+libsnmp-dev \
 libsqlite3-0 \
 libsqlite3-dev \
 libssl-dev \
@@ -129,11 +133,13 @@ nvme-cli \
 openvpn \
 p7zip-full \
 par2 \
+php \
 procps \
 prometheus \
 putty \
 python3 \
 python3-dev \
+python3-env \
 python3-git \
 python3-gpg \
 python3-full \
@@ -142,6 +148,7 @@ python3-pexpect \
 python3-pip \
 python3-subunit \
 python3-tk \
+python3-venv \
 python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
@@ -161,6 +168,8 @@ screen \
 secure-delete \
 shfmt \
 snapd \
+snmp \
+snmpd \
 socat \
 software-properties-common \
 sqlite3 \
