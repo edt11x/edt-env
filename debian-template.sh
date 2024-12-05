@@ -159,6 +159,7 @@ qml-module-qtquick-templates2 \
 qml-module-qtquick-window2 \
 qml-module-qtgraphicaleffects \
 quilt \
+robot-testing-framework \
 rsync \
 ripgrep \
 ruby \
