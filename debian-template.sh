@@ -43,7 +43,7 @@ bash \
 bc \
 binfmt-support \
 bison \
-bbridge-utils \
+bridge-utils \
 build-essential \
 ca-certificates \
 cargo \
