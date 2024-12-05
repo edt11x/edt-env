@@ -43,6 +43,7 @@ bash \
 bc \
 binfmt-support \
 bison \
+bbridge-utils \
 build-essential \
 ca-certificates \
 cargo \
@@ -113,6 +114,8 @@ libsqlite3-dev \
 libssl-dev \
 libtool \
 libu2f-udev \
+libvirt-clients \
+libvirt-daemon-system \
 locales \
 locate \
 lsb-release \
@@ -152,6 +155,7 @@ python3-subunit \
 python3-tk \
 python3-venv \
 python3-virtualenv \
+qemu-kvm \
 qemu-system-arm \
 qemu-user-static \
 qml-module-qtquick2 \
@@ -189,6 +193,7 @@ u-boot-tools \
 unzip \
 vim \
 vim-gtk3 \
+virt-manager \
 wget \
 xfce4 \
 xfce4-goodies \
