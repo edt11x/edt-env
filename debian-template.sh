@@ -135,6 +135,7 @@ openvpn \
 p7zip-full \
 par2 \
 php \
+pipx \
 procps \
 prometheus \
 putty \
@@ -146,6 +147,7 @@ python3-full \
 python3-jinja2 \
 python3-pexpect \
 python3-pip \
+python3-selenium \
 python3-subunit \
 python3-tk \
 python3-venv \
