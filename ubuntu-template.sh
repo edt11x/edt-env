@@ -10,6 +10,7 @@ then
 fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail..."
+set -e
 sudo apt --fix-broken install
 sudo apt install qemu-system
 sudo apt install qemu 
@@ -159,7 +160,7 @@ if [ $? = 0 ]
 then
     echo "Individual package install succeeded."
 else
-    echo "Something is WRONG with the individual package install"
+    echo "Something is WRONG with the individual package install !!!"
 fi
 echo " "
 echo " "
@@ -187,4 +188,5 @@ then
     sudo snap install dust
 fi
 sudo snap refresh || true
+echo "Done."
 exit 0
