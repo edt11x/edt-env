@@ -35,6 +35,7 @@ cpio \
 cppcheck \
 crossbuild-essential-arm64 \
 curl \
+dbus-x11 \
 debianutils \
 diffstat \
 dnsmasq \
