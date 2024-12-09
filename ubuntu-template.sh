@@ -78,7 +78,6 @@ libevent-dev \
 libfile-dircompare-perl \
 liblz4-tool \
 libncurses5-dev \
-libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
 libssl-dev \
