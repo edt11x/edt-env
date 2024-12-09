@@ -16,6 +16,8 @@ sudo apt install qemu-system
 echo "Done with things that might fail."
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
+2to3 \
+apache2 \
 apt-file \
 astyle \
 autoconf \
@@ -76,11 +78,13 @@ libelf-dev \
 libenv-path-perl \
 libev-dev \
 libevent-dev \
+libffi-dev \
 libfile-dircompare-perl \
 liblz4-tool \
 libncurses5-dev \
 libperl-dev \
 libsdl1.2-dev \
+libsnmp-dev \
 libssl-dev \
 libsqlite3-dev \
 libtool \
@@ -103,6 +107,7 @@ ntpdate \
 openvpn \
 p7zip-full \
 par2 \
+php \
 pip \
 procps \
 python3 \
@@ -114,6 +119,7 @@ python3-pexpect \
 python3-pip \
 python3-subunit \
 python3-tk \
+python3-venv \
 python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
@@ -126,6 +132,8 @@ rust-all \
 scons \
 screen \
 secure-delete \
+snmp \
+snmpd \
 ssh \
 socat \
 software-properties-common \
