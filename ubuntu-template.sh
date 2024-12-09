@@ -13,7 +13,6 @@ echo "Things that might fail..."
 set -e
 sudo apt --fix-broken install
 sudo apt install qemu-system
-sudo apt install qemu 
 echo "Done with things that might fail."
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
@@ -30,9 +29,6 @@ ccache \
 cargo \
 chrpath \
 clang \
-clang-11 \
-clang-tidy-11 \
-clang-tools-11 \
 cmake \
 containerd \
 cpio \
