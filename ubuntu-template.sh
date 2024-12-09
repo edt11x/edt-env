@@ -121,6 +121,7 @@ python3-virtualenv \
 qemu-system-arm \
 qemu-user-static \
 quilt \
+remmina remmina-plugin-rdp remmina-plugin-vnc \
 ripgrep \
 rsync \
 ruby \
