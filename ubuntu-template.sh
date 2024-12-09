@@ -129,6 +129,7 @@ rust-all \
 scons \
 screen \
 secure-delete \
+ssh \
 socat \
 software-properties-common \
 sudo \
