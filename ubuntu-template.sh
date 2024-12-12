@@ -54,11 +54,11 @@ gcc-9-aarch64-linux-gnu \
 gcc-aarch64-linux-gnu \
 gdb-multiarch \
 gdb \
+gir1.2-gtop-2.0 lm-sensors \
 git \
 git-core \
 glances \
 gnome-session \
-gnome-shell-extension-manager gir1.2-gtop-2.0 lm-sensors \
 gnome-tweaks \
 graphviz \
 gzip \
@@ -167,6 +167,12 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
+echo " "
+echo " "
+echo "=================================================="
+echo "Packages that may have multiple names in different versions"
+echo "=================================================="
+sudo apt install gnome-shell-extension-manager || sudo apt install gnome-shell-extensions
 echo " "
 echo " "
 echo "=================================================="
