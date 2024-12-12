@@ -58,6 +58,7 @@ git \
 git-core \
 glances \
 gnome-session \
+gnome-shell-extension-manager gir1.2-gtop-2.0 lm-sensors \
 gnome-tweaks \
 graphviz \
 gzip \
