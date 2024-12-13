@@ -1,6 +1,7 @@
 #!/bin/bash
+set -x 
 sudo sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/google-chrome.repo
-sudo dnf upgrade --refresh --best --allowerasing
+sudo dnf upgrade --refresh --best
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm --import ./microsoft.asc
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
@@ -11,7 +12,7 @@ sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rp
 sudo dnf remove microsoft-edge-stable
 sudo dnf remove microsoft-edge-dev
 sudo dnf remove microsoft-edge-beta
-sudo dnf -y --best --allowerasing install google-chrome-unstable
+sudo dnf -y --best install google-chrome-unstable
 for i in \
 meld vim-X11 vim-minimal \
 gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel \
@@ -86,10 +87,11 @@ libreoffice-writer \
 perl-File-DirCompare \
 pip \
 python3-pip \
-fuse
+fuse \
+snap
 do
     echo $i   
-done | xargs sudo dnf -y --best --allowerasing install
+done | xargs sudo dnf -y --best install
 if [ ! -e /snap ]
 then
     sudo ln -s /var/lib/snapd/snap /snap
