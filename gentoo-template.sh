@@ -56,6 +56,7 @@ sudo emerge --noreplace  app-misc/screen
 sudo emerge --noreplace  tmux
 sudo emerge --noreplace  xfce4-meta --autounmask-write
 sudo emerge --noreplace  www-client/firefox
+sudo emerge --noreplace  app-portage/pfl
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
