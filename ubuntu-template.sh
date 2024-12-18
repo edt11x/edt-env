@@ -69,6 +69,7 @@ iperf3 \
 iproute2 \
 iputils-ping \
 iwyu \
+jq \
 keepassxc \
 kpartx \
 lld \
