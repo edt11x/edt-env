@@ -62,7 +62,6 @@ sudo emerge --noreplace  x11-misc/appmenu-gtk-module
 sudo emerge --noreplace  media-libs/libcanberra-gtk3
 sudo emerge --noreplace  xclock
 sudo emerge --noreplace  app-misc/jq
-sudo emerge --noreplace  dev-python/jq
 sudo emerge --noreplace  xeyes
 sudo emerge --noreplace  www-client/falkon
 sudo emerge --noreplace  xfwm4
