@@ -62,6 +62,7 @@ sudo emerge --noreplace  x11-misc/appmenu-gtk-module
 sudo emerge --noreplace  media-libs/libcanberra-gtk3
 sudo emerge --noreplace  xclock
 sudo emerge --noreplace  jq
+sudo emerge --noreplace  xeyes
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
