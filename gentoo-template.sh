@@ -61,8 +61,21 @@ sudo emerge --noreplace  net-misc/dhcp
 sudo emerge --noreplace  x11-misc/appmenu-gtk-module
 sudo emerge --noreplace  media-libs/libcanberra-gtk3
 sudo emerge --noreplace  xclock
-sudo emerge --noreplace  jq
+sudo emerge --noreplace  app-misc/jq
+sudo emerge --noreplace  dev-python/jq
 sudo emerge --noreplace  xeyes
+sudo emerge --noreplace  www-client/dillo
+sudo emerge --noreplace  xfwm4
+sudo emerge --noreplace  xfce4-panel
+sudo emerge --noreplace  xfdesktop
+sudo emerge --noreplace  thunar
+sudo emerge --noreplace  thunar-volman
+sudo emerge --noreplace  xfce4-session
+sudo emerge --noreplace  xfce4-settings
+sudo emerge --noreplace  xfce4-appfinder
+sudo emerge --noreplace  xfconf
+sudo emerge --noreplace  garcon
+sudo emerge --noreplace  tumbler
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
