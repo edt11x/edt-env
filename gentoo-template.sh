@@ -59,6 +59,8 @@ sudo emerge --noreplace  www-client/firefox
 sudo emerge --noreplace  app-portage/pfl
 sudo emerge --noreplace  net-misc/dhcp
 sudo emerge --noreplace  net-misc/dhcping
+sudo emerge --noreplace  x11-misc/appmenu-gtk-module
+sudo emerge --noreplace  media-libs/libcanberra-gtk3
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 echo "Done."
