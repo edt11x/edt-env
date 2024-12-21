@@ -63,7 +63,7 @@ sudo emerge --noreplace  media-libs/libcanberra-gtk3
 sudo emerge --noreplace  xclock
 sudo emerge --noreplace  app-misc/jq
 sudo emerge --noreplace  xeyes
-sudo emerge --noreplace  www-client/falkon
+sudo emerge --noreplace  www-client/chromium
 sudo emerge --noreplace  xfwm4
 sudo emerge --noreplace  xfce4-panel
 sudo emerge --noreplace  xfdesktop
