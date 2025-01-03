@@ -55,7 +55,6 @@ sudo emerge --noreplace  app-portage/gentoolkit
 sudo emerge --noreplace  app-misc/screen
 sudo emerge --noreplace  tmux
 sudo emerge --noreplace  xfce4-meta --autounmask-write
-sudo emerge --noreplace  www-client/firefox
 sudo emerge --noreplace  app-portage/pfl
 sudo emerge --noreplace  net-misc/dhcp
 sudo emerge --noreplace  x11-misc/appmenu-gtk-module
@@ -75,7 +74,11 @@ sudo emerge --noreplace  xfce4-appfinder
 sudo emerge --noreplace  xfconf
 sudo emerge --noreplace  garcon
 sudo emerge --noreplace  tumbler
+sudo emerge --noreplace  udev
+sudo emerge --noreplace  media-libs/libcanberra
+sudo emerge --noreplace  www-client/chromium
 # Docker has file collisions
 sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
+sudo emerge --noreplace  www-client/firefox || true
 echo "Done."
 exit 0
