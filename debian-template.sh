@@ -94,6 +94,7 @@ iwyu \
 kas \
 keepassxc \
 kpartx \
+ldap-utils \
 libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
