@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ "$(id -u)" -ne 0 ]; then
+   # Re-exec the script with sudo if not root
+   exec sudo "$0" "$@"
+fi
 # show what command line it is trying to do
 set -x
 # I want it to stop if there is problem
@@ -24,61 +28,61 @@ sync-uri = rsync://rsync.gentoo.org/gentoo-portage
 auto-sync = yes
 !EOF!
 fi
-sudo emerge --depclean
-sudo emerge --sync
-sudo emerge --oneshot sys-apps/portage
-sudo emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
-sudo emerge --noreplace  sudo
-sudo emerge --noreplace  sys-devel/crossdev
-sudo emerge --noreplace  gcc make dev-vcs/git
-sudo emerge --noreplace  dev-util/quilt
-sudo emerge --noreplace  lsof
-sudo emerge --noreplace  vim
-sudo emerge --noreplace  nodejs
-sudo emerge --noreplace  ethtool
-sudo emerge --noreplace  net-misc/mstpd
-sudo emerge --noreplace  strace
-sudo emerge --noreplace  radvd
-sudo emerge --noreplace  gdb
-sudo emerge --noreplace  hwloc
-sudo emerge --noreplace  tcpdump
-sudo emerge --noreplace  lshw
-sudo emerge --noreplace  htop
-sudo emerge --noreplace  atop
-sudo emerge --noreplace  glances
-sudo emerge --noreplace  iotop
-sudo emerge --noreplace  sysstat
-sudo emerge --noreplace  net-dns/bind-tools
-sudo emerge --noreplace  dev-vcs/git
-sudo emerge --noreplace  i2c-tools
-sudo emerge --noreplace  app-portage/gentoolkit
-sudo emerge --noreplace  app-misc/screen
-sudo emerge --noreplace  tmux
-sudo emerge --noreplace  xfce4-meta --autounmask-write
-sudo emerge --noreplace  app-portage/pfl
-sudo emerge --noreplace  net-misc/dhcp
-sudo emerge --noreplace  x11-misc/appmenu-gtk-module
-sudo emerge --noreplace  media-libs/libcanberra-gtk3
-sudo emerge --noreplace  xclock
-sudo emerge --noreplace  app-misc/jq
-sudo emerge --noreplace  xeyes
-sudo emerge --noreplace  www-client/chromium
-sudo emerge --noreplace  xfwm4
-sudo emerge --noreplace  xfce4-panel
-sudo emerge --noreplace  xfdesktop
-sudo emerge --noreplace  thunar
-sudo emerge --noreplace  thunar-volman
-sudo emerge --noreplace  xfce4-session
-sudo emerge --noreplace  xfce4-settings
-sudo emerge --noreplace  xfce4-appfinder
-sudo emerge --noreplace  xfconf
-sudo emerge --noreplace  garcon
-sudo emerge --noreplace  tumbler
-sudo emerge --noreplace  udev
-sudo emerge --noreplace  media-libs/libcanberra
-sudo emerge --noreplace  www-client/chromium
+emerge --depclean
+emerge --sync
+emerge --oneshot sys-apps/portage
+emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
+emerge --noreplace  sudo
+emerge --noreplace  sys-devel/crossdev
+emerge --noreplace  gcc make dev-vcs/git
+emerge --noreplace  dev-util/quilt
+emerge --noreplace  lsof
+emerge --noreplace  vim
+emerge --noreplace  nodejs
+emerge --noreplace  ethtool
+emerge --noreplace  net-misc/mstpd
+emerge --noreplace  strace
+emerge --noreplace  radvd
+emerge --noreplace  gdb
+emerge --noreplace  hwloc
+emerge --noreplace  tcpdump
+emerge --noreplace  lshw
+emerge --noreplace  htop
+emerge --noreplace  atop
+emerge --noreplace  glances
+emerge --noreplace  iotop
+emerge --noreplace  sysstat
+emerge --noreplace  net-dns/bind-tools
+emerge --noreplace  dev-vcs/git
+emerge --noreplace  i2c-tools
+emerge --noreplace  app-portage/gentoolkit
+emerge --noreplace  app-misc/screen
+emerge --noreplace  tmux
+emerge --noreplace  xfce4-meta --autounmask-write
+emerge --noreplace  app-portage/pfl
+emerge --noreplace  net-misc/dhcp
+emerge --noreplace  x11-misc/appmenu-gtk-module
+emerge --noreplace  media-libs/libcanberra-gtk3
+emerge --noreplace  xclock
+emerge --noreplace  app-misc/jq
+emerge --noreplace  xeyes
+emerge --noreplace  www-client/chromium
+emerge --noreplace  xfwm4
+emerge --noreplace  xfce4-panel
+emerge --noreplace  xfdesktop
+emerge --noreplace  thunar
+emerge --noreplace  thunar-volman
+emerge --noreplace  xfce4-session
+emerge --noreplace  xfce4-settings
+emerge --noreplace  xfce4-appfinder
+emerge --noreplace  xfconf
+emerge --noreplace  garcon
+emerge --noreplace  tumbler
+emerge --noreplace  udev
+emerge --noreplace  media-libs/libcanberra
+emerge --noreplace  www-client/chromium
 # Docker has file collisions
-sudo emerge --noreplace  app-containers/docker app-containers/docker-cli || true
-sudo emerge --noreplace  www-client/firefox || true
+emerge --noreplace  app-containers/docker app-containers/docker-cli || true
+emerge --noreplace  www-client/firefox || true
 echo "Done."
 exit 0
