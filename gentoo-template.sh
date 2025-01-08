@@ -58,7 +58,7 @@ emerge --noreplace  i2c-tools
 emerge --noreplace  app-portage/gentoolkit
 emerge --noreplace  app-misc/screen
 emerge --noreplace  tmux
-emerge --noreplace  xfce4-meta --autounmask-write
+emerge --noreplace  xfce4-meta
 emerge --noreplace  app-portage/pfl
 emerge --noreplace  net-misc/dhcp
 emerge --noreplace  x11-misc/appmenu-gtk-module
@@ -79,6 +79,7 @@ emerge --noreplace  xfconf
 emerge --noreplace  garcon
 emerge --noreplace  tumbler
 emerge --noreplace  udev
+emerge --noreplace  openldap
 emerge --noreplace  media-libs/libcanberra
 emerge --noreplace  www-client/chromium
 # Docker has file collisions
