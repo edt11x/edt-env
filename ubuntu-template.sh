@@ -152,6 +152,7 @@ unzip \
 vim \
 vim-gtk3 \
 wget \
+whois \
 xclip \
 xfce4 xfce4-session \
 xrdp xorgxrdp \
