@@ -80,6 +80,8 @@ emerge --noreplace  garcon
 emerge --noreplace  tumbler
 emerge --noreplace  udev
 emerge --noreplace  openldap
+emerge --noreplace  sys-apps/dbus
+emerge --noreplace  dev-qt/qdbusviewer
 emerge --noreplace  media-libs/libcanberra
 emerge --noreplace  www-client/chromium
 # Docker has file collisions
