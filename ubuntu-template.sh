@@ -21,6 +21,7 @@ apache2 \
 apt-file \
 astyle \
 autoconf \
+autopoint \
 bash \
 bc \
 binfmt-support \
