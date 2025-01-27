@@ -104,6 +104,8 @@ libelf-dev \
 libev-dev \
 libevent-dev \
 libffi-dev \
+libgl1-mesa-dri \
+libglx-mesa0 \
 liblz4-tool \
 libncurses5-dev \
 libpango1.0-0 \
@@ -126,6 +128,11 @@ lzop \
 make \
 meld \
 mesa-common-dev \
+mesa-utils \
+mesa-utils-bin \
+mesa-va-drivers \
+mesa-vdpau-drivers \
+mesa-vulkan-drivers \
 minicom \
 mtd-utils \
 mtr \
