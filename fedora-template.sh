@@ -88,7 +88,8 @@ perl-File-DirCompare \
 pip \
 python3-pip \
 fuse \
-snap
+snap \
+par2cmdline
 do
     echo $i   
 done | xargs sudo dnf -y --best install
