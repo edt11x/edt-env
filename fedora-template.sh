@@ -89,7 +89,11 @@ pip \
 python3-pip \
 fuse \
 snap \
-par2cmdline
+par2cmdline \
+cairo-devel \
+pango-devel \
+libjpeg-turbo-devel 
+giflib-devel
 do
     echo $i   
 done | xargs sudo dnf -y --best install
