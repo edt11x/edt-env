@@ -92,11 +92,19 @@ snap \
 par2cmdline \
 cairo-devel \
 pango-devel \
-libjpeg-turbo-devel 
+libjpeg-turbo-devel \
 giflib-devel
 do
     echo $i   
 done | xargs sudo dnf -y --best install
+echo "=================================================="
+echo "Other package managers"
+echo "=================================================="
+echo "Trying snap"
+echo "=================================================="
+sudo npm install -g npm || true
+sudo npm install -g snyk || true
+sudo npm install -g canvas || true
 if [ ! -e /snap ]
 then
     sudo ln -s /var/lib/snapd/snap /snap
@@ -106,6 +114,12 @@ if [ $? != 0 ]
 then
     sudo snap install hello-world
 fi
+echo "=================================================="
+echo "Trying npm"
+echo "=================================================="
+sudo npm install -g npm || true
+sudo npm install -g snyk || true
+sudo npm install -g canvas || true
 echo "=================================================="
 echo "Trying pip"
 echo "=================================================="
