@@ -29,6 +29,8 @@ auto-sync = yes
 !EOF!
 fi
 emerge --depclean
+# should re-run . /etc/profile after cleaning
+. /etc/profile
 emerge --sync
 emerge --oneshot sys-apps/portage
 emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
