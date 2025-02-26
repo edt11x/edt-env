@@ -84,6 +84,8 @@ emerge --noreplace  sys-apps/dbus
 emerge --noreplace  dev-qt/qtwayland
 emerge --noreplace  dev-qt/qdbusviewer
 emerge --noreplace  media-libs/libcanberra
+emerge --noreplace  net-analyzer/net-snmp
+# Browser packages taake a long time
 emerge --noreplace  www-client/chromium
 # Docker has file collisions
 emerge --noreplace  app-containers/docker app-containers/docker-cli || true
