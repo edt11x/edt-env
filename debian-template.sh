@@ -191,6 +191,7 @@ sqlite3 \
 sqlite3-tools \
 sudo \
 sysstat \
+systemd-timesyncd \
 tcpdump \
 texinfo \
 tightvncserver \
