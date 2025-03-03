@@ -92,5 +92,19 @@ emerge --noreplace  www-client/chromium
 # Docker has file collisions
 emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 emerge --noreplace  www-client/firefox || true
+# who knows which of these will succeed or fail?
+set +e
+# echo "Try to rebuild any packages with broken dependencies"
+# revdep-rebuild -v
+echo "Try to scan for any broken dependencies and rebuilds affected packages."
+emerge @preserved-rebuild
+echo "Try to rebuild packages that were linked against old versions of updated libraries"
+emerge --emptytree @world -a
+echo "Try rebuilding Perl-related packages"
+perl-cleaner --all
+echo "Try to rebuild anything where the use has chanced"
+emerge --verbose --update --deep --changed-user @world
+echo "Try to clean up the dependencies"
+emerge --depclean -a
 echo "Done."
 exit 0
