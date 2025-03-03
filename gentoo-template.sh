@@ -103,7 +103,7 @@ emerge --emptytree @world -a
 echo "Try rebuilding Perl-related packages"
 perl-cleaner --all
 echo "Try to rebuild anything where the use has chanced"
-emerge --verbose --update --deep --changed-user @world
+emerge --verbose --update --deep --changed-use @world
 echo "Try to clean up the dependencies"
 emerge --depclean -a
 echo "Done."
