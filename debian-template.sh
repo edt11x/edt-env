@@ -83,6 +83,7 @@ glances \
 gnome-tweaks \
 gnupg \
 graphviz \
+gtkterm \
 gzip \
 htop \
 inetutils-tools \
