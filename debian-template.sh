@@ -191,6 +191,7 @@ software-properties-common \
 sqlite3 \
 sqlite3-tools \
 sudo \
+swaks \
 sysstat \
 systemd-timesyncd \
 tcpdump \
