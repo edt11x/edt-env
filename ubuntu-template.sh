@@ -96,6 +96,7 @@ locales \
 locate \
 lshw \
 lzop \
+lz4 \
 make \
 meld \
 minicom \
@@ -137,6 +138,7 @@ screen \
 secure-delete \
 snmp \
 snmpd \
+sqlite3 \
 ssh \
 socat \
 software-properties-common \
