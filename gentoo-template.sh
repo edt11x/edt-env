@@ -77,7 +77,7 @@ emerge --noreplace  xfce4-meta
 emerge --noreplace  app-portage/pfl
 emerge --noreplace  net-misc/dhcp
 emerge --noreplace  x11-misc/appmenu-gtk-module
-emerge --noreplace  media-libs/libcanberra-gtk3
+# emerge --noreplace  media-libs/libcanberra-gtk3
 emerge --noreplace  xclock
 emerge --noreplace  app-misc/jq
 emerge --noreplace  xeyes
