@@ -28,6 +28,19 @@ sync-uri = rsync://rsync.gentoo.org/gentoo-portage
 auto-sync = yes
 !EOF!
 fi
+# Try to make sure that we use pulseaudio rather than alsa
+if [ ! -e /etc/portage/package.use ]
+then
+    mkdir /etc/portage/package.use
+fi
+if [ ! -f /etc/portage/package.use/libcanberra ]
+then
+    echo "media-libs/libcanberra pulseaudio -alsa" >> /etc/portage/package.use/libcanberra
+fi
+if [ ! -f /etc/portage/package.use/chromium ]
+then
+    echo "wwww-client/chromium pulseaudio -alsa" >> /etc/portage/package.use/chromium
+fi
 emerge --depclean
 # should re-run . /etc/profile after cleaning
 . /etc/profile
