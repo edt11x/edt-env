@@ -70,6 +70,7 @@ emerge --noreplace  sysstat
 emerge --noreplace  net-dns/bind-tools
 emerge --noreplace  dev-vcs/git
 emerge --noreplace  i2c-tools
+emerge --noreplace  net-misc/ntp
 emerge --noreplace  app-portage/gentoolkit
 emerge --noreplace  app-misc/screen
 emerge --noreplace  tmux
