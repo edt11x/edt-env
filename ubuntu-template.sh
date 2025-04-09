@@ -112,6 +112,9 @@ openvpn \
 p7zip-full \
 par2 \
 php \
+php-json \
+php-mbstring \
+php-xml \
 pip \
 procps \
 python3 \
