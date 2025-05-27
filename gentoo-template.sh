@@ -33,19 +33,22 @@ if [ ! -e /etc/portage/package.use ]
 then
     mkdir /etc/portage/package.use
 fi
-if [ ! -f /etc/portage/package.use/libcanberra ]
-then
-    echo "media-libs/libcanberra pulseaudio -alsa" >> /etc/portage/package.use/libcanberra
-fi
-if [ ! -f /etc/portage/package.use/chromium ]
-then
-    echo "wwww-client/chromium pulseaudio -alsa" >> /etc/portage/package.use/chromium
-fi
+/bin/rm -f /etc/portage/package.use/libcanberra
+# if [ ! -f /etc/portage/package.use/libcanberra ]
+# then
+#     echo "media-libs/libcanberra pulseaudio -alsa" >> /etc/portage/package.use/libcanberra
+# fi
+/bin/rm -f /etc/portage/package/use/chromium
+# if [ ! -f /etc/portage/package.use/chromium ]
+# then
+#    echo "wwww-client/chromium pulseaudio -alsa" >> /etc/portage/package.use/chromium
+# fi
 emerge --depclean
 # should re-run . /etc/profile after cleaning
 . /etc/profile
 emerge --sync
-emerge --oneshot sys-apps/portage
+# if portage fails because of dependencies, lets just keep going
+emerge --oneshot sys-apps/portage || true
 emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
 emerge --noreplace  sudo
 emerge --noreplace  sys-devel/crossdev
@@ -99,7 +102,7 @@ emerge --noreplace  openldap
 emerge --noreplace  sys-apps/dbus
 emerge --noreplace  dev-qt/qtwayland
 emerge --noreplace  dev-qt/qdbusviewer
-emerge --noreplace  media-libs/libcanberra
+# emerge --noreplace  media-libs/libcanberra
 emerge --noreplace  net-analyzer/net-snmp
 # Browser packages taake a long time
 emerge --noreplace  www-client/chromium
