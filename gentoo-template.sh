@@ -77,6 +77,7 @@ emerge --noreplace  net-misc/ntp
 emerge --noreplace  app-portage/gentoolkit
 emerge --noreplace  app-misc/screen
 emerge --noreplace  tmux
+emerge --noreplace  dev-libs/libdbusmenu
 emerge --noreplace  xfce4-meta
 emerge --noreplace  app-portage/pfl
 emerge --noreplace  net-misc/dhcp
