@@ -110,6 +110,7 @@ emerge --noreplace  www-client/chromium
 # Docker has file collisions
 emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 emerge --noreplace  www-client/firefox || true
+dispatch-conf
 # who knows which of these will succeed or fail?
 set +e
 # echo "Try to rebuild any packages with broken dependencies"
