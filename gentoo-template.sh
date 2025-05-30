@@ -78,6 +78,11 @@ emerge --noreplace  app-portage/gentoolkit
 emerge --noreplace  app-misc/screen
 emerge --noreplace  tmux
 emerge --noreplace  dev-libs/libdbusmenu
+emerge --noreplace  xfce-base/thunar
+emerge --noreplace  gnome-base/gvfs
+emerge --noreplace  sys-apps/systemd
+emerge --noreplace  app-crypt/gcr
+emerge --noreplace  x11-libs/motif
 emerge --noreplace  xfce4-meta
 emerge --noreplace  app-portage/pfl
 emerge --noreplace  net-misc/dhcp
