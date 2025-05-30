@@ -38,6 +38,8 @@ fi
 # then
 #     echo "media-libs/libcanberra pulseaudio -alsa" >> /etc/portage/package.use/libcanberra
 # fi
+# let us try to get through the other builds
+emerge --unmerge  www-client/chromium || true
 /bin/rm -f /etc/portage/package/use/chromium
 # if [ ! -f /etc/portage/package.use/chromium ]
 # then
@@ -83,15 +85,12 @@ emerge --noreplace  gnome-base/gvfs
 emerge --noreplace  sys-apps/systemd
 emerge --noreplace  app-crypt/gcr
 emerge --noreplace  x11-libs/motif
-emerge --noreplace  xfce4-meta
 emerge --noreplace  app-portage/pfl
 emerge --noreplace  net-misc/dhcp
 emerge --noreplace  x11-misc/appmenu-gtk-module
-# emerge --noreplace  media-libs/libcanberra-gtk3
 emerge --noreplace  xclock
 emerge --noreplace  app-misc/jq
 emerge --noreplace  xeyes
-emerge --noreplace  www-client/chromium
 emerge --noreplace  xfwm4
 emerge --noreplace  xfce4-panel
 emerge --noreplace  xfdesktop
@@ -108,10 +107,9 @@ emerge --noreplace  openldap
 emerge --noreplace  sys-apps/dbus
 emerge --noreplace  dev-qt/qtwayland
 emerge --noreplace  dev-qt/qdbusviewer
-# emerge --noreplace  media-libs/libcanberra
 emerge --noreplace  net-analyzer/net-snmp
 # Browser packages taake a long time
-emerge --noreplace  www-client/chromium
+emerge --noreplace  www-client/chromium || true
 # Docker has file collisions
 emerge --noreplace  app-containers/docker app-containers/docker-cli || true
 emerge --noreplace  www-client/firefox || true
