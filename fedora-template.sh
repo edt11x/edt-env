@@ -93,7 +93,8 @@ par2cmdline \
 cairo-devel \
 pango-devel \
 libjpeg-turbo-devel \
-giflib-devel
+giflib-devel \
+swaks
 do
     echo $i   
 done | xargs sudo dnf -y --best install
