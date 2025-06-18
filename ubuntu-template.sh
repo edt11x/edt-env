@@ -168,6 +168,11 @@ xz-utils \
 zlib1g \
 zlib1g-dev \
 zstd \
+iftop \
+nload \
+bmon \
+hping3 \
+ifstat \
 
 if [ $? = 0 ]
 then
