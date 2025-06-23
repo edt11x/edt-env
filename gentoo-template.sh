@@ -48,10 +48,18 @@ emerge --unmerge  www-client/chromium || true
 emerge --depclean
 # should re-run . /etc/profile after cleaning
 . /etc/profile
-emerge --sync
+# emerge --sync is the old syntax
+emaint sync -a
 # if portage fails because of dependencies, lets just keep going
 emerge --oneshot sys-apps/portage || true
-emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going --backtrack=300 @world
+emerge --update --deep --newuse --changed-use --with-bdeps=y --keep-going=y --backtrack=300 @world
+# a slightly different syntax
+emerge -a -uvDU @world --keep-going=y
+# -a is for --ask, we probably just try to go ahead without asking
+# -u is --update
+# -v is --verbose
+# -D is --deep
+# -U is --changed-use
 emerge --noreplace  sudo
 emerge --noreplace  sys-devel/crossdev
 emerge --noreplace  gcc make dev-vcs/git
