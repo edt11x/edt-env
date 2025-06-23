@@ -94,7 +94,8 @@ cairo-devel \
 pango-devel \
 libjpeg-turbo-devel \
 giflib-devel \
-swaks
+swaks \
+nmap
 do
     echo $i   
 done | xargs sudo dnf -y --best install
