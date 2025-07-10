@@ -221,6 +221,7 @@ bmon \
 hping3 \
 ifstat \
 systemd-coredump \
+zst \
 
 sudo apt --fix-broken install
 # m
