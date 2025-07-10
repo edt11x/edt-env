@@ -220,6 +220,7 @@ nload \
 bmon \
 hping3 \
 ifstat \
+systemd-coredump \
 
 sudo apt --fix-broken install
 # m
