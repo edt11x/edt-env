@@ -173,6 +173,7 @@ nload \
 bmon \
 hping3 \
 ifstat \
+device-tree-compiler \
 
 if [ $? = 0 ]
 then
