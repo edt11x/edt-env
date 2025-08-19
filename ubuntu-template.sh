@@ -174,6 +174,7 @@ bmon \
 hping3 \
 ifstat \
 device-tree-compiler \
+flex \
 
 if [ $? = 0 ]
 then
