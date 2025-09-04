@@ -161,6 +161,7 @@ wget \
 whois \
 xclip \
 xfce4 xfce4-session \
+xfce4-goodies \
 xrdp xorgxrdp \
 xsltproc \
 xterm \
