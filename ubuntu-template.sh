@@ -176,6 +176,7 @@ hping3 \
 ifstat \
 device-tree-compiler \
 flex \
+sshpass \
 
 if [ $? = 0 ]
 then
