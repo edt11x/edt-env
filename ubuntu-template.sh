@@ -177,6 +177,8 @@ ifstat \
 device-tree-compiler \
 flex \
 sshpass \
+xsel \
+parcellite \
 
 if [ $? = 0 ]
 then
