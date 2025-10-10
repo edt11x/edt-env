@@ -222,6 +222,7 @@ hping3 \
 ifstat \
 systemd-coredump \
 zst \
+remmina \
 
 sudo apt --fix-broken install
 # m
