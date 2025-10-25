@@ -95,7 +95,8 @@ pango-devel \
 libjpeg-turbo-devel \
 giflib-devel \
 swaks \
-nmap
+nmap \
+gnome-todo
 do
     echo $i   
 done | xargs sudo dnf -y --best install
