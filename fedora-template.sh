@@ -96,7 +96,8 @@ libjpeg-turbo-devel \
 giflib-devel \
 swaks \
 nmap \
-gnome-todo
+gnome-todo \
+ksshaskpass
 do
     echo $i   
 done | xargs sudo dnf -y --best install
