@@ -41,8 +41,6 @@ mozilla-zilla-slab-fonts \
 mozilla-zilla-slab-fonts-common \
 mozilla-zilla-slab-highlight-fonts \
 open-sans-fonts \
-roboto-fontface-common \
-roboto-fontface-fonts \
 docker \
 docker-compose \
 docker-distribution \
@@ -100,7 +98,7 @@ gnome-todo \
 ksshaskpass
 do
     echo $i   
-done | xargs sudo dnf -y --best install
+done | xargs -n 10 sudo dnf -y --best install
 echo "=================================================="
 echo "Other package managers"
 echo "=================================================="
