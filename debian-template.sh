@@ -223,6 +223,10 @@ ifstat \
 systemd-coredump \
 zst \
 remmina \
+gstreamer1.0-libav \
+gstreamer1.0-plugins-good \
+gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-bad-apps \
 
 sudo apt --fix-broken install
 # m
