@@ -99,6 +99,7 @@ libappindicator \
 libappindicator-gtk3 \
 rpmfusion-free-release \
 nautilus-dropbox \
+
 do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
