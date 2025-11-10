@@ -97,9 +97,13 @@ nmap \
 gnome-todo \
 ksshaskpass \
 libappindicator \
+libappindicator-gtk3 \
+rpmfusion-free-release \
+nautilus-dropbox \
 do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
+sudo dnf makecache
 echo "=================================================="
 echo "Other package managers"
 echo "=================================================="
