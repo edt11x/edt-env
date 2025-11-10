@@ -12,7 +12,6 @@ sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rp
 sudo dnf remove microsoft-edge-stable
 sudo dnf remove microsoft-edge-dev
 sudo dnf remove microsoft-edge-beta
-sudo dnf -y --best install google-chrome-unstable
 for i in \
 meld vim-X11 vim-minimal \
 gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel \
