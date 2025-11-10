@@ -95,7 +95,8 @@ giflib-devel \
 swaks \
 nmap \
 gnome-todo \
-ksshaskpass
+ksshaskpass \
+libappindicator \
 do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
