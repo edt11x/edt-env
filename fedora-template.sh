@@ -99,6 +99,7 @@ libappindicator \
 libappindicator-gtk3 \
 rpmfusion-free-release \
 nautilus-dropbox \
+okular \
 
 do
     echo $i   
