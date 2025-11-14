@@ -205,6 +205,9 @@ sudo npm install -g canvas || true
 echo "=================================================="
 echo "Trying pip"
 echo "=================================================="
+set +x
+echo "pip for wic and kas may fail due to Python being controlled by the OS"
+set +e
 sudo apt install wic || pip install wic
 sudo apt install kas || pip install kas
 
@@ -234,7 +237,6 @@ echo " "
 echo "=================================================="
 echo "Try to install Docker from the Docker site"
 echo "=================================================="
-#!/bin/bash
 
 # Get the Ubuntu version
 VERSION=$(lsb_release -rs)
