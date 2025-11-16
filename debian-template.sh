@@ -31,8 +31,33 @@ set -e
 sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
+#!/bin/bash
+
+if grep -q "Debian" /etc/os-release; then
+  DEBIAN_VERSION_ID=$(grep "VERSION_ID" /etc/os-release | cut -d'=' -f2 | tr -d '"')
+  echo "Debian version ID: $DEBIAN_VERSION_ID"
+
+  # Example: check for a specific version
+  if [[ "$DEBIAN_VERSION_ID" == "13" ]]; then
+    echo "This is Debian 13 (Trixie)."
+  else
+    echo "This is not Debian 13 (Trixie)."
+    sudo apt -y --ignore-missing install \
+    2to3 \
+    docker \
+    libegl1-mesa \
+    liblz4-tool \
+    libpango1.0-0 \
+    ntpdate \
+    robot-testing-framework \
+    software-properties-common \
+
+  fi
+else
+  echo "This is not a Debian-based system or /etc/os-release is missing Debian information."
+fi
+
 sudo apt -y --ignore-missing install \
-2to3 \
 apache2 \
 apt-file \
 apt-transport-https \
@@ -60,7 +85,6 @@ default-jre \
 default-jre-headless \
 diffstat \
 dnsmasq \
-docker \
 docker-clean \
 docker-compose \
 docker-doc \
@@ -100,16 +124,13 @@ libc-ares-dev \
 libc6-dev \
 libcurl4-openssl-dev \
 libfile-dircompare-perl \
-libegl1-mesa \
 libelf-dev \
 libev-dev \
 libevent-dev \
 libffi-dev \
 libgl1-mesa-dri \
 libglx-mesa0 \
-liblz4-tool \
 libncurses5-dev \
-libpango1.0-0 \
 libperl-dev \
 libsdl1.2-dev \
 libsnmp-dev \
@@ -141,7 +162,6 @@ net-tools \
 node-grunt-cli \
 nodejs \
 npm \
-ntpdate \
 nvme-cli \
 openvpn \
 p7zip-full \
@@ -174,7 +194,6 @@ qml-module-qtquick-templates2 \
 qml-module-qtquick-window2 \
 qml-module-qtgraphicaleffects \
 quilt \
-robot-testing-framework \
 rsync \
 ripgrep \
 ruby \
@@ -187,7 +206,6 @@ snapd \
 snmp \
 snmpd \
 socat \
-software-properties-common \
 sqlite3 \
 sqlite3-tools \
 sudo \
