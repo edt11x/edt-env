@@ -144,6 +144,11 @@ if [ $? != 0 ]
 then
     sudo snap install hello-world
 fi
+snap list | grep obsidian
+if [ $? != 0 ]
+then
+    sudo snap install obsidian --classic
+fi
 echo "=================================================="
 echo "Trying npm"
 echo "=================================================="
