@@ -35,7 +35,7 @@ gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cp
 texinfo chrpath ccache perl-Data-Dumper perl-Text-ParseWords perl-Thread-Queue perl-bignum socat \
 python3-pexpect findutils which file cpio python python3-pip xz python3-GitPython python3-jinja2 \
 SDL-devel xterm rpcgen mesa-libGL-devel perl-FindBin perl-File-Compare perl-File-Copy perl-locale \
-zstd lz4 python3-matplotlib python3-pandas python3-tkinter snapd ripgrep \
+zstd lz4 python3-matplotlib python3-pandas python3-tkinter ripgrep \
 fira-code-fonts \
 gnu-free-sans-fonts google-arimo-fonts google-carlito-fonts google-cousine-fonts google-crosextra-caladea-fonts google-droid-fonts-all \
 google-droid-sans-fonts \
@@ -121,34 +121,21 @@ do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
 
+echo "=================================================="
+echo "Trying snap"
+echo "=================================================="
 if is_qubes_template
 then
-    sudo dnf install qubes-snapd-helper
+    sudo dnf install snapd qubes-snapd-helper
 fi
 
 sudo dnf makecache
 echo "=================================================="
 echo "Other package managers"
 echo "=================================================="
-echo "Trying snap"
-echo "=================================================="
 sudo npm install -g npm || true
 sudo npm install -g snyk || true
 sudo npm install -g canvas || true
-if [ ! -e /snap ]
-then
-    sudo ln -s /var/lib/snapd/snap /snap
-fi
-snap list | grep hello-world
-if [ $? != 0 ]
-then
-    sudo snap install hello-world
-fi
-snap list | grep obsidian
-if [ $? != 0 ]
-then
-    sudo snap install obsidian --classic
-fi
 echo "=================================================="
 echo "Trying npm"
 echo "=================================================="
@@ -161,5 +148,4 @@ echo "=================================================="
 pip install wic
 pip install kas
 pip install anthropic
-sudo snap refresh || true
 mkdir -p ~/.tmux
