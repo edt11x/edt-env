@@ -116,6 +116,12 @@ libappindicator \
 libappindicator-gtk3 \
 rpmfusion-free-release \
 okular \
+default-fonts-core-emoji \
+emoji-picker \
+google-android-emoji-fonts \
+google-noto-color-emoji-fonts \
+google-noto-emoji-fonts \
+default-fonts-core \
 
 do
     echo $i   
