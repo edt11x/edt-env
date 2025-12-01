@@ -48,10 +48,11 @@ if grep -q "Debian" /etc/os-release; then
     robot-testing-framework \
     software-properties-common \
 
-    sudo apt -y install qemu
+    set +e
     sudo apt -y install nvidia-openjdk-8-jre
     sudo apt -y install openjdk-17-jre-headless
     sudo apt -y install openjdk-17-jre
+    set -e
   fi
 else
   echo "This is not a Debian-based system or /etc/os-release is missing Debian information."
