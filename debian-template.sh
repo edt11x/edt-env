@@ -247,6 +247,7 @@ gstreamer1.0-plugins-good \
 gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-bad-apps \
 sshpass \
+uhubctl \
 
 sudo apt --fix-broken install
 # m
