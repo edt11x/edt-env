@@ -179,6 +179,7 @@ flex \
 sshpass \
 xsel \
 parcellite \
+uhubctl \
 
 if [ $? = 0 ]
 then
