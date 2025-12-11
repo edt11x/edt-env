@@ -167,7 +167,6 @@ minicom \
 mtd-utils \
 mtr \
 net-tools \
-npm \
 nvme-cli \
 openvpn \
 p7zip-full \

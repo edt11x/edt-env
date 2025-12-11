@@ -142,15 +142,6 @@ sudo dnf makecache
 echo "=================================================="
 echo "Other package managers"
 echo "=================================================="
-sudo npm install -g npm || true
-sudo npm install -g snyk || true
-sudo npm install -g canvas || true
-echo "=================================================="
-echo "Trying npm"
-echo "=================================================="
-sudo npm install -g npm || true
-sudo npm install -g snyk || true
-sudo npm install -g canvas || true
 echo "=================================================="
 echo "Trying pip"
 echo "=================================================="
