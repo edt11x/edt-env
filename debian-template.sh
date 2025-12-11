@@ -10,8 +10,15 @@ sudo sed -i '/^[^#]/ s/\(main\)/\1 non-free-firmware/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bnon-free-firmware\b\(.*\)\bnon-free-firmware\b/non-free-firmware \1/' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bcontrib\b\(.*\)\bcontrib\b/contrib \1/' /etc/apt/sources.list
+# Remove node, we want to use Node Version Manager, nvm
+sudo apt remove nodejs
+sudo apt remove node-grunt-cli
+sudo apt purge nodejs
+sudo apt purge node-grunt-cli
+# Normal update
 sudo apt update
 sudo apt upgrade
+# Remove dependencies and obsolete packages
 sudo apt autoremove
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
@@ -160,8 +167,6 @@ minicom \
 mtd-utils \
 mtr \
 net-tools \
-node-grunt-cli \
-nodejs \
 npm \
 nvme-cli \
 openvpn \

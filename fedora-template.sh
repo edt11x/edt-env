@@ -29,6 +29,10 @@ sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rp
 sudo dnf remove microsoft-edge-stable
 sudo dnf remove microsoft-edge-dev
 sudo dnf remove microsoft-edge-beta
+# Want to use the Node Version Manager, nvm, to allow multiple versions
+sudo dnf remove nodejs
+sudo dnf remove nodejs-npm
+# Big install
 for i in \
 meld vim-X11 vim-minimal \
 gawk make wget tar bzip2 gzip python3 unzip perl patch diffutils diffstat git cpp gcc gcc-c++ glibc-devel \
@@ -87,8 +91,6 @@ google-noto-emoji-fonts \
 default-fonts-core-emoji \
 twitter-twemoji-fonts \
 default-fonts-core \
-nodejs \
-nodejs-npm \
 rust \
 cargo \
 iptraf-ng \
