@@ -125,6 +125,8 @@ google-noto-color-emoji-fonts \
 google-noto-emoji-fonts \
 default-fonts-core \
 uv \
+gnome-calendar \
+remind \
 
 do
     echo $i   
