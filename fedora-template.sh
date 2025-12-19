@@ -127,6 +127,7 @@ default-fonts-core \
 uv \
 gnome-calendar \
 remind \
+flatpak \
 
 do
     echo $i   

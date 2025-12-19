@@ -252,6 +252,7 @@ gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-bad-apps \
 sshpass \
 uhubctl \
+flatpak \
 
 sudo apt --fix-broken install
 # m
