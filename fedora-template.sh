@@ -127,6 +127,7 @@ default-fonts-core \
 uv \
 gnome-calendar \
 remind \
+baobab \
 
 do
     echo $i   
