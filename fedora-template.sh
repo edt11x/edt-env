@@ -128,6 +128,7 @@ uv \
 gnome-calendar \
 remind \
 baobab \
+flatpak \
 
 do
     echo $i   
