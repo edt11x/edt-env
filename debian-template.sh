@@ -253,6 +253,7 @@ gstreamer1.0-plugins-bad-apps \
 sshpass \
 uhubctl \
 flatpak \
+qelectrotech \
 
 sudo apt --fix-broken install
 # m

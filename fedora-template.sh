@@ -129,6 +129,7 @@ gnome-calendar \
 remind \
 baobab \
 flatpak \
+qelectrotech \
 
 do
     echo $i   
