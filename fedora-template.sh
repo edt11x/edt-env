@@ -130,6 +130,7 @@ remind \
 baobab \
 flatpak \
 qelectrotech \
+screen \
 
 do
     echo $i   
