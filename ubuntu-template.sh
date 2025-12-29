@@ -109,8 +109,6 @@ mtd-utils \
 mosh \
 mtr \
 net-tools \
-node-grunt-cli \
-nodejs \
 npm \
 ntpdate \
 openvpn \
