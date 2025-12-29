@@ -8,6 +8,11 @@ if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
     try sudo apt-get remove oss4-dev
 fi
+# Remove node, we want to use Node Version Manager, nvm
+sudo apt remove nodejs
+sudo apt remove node-grunt-cli
+sudo apt purge nodejs
+sudo apt purge node-grunt-cli
 echo A good chance of failures for these couple of packages
 echo "Things that might fail..."
 set -e
