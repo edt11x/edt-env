@@ -180,6 +180,8 @@ sshpass \
 xsel \
 parcellite \
 uhubctl \
+xfce4 \
+xfce4-goodies \
 
 if [ $? = 0 ]
 then
