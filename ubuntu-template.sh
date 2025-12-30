@@ -109,7 +109,6 @@ mtd-utils \
 mosh \
 mtr \
 net-tools \
-npm \
 ntpdate \
 openvpn \
 p7zip-full \
