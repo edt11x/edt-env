@@ -104,6 +104,7 @@ perl-File-DirCompare \
 pip \
 python3-pip \
 fuse \
+fuse3 \
 snap \
 par2cmdline \
 cairo-devel \

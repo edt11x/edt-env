@@ -254,6 +254,7 @@ sshpass \
 uhubctl \
 flatpak \
 qelectrotech \
+fuse3 \
 
 sudo apt --fix-broken install
 # m
