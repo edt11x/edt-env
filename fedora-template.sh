@@ -132,6 +132,7 @@ baobab \
 flatpak \
 qelectrotech \
 screen \
+xfce4-statusnotifier-plugin \
 
 do
     echo $i   
