@@ -47,6 +47,7 @@ if grep -q "Debian" /etc/os-release; then
     ntpdate \
     robot-testing-framework \
     software-properties-common \
+    ocl-icd-opencl-dev \
 
     set +e
     sudo apt -y install nvidia-openjdk-8-jre
