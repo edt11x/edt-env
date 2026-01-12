@@ -255,6 +255,9 @@ uhubctl \
 flatpak \
 qelectrotech \
 fuse3 \
+gnome-system-monitor \
+gnome-usage \
+gnome-logs \
 
 sudo apt --fix-broken install
 sudo apt autoremove
