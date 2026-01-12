@@ -257,6 +257,7 @@ qelectrotech \
 fuse3 \
 
 sudo apt --fix-broken install
+sudo apt autoremove
 # m
 sudo locale-gen en_US.UTF-8
 
