@@ -30,6 +30,10 @@ dbus-user-session \
 policykit-1 \
 locales \
 xfce4-terminal \
+libegl1 \
+libgles2 \
+mesa-utils \
+libgl1-mesa-dev \
 
 if [ $? = 0 ]
 then
