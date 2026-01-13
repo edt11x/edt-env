@@ -18,6 +18,19 @@ sudo apt -y --ignore-missing install \
 vim \
 vim-gtk3 \
 xrdp \
+build-essential \
+git \
+cmake \
+pkg-config \
+nvidia-jetpack \
+xrdp \
+xorgxrdp \
+xfce4 \
+xorgxrdp \
+dbus-user-session \
+policykit-1 \
+locales \
+xfce4-terminal \
 
 if [ $? = 0 ]
 then
