@@ -36,6 +36,7 @@ mesa-utils \
 libgl1-mesa-dev \
 freeglut3-dev \
 libglfw3-dev \
+python3-venv \
 
 if [ $? = 0 ]
 then
