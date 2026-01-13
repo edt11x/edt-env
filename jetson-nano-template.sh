@@ -22,7 +22,6 @@ build-essential \
 git \
 cmake \
 pkg-config \
-nvidia-jetpack \
 xrdp \
 xorgxrdp \
 xfce4 \
