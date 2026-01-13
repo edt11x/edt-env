@@ -34,6 +34,8 @@ libegl1 \
 libgles2 \
 mesa-utils \
 libgl1-mesa-dev \
+freeglut3-dev \
+libglfw3-dev \
 
 if [ $? = 0 ]
 then
