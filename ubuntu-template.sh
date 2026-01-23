@@ -228,6 +228,11 @@ if [ $? != 0 ]
 then
     sudo snap install dust
 fi
+snap list | grep -w go
+if [ $? != 0 ]
+then
+    sudo snap install go
+fi
 sudo snap refresh || true
 set +e
 echo " "
