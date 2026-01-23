@@ -231,7 +231,7 @@ fi
 snap list | grep -w go
 if [ $? != 0 ]
 then
-    sudo snap install go
+    sudo snap install go --classic
 fi
 sudo snap refresh || true
 set +e
