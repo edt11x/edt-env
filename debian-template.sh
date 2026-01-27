@@ -254,13 +254,20 @@ sshpass \
 uhubctl \
 flatpak \
 qelectrotech \
+fuse3 \
+gnome-system-monitor \
+gnome-usage \
+gnome-logs \
 
 sudo apt --fix-broken install
+sudo apt autoremove
 # m
 sudo locale-gen en_US.UTF-8
 
 sudo snap install grafana || true
 sudo snap refresh || true
+
+sudo usermod -aG docker $(whoami)
 
 echo "Done."
 exit 0

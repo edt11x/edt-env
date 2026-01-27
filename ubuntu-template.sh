@@ -8,6 +8,11 @@ if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
     try sudo apt-get remove oss4-dev
 fi
+# Remove node, we want to use Node Version Manager, nvm
+sudo apt remove nodejs
+sudo apt remove node-grunt-cli
+sudo apt purge nodejs
+sudo apt purge node-grunt-cli
 echo A good chance of failures for these couple of packages
 echo "Things that might fail..."
 set -e
@@ -104,9 +109,6 @@ mtd-utils \
 mosh \
 mtr \
 net-tools \
-node-grunt-cli \
-nodejs \
-npm \
 ntpdate \
 openvpn \
 p7zip-full \
@@ -180,6 +182,8 @@ sshpass \
 xsel \
 parcellite \
 uhubctl \
+xfce4 \
+xfce4-goodies \
 
 if [ $? = 0 ]
 then
@@ -187,6 +191,8 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
+sudo apt --fix-broken install
+sudo apt autoremove
 echo " "
 echo " "
 echo "=================================================="
@@ -221,6 +227,11 @@ snap list | grep dust
 if [ $? != 0 ]
 then
     sudo snap install dust
+fi
+snap list | grep -w go
+if [ $? != 0 ]
+then
+    sudo snap install go --classic
 fi
 sudo snap refresh || true
 set +e

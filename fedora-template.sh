@@ -104,6 +104,7 @@ perl-File-DirCompare \
 pip \
 python3-pip \
 fuse \
+fuse3 \
 snap \
 par2cmdline \
 cairo-devel \
@@ -130,6 +131,8 @@ remind \
 baobab \
 flatpak \
 qelectrotech \
+screen \
+xfce4-statusnotifier-plugin \
 
 do
     echo $i   
