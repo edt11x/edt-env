@@ -136,10 +136,12 @@ libelf-dev \
 libev-dev \
 libevent-dev \
 libffi-dev \
+libftdi1-dev \
 libgl1-mesa-dri \
 libglx-mesa0 \
 libncurses5-dev \
 libperl-dev \
+libpopt-dev \
 libsdl1.2-dev \
 libsnmp-dev \
 libsqlite3-0 \
