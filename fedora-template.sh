@@ -130,6 +130,7 @@ flatpak \
 qelectrotech \
 screen \
 xfce4-statusnotifier-plugin \
+gnome-weather \
 
 do
     echo $i   
