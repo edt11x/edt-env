@@ -132,6 +132,17 @@ screen \
 xfce4-statusnotifier-plugin \
 gnome-weather \
 bind-utils \
+automake \
+autoconf \
+m4 \
+bison \
+flex \
+kernel-devel \
+libtirpc-devel \
+libaio-devel \
+numactl-devel \
+protobuf-c-devel \
+libacl-devel \
 
 do
     echo $i   

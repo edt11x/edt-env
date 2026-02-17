@@ -260,6 +260,15 @@ fuse3 \
 gnome-system-monitor \
 gnome-usage \
 gnome-logs \
+automake \
+m4 \
+libtirpc-dev \
+libaio-dev \
+libnuma-dev \
+libcap-dev \
+libprotobuf-c-dev \
+libacl1-dev \
+libselinux1-dev \
 
 sudo apt --fix-broken install
 sudo apt autoremove
