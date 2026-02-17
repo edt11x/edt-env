@@ -93,6 +93,7 @@ default-jre \
 default-jre-headless \
 diffstat \
 dnsmasq \
+dnsutils \
 docker-clean \
 docker-compose \
 docker-doc \
