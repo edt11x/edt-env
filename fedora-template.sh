@@ -131,6 +131,7 @@ qelectrotech \
 screen \
 xfce4-statusnotifier-plugin \
 gnome-weather \
+bind-utils \
 
 do
     echo $i   
