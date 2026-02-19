@@ -154,6 +154,7 @@ if is_qubes_template
 then
     sudo dnf install snapd qubes-snapd-helper
 fi
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 sudo dnf makecache
 echo "=================================================="
