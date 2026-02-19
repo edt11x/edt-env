@@ -142,6 +142,7 @@ libaio-devel \
 numactl-devel \
 protobuf-c-devel \
 libacl-devel \
+knot-utils \
 
 do
     echo $i   
