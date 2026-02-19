@@ -270,6 +270,7 @@ libcap-dev \
 libprotobuf-c-dev \
 libacl1-dev \
 libselinux1-dev \
+knot-dnsutils \
 
 sudo apt --fix-broken install
 sudo apt autoremove
