@@ -148,13 +148,6 @@ do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
 
-echo "=================================================="
-echo "Trying snap"
-echo "=================================================="
-if is_qubes_template
-then
-    sudo dnf install snapd qubes-snapd-helper
-fi
 flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 sudo dnf makecache

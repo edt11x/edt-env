@@ -277,9 +277,6 @@ sudo apt autoremove
 # m
 sudo locale-gen en_US.UTF-8
 
-sudo snap install grafana || true
-sudo snap refresh || true
-
 sudo usermod -aG docker $(whoami)
 
 echo "Done."
