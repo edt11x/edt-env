@@ -1,5 +1,14 @@
 #!/bin/bash
 set -x
+# List of packages in order of preference
+# (most preferred first)
+JAVA_CANDIDATES=(
+    "nvidia-openjdk-8-jre"
+    "openjdk-17-jre-headless"
+    "openjdk-17-jre"
+    # you can add more, e.g. "openjdk-11-jre-headless" etc.
+)
+
 echo Try to get a good update before we start
 # we want to look for active, not commented out, lines in 
 # /etc/apt/sources.list containing the word "main" and
@@ -30,7 +39,7 @@ echo "Things that might fail"
 sudo apt --fix-broken install
 sudo apt -y install qemu-system
 sudo apt -y install java-common
-set -e
+set -euo pipefail
 sudo apt --fix-broken install
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
@@ -56,9 +65,42 @@ if grep -q "Debian" /etc/os-release; then
     software-properties-common \
 
     set +e
-    sudo apt -y install nvidia-openjdk-8-jre
-    sudo apt -y install openjdk-17-jre-headless
-    sudo apt -y install openjdk-17-jre
+    #!/usr/bin/env bash
+
+    echo "Looking for a suitable Java JRE package..."
+    installed=false
+    selected_pkg=""
+
+    for pkg in "${JAVA_CANDIDATES[@]}"; do
+        if apt-cache show "$pkg" >/dev/null 2>&1; then
+            echo "Found package: $pkg → trying to install..."
+
+            if sudo apt-get update -qq &&
+               sudo apt-get install -y --no-install-recommends "$pkg"; then
+                echo "Successfully installed $pkg"
+                installed=true
+                selected_pkg="$pkg"
+                break
+            else
+                echo "Installation of $pkg failed (dependencies?)" >&2
+                # continue to next candidate
+            fi
+        else
+            echo "Package $pkg not available in repositories — skipping"
+        fi
+    done
+
+    if [[ "$installed" == true ]]; then
+        echo ""
+        echo "Success — using $selected_pkg"
+        # Optional: print java version to confirm
+        java -version 2>&1 | head -n 2 || true
+    else
+        echo ""
+        echo "Error: None of the requested Java packages could be installed." >&2
+        echo "Tried: ${JAVA_CANDIDATES[*]}" >&2
+        exit 1
+    fi
     set -e
   fi
 else
