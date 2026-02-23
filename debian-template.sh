@@ -17,9 +17,9 @@ sudo apt purge nodejs
 sudo apt purge node-grunt-cli
 # Normal update
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 # Remove dependencies and obsolete packages
-sudo apt autoremove
+sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
@@ -272,8 +272,8 @@ libacl1-dev \
 libselinux1-dev \
 knot-dnsutils \
 
-sudo apt --fix-broken install
-sudo apt autoremove
+sudo apt --fix-broken install -y
+sudo apt autoremove -y
 # m
 sudo locale-gen en_US.UTF-8
 
