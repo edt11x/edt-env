@@ -1,5 +1,6 @@
 #!/bin/bash
+set -euo pipefail
 sudo add-apt-repository ppa:yuezk/globalprotect-openconnect
-sudo apt-get install globalprotect-openconnect
-sudo apt install --fix-broken globalprotect-openconnect_*.deb
-
+sudo apt-get update
+sudo apt-get install --fix-broken globalprotect-openconnect
+exit 0
