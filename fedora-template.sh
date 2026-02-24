@@ -18,7 +18,7 @@ is_qubes_template() {
 }
 
 sudo sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/google-chrome.repo
-sudo dnf upgrade --refresh --best
+sudo dnf upgrade -y --refresh --best
 sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm --import ./microsoft.asc
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
@@ -27,8 +27,8 @@ sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rp
 sudo dnf -y --best --allowerasing install microsoft-edge-stable
 # Microsoft takes over PDFs
 # Want to use the Node Version Manager, nvm, to allow multiple versions
-sudo dnf remove nodejs
-sudo dnf remove nodejs-npm
+sudo dnf remove -y nodejs
+sudo dnf remove -y nodejs-npm
 # Big install
 for i in \
 meld vim-X11 vim-minimal \

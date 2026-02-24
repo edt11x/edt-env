@@ -1,17 +1,17 @@
 #!/bin/bash
 echo Try to get a good update before we start
 sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+sudo apt upgrade -y
+sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
-    try sudo apt-get remove oss4-dev
+    try sudo apt-get remove -y oss4-dev
 fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail..."
 set -e
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 echo "Done with things that might fail."
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
@@ -44,8 +44,8 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
-sudo apt --fix-broken install
-sudo apt autoremove
+sudo apt --fix-broken install -y
+sudo apt autoremove -y
 echo " "
 echo " "
 echo "=================================================="

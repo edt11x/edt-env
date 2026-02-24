@@ -2,18 +2,18 @@
 echo Try to get a good update before we start
 sudo add-apt-repository ppa:mmacp/ripgrep
 sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+sudo apt upgrade -y
+sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
-    try sudo apt-get remove oss4-dev
+    try sudo apt-get remove -y oss4-dev
 fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail"
-sudo apt --fix-broken install
-sudo apt install qemu-system
-sudo apt install qemu 
+sudo apt --fix-broken install -y
+sudo apt install -y qemu-system
+sudo apt install -y qemu 
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
@@ -142,7 +142,7 @@ xz-utils \
 zlib1g \
 zlib1g-dev \
 
-sudo apt install wic || pip install wic
-sudo apt install kas || pip install kas
+sudo apt install -y wic || pip install wic
+sudo apt install -y kas || pip install kas
 sudo snap refresh || true
 exit 0

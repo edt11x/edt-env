@@ -7,4 +7,4 @@ echo "deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/cursor.gpg] https://down
 
 # Update and install
 sudo apt update
-sudo apt install cursor
+sudo apt install -y cursor

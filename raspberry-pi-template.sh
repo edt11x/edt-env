@@ -11,20 +11,20 @@ sudo sed -i '/^[^#]/ s/\bnon-free-firmware\b\(.*\)\bnon-free-firmware\b/non-free
 sudo sed -i '/^[^#]/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bcontrib\b\(.*\)\bcontrib\b/contrib \1/' /etc/apt/sources.list
 sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+sudo apt upgrade -y
+sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
-    try sudo apt-get remove oss4-dev
+    try sudo apt-get remove -y oss4-dev
 fi
 echo A good chance of failures for these couple of packages
 echo "Things that might fail"
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 sudo apt -y install qemu-system
 sudo apt -y install java-common
 set -e
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 echo "Done with things that might faile"
 echo Try all the packages we think will succeed
 #!/bin/bash
@@ -241,7 +241,7 @@ gstreamer1.0-plugins-bad-apps \
 sshpass \
 uhubctl \
 
-sudo apt --fix-broken install
+sudo apt --fix-broken install -y
 # m
 sudo locale-gen en_US.UTF-8
 

@@ -10,4 +10,4 @@ gpgkey=https://downloads.cursor.com/keys/anysphere.asc
 EOF
 
 # Install Cursor
-sudo dnf install cursor
+sudo dnf install -y cursor

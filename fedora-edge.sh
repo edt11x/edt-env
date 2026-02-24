@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo dnf upgrade --refresh
+sudo dnf upgrade -y --refresh
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo tee /etc/yum.repos.d/microsoft-edge.repo >/dev/null << 'EOF'
 [microsoft-edge]
@@ -9,5 +9,5 @@ enabled=1
 gpgcheck=1
 gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
-sudo dnf install microsoft-edge-stable
+sudo dnf install -y microsoft-edge-stable
 

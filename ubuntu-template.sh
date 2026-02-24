@@ -1,23 +1,23 @@
 #!/bin/bash
 echo Try to get a good update before we start
 sudo apt update
-sudo apt upgrade
-sudo apt autoremove
+sudo apt upgrade -y
+sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
 then
-    try sudo apt-get remove oss4-dev
+    try sudo apt-get remove -y oss4-dev
 fi
 # Remove node, we want to use Node Version Manager, nvm
-sudo apt remove nodejs
-sudo apt remove node-grunt-cli
-sudo apt purge nodejs
-sudo apt purge node-grunt-cli
+sudo apt remove -y nodejs
+sudo apt remove -y node-grunt-cli
+sudo apt purge -y nodejs
+sudo apt purge -y node-grunt-cli
 echo A good chance of failures for these couple of packages
 echo "Things that might fail..."
 set -e
-sudo apt --fix-broken install
-sudo apt install qemu-system
+sudo apt --fix-broken install -y
+sudo apt install -y qemu-system
 echo "Done with things that might fail."
 echo Try all the packages we think will succeed
 sudo apt -y --ignore-missing install \
@@ -191,14 +191,14 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
-sudo apt --fix-broken install
-sudo apt autoremove
+sudo apt --fix-broken install -y
+sudo apt autoremove -y
 echo " "
 echo " "
 echo "=================================================="
 echo "Packages that may have multiple names in different versions"
 echo "=================================================="
-sudo apt install gnome-shell-extension-manager || sudo apt install gnome-shell-extensions
+sudo apt install -y gnome-shell-extension-manager || sudo apt install -y gnome-shell-extensions
 echo " "
 echo " "
 echo "=================================================="
@@ -215,8 +215,8 @@ echo "=================================================="
 set +x
 echo "pip for wic and kas may fail due to Python being controlled by the OS"
 set +e
-sudo apt install wic || pip install wic
-sudo apt install kas || pip install kas
+sudo apt install -y wic || pip install wic
+sudo apt install -y kas || pip install kas
 
 snap list | grep hello-world
 if [ $? != 0 ]
@@ -243,7 +243,7 @@ echo "=================================================="
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 grep 'dl.google.com' /etc/apt/sources.list.d/* || sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 sudo apt update
-sudo apt install google-chrome-stable
+sudo apt install -y google-chrome-stable
 echo " "
 echo " "
 echo "=================================================="
@@ -256,10 +256,10 @@ VERSION=$(lsb_release -rs)
 # Compare the version
 if (( $(echo "$VERSION >= 22.04" | bc -l) )); then
     echo "Ubuntu version is at least 22.04"
-    sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+    sudo apt remove -y $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
     # Add Docker's official GPG key:
     sudo apt update
-    sudo apt install ca-certificates curl
+    sudo apt install -y ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -277,7 +277,7 @@ EOF
     fi
 
     sudo apt update
-    sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
     sudo systemctl status docker
     sudo docker run hello-world
 else
