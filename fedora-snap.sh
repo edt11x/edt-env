@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 is_qubes_template() {
     # Check if the qubesdb-read command exists (indicates a Qubes VM)
@@ -19,10 +20,8 @@ is_qubes_template() {
 echo "=================================================="
 echo "Trying snap"
 echo "=================================================="
-if is_qubes_template
-then
+if is_qubes_template; then
     sudo dnf install -y snapd qubes-snapd-helper
 fi
 sudo snap install grafana || true
 sudo snap refresh || true
-

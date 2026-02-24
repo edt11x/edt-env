@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -x
+
 # List of packages in order of preference
 # (most preferred first)
 JAVA_CANDIDATES=(
@@ -9,317 +10,130 @@ JAVA_CANDIDATES=(
     # you can add more, e.g. "openjdk-11-jre-headless" etc.
 )
 
-echo Try to get a good update before we start
-# we want to look for active, not commented out, lines in 
-# /etc/apt/sources.list containing the word "main" and
-# if they do not contain "contrib" add that word to them.
+echo "Try to get a good update before we start"
+# Update sources.list to include contrib and non-free-firmware
 sudo sed -i '/^[^#]/ s/\bnon-free\s//g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bnon-free$//g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\(main\)/\1 non-free-firmware/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bnon-free-firmware\b\(.*\)\bnon-free-firmware\b/non-free-firmware \1/' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bcontrib\b\(.*\)\bcontrib\b/contrib \1/' /etc/apt/sources.list
+
 # Remove node, we want to use Node Version Manager, nvm
-sudo apt remove -y nodejs
-sudo apt remove -y node-grunt-cli
-sudo apt purge -y nodejs
-sudo apt purge -y node-grunt-cli
+sudo apt-get remove -y nodejs node-grunt-cli || true
+sudo apt-get purge -y nodejs node-grunt-cli || true
+
 # Normal update
-sudo apt update
-sudo apt upgrade -y
+sudo apt-get update
+sudo apt-get upgrade -y
 # Remove dependencies and obsolete packages
-sudo apt autoremove -y
-echo Try to get rid of the packages we do not want
-if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
-then
-    try sudo apt-get remove -y oss4-dev
+sudo apt-get autoremove -y
+
+echo "Try to get rid of the packages we do not want"
+if apt-cache search --names-only '^oss4-dev-.*' | grep -q 'oss4-dev'; then
+    sudo apt-get remove -y oss4-dev || true
 fi
-echo A good chance of failures for these couple of packages
+
+echo "A good chance of failures for these couple of packages"
 echo "Things that might fail"
-sudo apt --fix-broken install -y
-sudo apt -y install qemu-system
-sudo apt -y install java-common
+sudo apt-get --fix-broken install -y || true
+sudo apt-get -y install qemu-system || true
+sudo apt-get -y install java-common || true
+
 set -euo pipefail
-sudo apt --fix-broken install -y
-echo "Done with things that might faile"
-echo Try all the packages we think will succeed
-#!/bin/bash
+sudo apt-get --fix-broken install -y
+
+echo "Done with things that might fail"
+echo "Try all the packages we think will succeed"
 
 if grep -q "Debian" /etc/os-release; then
-  DEBIAN_VERSION_ID=$(grep "VERSION_ID" /etc/os-release | cut -d'=' -f2 | tr -d '"')
-  echo "Debian version ID: $DEBIAN_VERSION_ID"
+    DEBIAN_VERSION_ID=$(grep "VERSION_ID" /etc/os-release | cut -d'=' -f2 | tr -d '"')
+    echo "Debian version ID: $DEBIAN_VERSION_ID"
 
-  # Example: check for a specific version
-  if [[ "$DEBIAN_VERSION_ID" == "13" ]]; then
-    echo "This is Debian 13 (Trixie)."
-  else
-    echo "This is not Debian 13 (Trixie)."
-    sudo apt -y --ignore-missing install \
-    2to3 \
-    docker \
-    libegl1-mesa \
-    liblz4-tool \
-    libpango1.0-0 \
-    ntpdate \
-    robot-testing-framework \
-    software-properties-common \
+    if [[ "$DEBIAN_VERSION_ID" != "13" ]]; then
+        echo "This is not Debian 13 (Trixie). Installing additional packages..."
+        sudo apt-get -y --ignore-missing install \
+            2to3 \
+            docker \
+            libegl1-mesa \
+            liblz4-tool \
+            libpango1.0-0 \
+            ntpdate \
+            robot-testing-framework \
+            software-properties-common
 
-    set +e
-    #!/usr/bin/env bash
+        set +e
+        echo "Looking for a suitable Java JRE package..."
+        installed=false
+        selected_pkg=""
 
-    echo "Looking for a suitable Java JRE package..."
-    installed=false
-    selected_pkg=""
-
-    for pkg in "${JAVA_CANDIDATES[@]}"; do
-        if apt-cache show "$pkg" >/dev/null 2>&1; then
-            echo "Found package: $pkg → trying to install..."
-
-            if sudo apt-get update -qq &&
-               sudo apt-get install -y --no-install-recommends "$pkg"; then
-                echo "Successfully installed $pkg"
-                installed=true
-                selected_pkg="$pkg"
-                break
+        for pkg in "${JAVA_CANDIDATES[@]}"; do
+            if apt-cache show "$pkg" >/dev/null 2>&1; then
+                echo "Found package: $pkg → trying to install..."
+                if sudo apt-get update -qq &&
+                   sudo apt-get install -y --no-install-recommends "$pkg"; then
+                    echo "Successfully installed $pkg"
+                    installed=true
+                    selected_pkg="$pkg"
+                    break
+                else
+                    echo "Installation of $pkg failed (dependencies?)" >&2
+                fi
             else
-                echo "Installation of $pkg failed (dependencies?)" >&2
-                # continue to next candidate
+                echo "Package $pkg not available in repositories — skipping"
             fi
-        else
-            echo "Package $pkg not available in repositories — skipping"
-        fi
-    done
+        done
 
-    if [[ "$installed" == true ]]; then
-        echo ""
-        echo "Success — using $selected_pkg"
-        # Optional: print java version to confirm
-        java -version 2>&1 | head -n 2 || true
-    else
-        echo ""
-        echo "Error: None of the requested Java packages could be installed." >&2
-        echo "Tried: ${JAVA_CANDIDATES[*]}" >&2
-        exit 1
+        if [[ "$installed" == "true" ]]; then
+            echo ""
+            echo "Success — using $selected_pkg"
+            java -version 2>&1 | head -n 2 || true
+        else
+            echo ""
+            echo "Error: None of the requested Java packages could be installed." >&2
+            echo "Tried: ${JAVA_CANDIDATES[*]}" >&2
+            # Not exiting here to allow the rest of the script to run
+        fi
+        set -e
     fi
-    set -e
-  fi
 else
-  echo "This is not a Debian-based system or /etc/os-release is missing Debian information."
+    echo "This is not a Debian-based system or /etc/os-release is missing Debian information."
 fi
 
-sudo apt -y --ignore-missing install \
-apache2 \
-apt-file \
-apt-transport-https \
-astyle \
-autoconf \
-baobab \
-bash \
-bc \
-binfmt-support \
-bison \
-bridge-utils \
-build-essential \
-ca-certificates \
-cargo \
-ccache \
-chrpath \
-clang \
-cmake \
-cpio \
-cppcheck \
-curl \
-dclock \
-debianutils \
-default-jre \
-default-jre-headless \
-diffstat \
-dnsmasq \
-dnsutils \
-docker-clean \
-docker-compose \
-docker-doc \
-docker-registry \
-docker.io \
-doxygen \
-dstat \
-ethtool \
-file \
-firmware-linux-nonfree \
-flex \
-fping \
-gawk \
-gcc \
-gcc-aarch64-linux-gnu \
-gdb \
-git \
-git-filter-repo \
-glances \
-gnome-tweaks \
-gnupg \
-graphviz \
-gtkterm \
-gzip \
-htop \
-inetutils-tools \
-inetutils-traceroute \
-iperf3 \
-iproute2 \
-iputils-ping \
-iwyu \
-kas \
-keepassxc \
-kpartx \
-ldap-utils \
-libc-ares-dev \
-libc6-dev \
-libcurl4-openssl-dev \
-libfile-dircompare-perl \
-libelf-dev \
-libev-dev \
-libevent-dev \
-libffi-dev \
-libftdi1-dev \
-libgl1-mesa-dri \
-libglx-mesa0 \
-libncurses5-dev \
-libperl-dev \
-libpopt-dev \
-libsdl1.2-dev \
-libsnmp-dev \
-libsqlite3-0 \
-libsqlite3-dev \
-libssl-dev \
-libtool \
-libu2f-udev \
-libvirt-clients \
-libvirt-daemon-system \
-locales \
-locate \
-lsb-release \
-lshw \
-lxd \
-lzop \
-make \
-meld \
-mesa-common-dev \
-mesa-utils \
-mesa-utils-bin \
-mesa-va-drivers \
-mesa-vdpau-drivers \
-mesa-vulkan-drivers \
-minicom \
-mtd-utils \
-mtr \
-net-tools \
-nvme-cli \
-openvpn \
-p7zip-full \
-par2 \
-php \
-pipx \
-procps \
-prometheus \
-putty \
-python3 \
-python3-dev \
-python3-git \
-python3-gpg \
-python3-full \
-python3-jinja2 \
-python3-pexpect \
-python3-pip \
-python3-selenium \
-python3-subunit \
-python3-tk \
-python3-venv \
-python3-virtualenv \
-qemu-kvm \
-qemu-system-arm \
-qemu-user-static \
-qml-module-qtquick2 \
-qml-module-qtquick-controls2 \
-qml-module-qtquick-layouts \
-qml-module-qtquick-templates2 \
-qml-module-qtquick-window2 \
-qml-module-qtgraphicaleffects \
-quilt \
-rsync \
-ripgrep \
-ruby \
-rust-all \
-scons \
-screen \
-secure-delete \
-shfmt \
-snapd \
-snmp \
-snmpd \
-socat \
-sqlite3 \
-sqlite3-tools \
-sudo \
-swaks \
-sysstat \
-systemd-timesyncd \
-tcpdump \
-texinfo \
-tightvncserver \
-tio \
-tmux \
-tmux-plugin-manager \
-u-boot-tools \
-unzip \
-vim \
-vim-gtk3 \
-virt-manager \
-wget \
-xfce4 \
-xfce4-goodies \
-xrdp \
-xsltproc \
-xterm \
-xz-utils \
-zlib1g \
-zlib1g-dev \
-zstd \
-iftop \
-nload \
-bmon \
-hping3 \
-ifstat \
-systemd-coredump \
-zst \
-remmina \
-gstreamer1.0-libav \
-gstreamer1.0-plugins-good \
-gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-bad-apps \
-sshpass \
-uhubctl \
-flatpak \
-qelectrotech \
-fuse3 \
-gnome-system-monitor \
-gnome-usage \
-gnome-logs \
-automake \
-m4 \
-libtirpc-dev \
-libaio-dev \
-libnuma-dev \
-libcap-dev \
-libprotobuf-c-dev \
-libacl1-dev \
-libselinux1-dev \
-knot-dnsutils \
+sudo apt-get -y --ignore-missing install \
+    apache2 apt-file apt-transport-https astyle autoconf baobab bash bc binfmt-support bison \
+    bridge-utils build-essential ca-certificates cargo ccache chrpath clang cmake cpio \
+    cppcheck curl dclock debianutils default-jre default-jre-headless diffstat dnsmasq \
+    dnsutils docker-clean docker-compose docker-doc docker-registry docker.io doxygen \
+    dstat ethtool file firmware-linux-nonfree flex fping gawk gcc gcc-aarch64-linux-gnu \
+    gdb git git-filter-repo glances gnome-tweaks gnupg graphviz gtkterm gzip htop \
+    inetutils-tools inetutils-traceroute iperf3 iproute2 iputils-ping iwyu kas keepassxc \
+    kpartx ldap-utils libc-ares-dev libc6-dev libcurl4-openssl-dev libfile-dircompare-perl \
+    libelf-dev libev-dev libevent-dev libffi-dev libftdi1-dev libgl1-mesa-dri libglx-mesa0 \
+    libncurses5-dev libperl-dev libpopt-dev libsdl1.2-dev libsnmp-dev libsqlite3-0 \
+    libsqlite3-dev libssl-dev libtool libu2f-udev libvirt-clients libvirt-daemon-system \
+    locales locate lsb-release lshw lxd lzop make meld mesa-common-dev mesa-utils \
+    mesa-utils-bin mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers minicom \
+    mtd-utils mtr net-tools nvme-cli openvpn p7zip-full par2 php pipx procps prometheus \
+    putty python3 python3-dev python3-git python3-gpg python3-full python3-jinja2 \
+    python3-pexpect python3-pip python3-selenium python3-subunit python3-tk python3-venv \
+    python3-virtualenv qemu-kvm qemu-system-arm qemu-user-static qml-module-qtquick2 \
+    qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 \
+    qml-module-qtquick-window2 qml-module-qtgraphicaleffects quilt rsync ripgrep ruby \
+    rust-all scons screen secure-delete shfmt snapd snmp snmpd socat sqlite3 \
+    sqlite3-tools sudo swaks sysstat systemd-timesyncd tcpdump texinfo tightvncserver \
+    tio tmux tmux-plugin-manager u-boot-tools unzip vim vim-gtk3 virt-manager wget \
+    xfce4 xfce4-goodies xrdp xsltproc xterm xz-utils zlib1g zlib1g-dev zstd iftop \
+    nload bmon hping3 ifstat systemd-coredump zst remmina gstreamer1.0-libav \
+    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-bad-apps \
+    sshpass uhubctl flatpak qelectrotech fuse3 gnome-system-monitor gnome-usage \
+    gnome-logs automake m4 libtirpc-dev libaio-dev libnuma-dev libcap-dev \
+    libprotobuf-c-dev libacl1-dev libselinux1-dev knot-dnsutils
 
-sudo apt --fix-broken install -y
-sudo apt autoremove -y
-# m
+sudo apt-get --fix-broken install -y
+sudo apt-get autoremove -y
 sudo locale-gen en_US.UTF-8
-
-sudo usermod -aG docker $(whoami)
+sudo usermod -aG docker "$(whoami)"
 
 echo "Done."
 exit 0

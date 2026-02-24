@@ -1,136 +1,116 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 echo "====== Make sure java is in the PATH ======"
-if [ -f /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java ]
-then
-    if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:"* ]]
-    then  
-        echo "Already there" > /dev/null
-    else  
-        echo PATH='"$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"' >> $HOME/.profile
-        PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"
-    fi    
-else
-    if [ -f /usr/lib/jvm/java-8-openjdk-amd64/bin/java ]
-    then  
-        if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/bin:"* ]]
-        then
-            echo "Already there" > /dev/null
-        else
-            echo 'PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin"' >> $HOME/.profile
-            PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/bin"
-        fi
-    fi    
-fi
-# now try to put ~/.local/bin in the path
-if [ -d ~/.local/bin ]
-then
-    if which readlink
-    then
-        PATH="$PATH:`readlink -f ~/.local/bin`"
-    else
-        # we will just try it blindly
-        PATH="$PATH:~/.local/bin"
+JAVA_BIN_8="/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"
+JAVA_BIN_8_ALT="/usr/lib/jvm/java-8-openjdk-amd64/bin"
+
+if [[ -d "$JAVA_BIN_8" ]]; then
+    if [[ ":$PATH:" != *":$JAVA_BIN_8:"* ]]; then
+        echo "PATH=\"\$PATH:$JAVA_BIN_8\"" >> "$HOME/.profile"
+        export PATH="$PATH:$JAVA_BIN_8"
+    fi
+elif [[ -d "$JAVA_BIN_8_ALT" ]]; then
+    if [[ ":$PATH:" != *":$JAVA_BIN_8_ALT:"* ]]; then
+        echo "PATH=\"\$PATH:$JAVA_BIN_8_ALT\"" >> "$HOME/.profile"
+        export PATH="$PATH:$JAVA_BIN_8_ALT"
     fi
 fi
-cd $HOME
-mkdir -p bin
-mkdir -p jnk
-mkdir -p tmp
-mkdir -p files/backups/Vertiv
-mkdir -p files/home
-mkdir -p files/logs/screen
-mkdir -p files/work/Vertiv
-mkdir -p files/othersrc
-mkdir -p .ssh
-chmod 700 .ssh
-if [ ! -f .ssh/id_rsa.pub ]
-then
-    ssh-keygen -t rsa -b 4096
+
+# now try to put ~/.local/bin in the path
+LOCAL_BIN="$HOME/.local/bin"
+if [[ -d "$LOCAL_BIN" ]]; then
+    RESOLVED_BIN=$(readlink -f "$LOCAL_BIN" 2>/dev/null || echo "$LOCAL_BIN")
+    if [[ ":$PATH:" != *":$RESOLVED_BIN:"* ]]; then
+        export PATH="$PATH:$RESOLVED_BIN"
+    fi
 fi
-grep -qxF 'set -o vi' $HOME/.bashrc || echo 'set -o vi' >> $HOME/.bashrc
-cd $HOME/files/home/edt-env
-git config --global core.editor "vim"
-git config pull.rebase false
-cd $HOME/files/home
+
+cd "$HOME"
+mkdir -p bin jnk tmp files/backups/Vertiv files/home files/logs/screen files/work/Vertiv files/othersrc .ssh
+chmod 700 .ssh
+
+if [[ ! -f .ssh/id_rsa.pub ]]; then
+    ssh-keygen -t rsa -b 4096 -N "" -f "$HOME/.ssh/id_rsa"
+fi
+
+grep -qxF 'set -o vi' "$HOME/.bashrc" || echo 'set -o vi' >> "$HOME/.bashrc"
+
+PROJECT_DIR="$HOME/files/home/edt-env"
+if [[ -d "$PROJECT_DIR" ]]; then
+    cd "$PROJECT_DIR"
+    git config --global core.editor "vim"
+    git config pull.rebase false
+fi
+
+cd "$HOME/files/home"
 for i in edt-btok edt-hp edt-jnk edt-deleteShallow edt-par2win \
     edt-archivedirectory edt-pictures edt-password \
     edt-chess edt-riscv edt-docs edt-bin edt-docker
 do
-    if [ ! -d "$i" ]
-    then
-	git clone "https://github.com/edt11x/$i.git"
+    if [[ ! -d "$i" ]]; then
+        git clone "https://github.com/edt11x/$i.git"
     else
-        cd "$i"
+        pushd "$i" > /dev/null
         git config pull.rebase false
         git pull origin master
-        cd ..
+        popd > /dev/null
     fi
 done
-if [ ! -f "$HOME/.vimrc" ]
-then
+
+if [[ ! -f "$HOME/.vimrc" ]] && [[ -f "edt-jnk/vim/vimrc" ]]; then
     cp -ax edt-jnk/vim/vimrc "$HOME/.vimrc"
 fi
-if [ ! -d "$HOME/.vim" ]
-then
+
+if [[ ! -d "$HOME/.vim" ]] && [[ -d "edt-jnk/vim/vim" ]]; then
     cp -ax edt-jnk/vim/vim "$HOME/.vim"
 fi
-if [ -f edt-archivedirectory/archivedirectory ]
-then
-    cp -ax edt-archivedirectory/archivedirectory "$HOME/bin"
+
+if [[ -f "edt-archivedirectory/archivedirectory" ]]; then
+    cp -ax edt-archivedirectory/archivedirectory "$HOME/bin/"
 fi
 
-cd $HOME/files/othersrc
-if [ ! -d "vim-plug" ]
-then
+cd "$HOME/files/othersrc"
+if [[ ! -d "vim-plug" ]]; then
     git clone https://github.com/junegunn/vim-plug.git
 fi
 
-# Check if a version of java is in /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
-if [ -f /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java ]
-then
-    # look for it in the path
-    if [[ ":$PATH:" == *":/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:"* ]]
-    then
-        echo "Already there" > /dev/null
-    else
-        echo 'PATH="$PATH:/usr/lib/jvm/java-8-openjdk-amd64/jre/bin"' >> ~/.bash_profile
-    fi
+# Add Java to .bash_profile if not already there
+if [[ -d "$JAVA_BIN_8" ]]; then
+    grep -qF "$JAVA_BIN_8" "$HOME/.bash_profile" 2>/dev/null || echo "PATH=\"\$PATH:$JAVA_BIN_8\"" >> "$HOME/.bash_profile"
 fi
 
-echo "DIR 01;36" > $HOME/.dir_colors
-echo "DIR 01;36" > $HOME/.dircolors
-# -q is quiet
-# -F is plain string
-grep -qF 'LS_COLORS=' $HOME/.bashrc || dircolors -b $HOME/.dir_colors >> $HOME/.bashrc
-# common for me to mistype "ls" as "sl"
-grep -qF 'alias sl='  $HOME/.bashrc || echo 'alias sl="ls"' >> $HOME/.bashrc
-grep -qF 'alias cde=' $HOME/.bashrc || echo 'alias cde="cd $HOME/files/home/edt-env"' >> $HOME/.bashrc
-grep -qF 'alias cdh=' $HOME/.bashrc || echo 'alias cdh="cd $HOME/files/home"' >> $HOME/.bashrc
-grep -qF 'alias cdr=' $HOME/.bashrc || echo 'alias cdr="cd $HOME/files/work/Vertiv/realtek-switch-simulator"' >> $HOME/.bashrc
-grep -qF 'alias cdv=' $HOME/.bashrc || echo 'alias cdv="cd $HOME/files/work/Vertiv"' >> $HOME/.bashrc
-grep -qF 'alias cdw=' $HOME/.bashrc || echo -e 'alias cdw=\047function _cdw() { cd $( dirname $( find . -name "$1" -type f -print -quit )) ; } ; _cdw \047' >> $HOME/.bashrc
-grep -qF 'alias cdgen=' $HOME/.bashrc || echo -e 'alias cdgen=\047function _cdgen() { echo -e alias "$1"="\\047cd \\042$( readlink -f $2 )\\042\\047" >> ~/.bashrc ; } ; _cdgen\047' >> $HOME/.bashrc
-grep -qF 'alias screen=' $HOME/.bashrc || echo 'alias screen="/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_`date +%y%m%d_%H.%M.%S`.log"' >> $HOME/.bashrc
-grep -qF 'alias viw=' $HOME/.bashrc || echo -e 'alias viw=\047function _viw() { vim $( find . -name "$1" -type f -print -quit ) ; } ; _viw \047' >> $HOME/.bashrc
-grep -qF 'docker:' /etc/group || sudo groupadd docker
-grep -q "docker:.*$USER" /etc/group || sudo usermod -aG docker "$USER"
-if [ ! -e $HOME/.tmux.conf ]
-then
-    cat > $HOME/.tmux.conf << !TMUX_CONF!
+echo "DIR 01;36" > "$HOME/.dir_colors"
+cp "$HOME/.dir_colors" "$HOME/.dircolors"
+
+grep -qF 'LS_COLORS=' "$HOME/.bashrc" || dircolors -b "$HOME/.dir_colors" >> "$HOME/.bashrc"
+grep -qF 'alias sl='  "$HOME/.bashrc" || echo 'alias sl="ls"' >> "$HOME/.bashrc"
+grep -qF 'alias cde=' "$HOME/.bashrc" || echo 'alias cde="cd \$HOME/files/home/edt-env"' >> "$HOME/.bashrc"
+grep -qF 'alias cdh=' "$HOME/.bashrc" || echo 'alias cdh="cd \$HOME/files/home"' >> "$HOME/.bashrc"
+grep -qF 'alias cdr=' "$HOME/.bashrc" || echo 'alias cdr="cd \$HOME/files/work/Vertiv/realtek-switch-simulator"' >> "$HOME/.bashrc"
+grep -qF 'alias cdv=' "$HOME/.bashrc" || echo 'alias cdv="cd \$HOME/files/work/Vertiv"' >> "$HOME/.bashrc"
+grep -qF 'alias cdw=' "$HOME/.bashrc" || echo "alias cdw='function _cdw() { cd \$( dirname \$( find . -name \"\$1\" -type f -print -quit )) ; } ; _cdw '" >> "$HOME/.bashrc"
+grep -qF 'alias cdgen=' "$HOME/.bashrc" || echo "alias cdgen='function _cdgen() { echo alias \"\$1\"=\"'cd \\\"\$( readlink -f \$2 )\\\"'\" >> ~/.bashrc ; } ; _cdgen'" >> "$HOME/.bashrc"
+grep -qF 'alias screen=' "$HOME/.bashrc" || echo "alias screen='/usr/bin/screen -L -Logfile ~/files/logs/screen/screen_\$(date +%y%m%d_%H.%M.%S).log'" >> "$HOME/.bashrc"
+grep -qF 'alias viw=' "$HOME/.bashrc" || echo "alias viw='function _viw() { vim \$( find . -name \"\$1\" -type f -print -quit ) ; } ; _viw '" >> "$HOME/.bashrc"
+
+if ! getent group docker > /dev/null; then
+    sudo groupadd docker
+fi
+if ! groups "$USER" | grep -q "\bdocker\b"; then
+    sudo usermod -aG docker "$USER"
+fi
+
+if [[ ! -e "$HOME/.tmux.conf" ]]; then
+    cat > "$HOME/.tmux.conf" << 'EOF'
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-
-# Other examples:
-# set -g @plugin 'github_username/plugin_name'
-# set -g @plugin 'github_username/plugin_name#branch'
-# set -g @plugin 'git@github.com:user/plugin'
-# set -g @plugin 'git@bitbucket.com:user/plugin'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
 # If prefix is 'C-a'
 set -g prefix C-a
 set -g mouse on
-!TMUX_CONF!
+EOF
 fi

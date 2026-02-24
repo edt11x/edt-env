@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
 # 1) Create keyrings dir if needed
 sudo install -d -m 0755 /etc/apt/keyrings
 
@@ -11,5 +14,5 @@ echo "deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/cursor.gpg] https://down
   | sudo tee /etc/apt/sources.list.d/cursor.list > /dev/null
 
 # 4) Update and install
-sudo apt update
-sudo apt install -y cursor
+sudo apt-get update
+sudo apt-get install -y cursor

@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
+
 # Add Cursor's repository
 sudo tee /etc/yum.repos.d/cursor.repo << 'EOF'
 [cursor]
