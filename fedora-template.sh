@@ -23,12 +23,14 @@ if [[ -f /etc/yum.repos.d/google-chrome.repo ]]; then
 fi
 
 sudo dnf upgrade -y --refresh --best
-sudo dnf config-manager --add-repo https://packages.microsoft.com/yumrepos/edge
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sudo dnf config-manager addrepo --from-repofile=https://packages.microsoft.com/yumrepos/edge/config.repo
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm --import ./microsoft.asc
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
 sudo rpm --import https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware || sudo rpm --import ./RPM-GPG-KEY-scootersoftware
 sudo rpm --import https://linux.dropbox.com/fedora/rpm-public-key.asc || sudo rpm --import ./rpm-public-key.asc
-sudo dnf -y --best --allowerasing install microsoft-edge-stable
+sudo dnf update --refresh
+sudo dnf -y --best install microsoft-edge-stable
 
 # Want to use the Node Version Manager, nvm, to allow multiple versions
 sudo dnf remove -y nodejs nodejs-npm || true
@@ -67,7 +69,7 @@ PACKAGES=(
 )
 
 echo "Installing main packages..."
-sudo dnf -y --best install "${PACKAGES[@]}"
+sudo dnf -y --best --skip-unavailable install "${PACKAGES[@]}"
 
 sudo dnf makecache
 echo "=================================================="
