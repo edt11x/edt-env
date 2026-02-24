@@ -23,8 +23,7 @@ if [[ -f /etc/yum.repos.d/google-chrome.repo ]]; then
 fi
 
 sudo dnf upgrade -y --refresh --best
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo dnf config-manager addrepo --from-repofile=https://packages.microsoft.com/yumrepos/edge/config.repo
+sudo dnf config-manager addrepo --from-repofile=https://packages.microsoft.com/yumrepos/edge/config.repo --overwrite
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm --import ./microsoft.asc
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
 sudo rpm --import https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware || sudo rpm --import ./RPM-GPG-KEY-scootersoftware
