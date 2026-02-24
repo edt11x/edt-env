@@ -63,7 +63,7 @@ PACKAGES=(
     emoji-picker uv gnome-calendar remind baobab flatpak qelectrotech screen 
     xfce4-statusnotifier-plugin gnome-weather automake autoconf m4 bison flex 
     kernel-devel libtirpc-devel libaio-devel numactl-devel protobuf-c-devel 
-    libacl-devel knot-utils
+    libacl-devel knot-utils ShellCheck
 )
 
 echo "Installing main packages..."
