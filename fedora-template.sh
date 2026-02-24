@@ -148,8 +148,6 @@ do
     echo $i   
 done | xargs -n 10 sudo dnf -y --best install
 
-flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
 sudo dnf makecache
 echo "=================================================="
 echo "Other package managers"
