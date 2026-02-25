@@ -22,7 +22,7 @@ if [[ -f /etc/yum.repos.d/google-chrome.repo ]]; then
     sudo sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/google-chrome.repo
 fi
 
-sudo dnf upgrade -y --refresh --best
+sudo dnf upgrade -y --refresh --best --skip-unavailable
 sudo dnf config-manager addrepo --from-repofile=https://packages.microsoft.com/yumrepos/edge/config.repo --overwrite
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc || sudo rpm --import ./microsoft.asc
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub || sudo rpm --import ./linux_signing_key.pub
@@ -68,7 +68,7 @@ PACKAGES=(
 )
 
 echo "Installing main packages..."
-sudo dnf -y --best --skip-unavailable install "${PACKAGES[@]}"
+sudo dnf -y --best install "${PACKAGES[@]}" --skip-unavailable
 
 sudo dnf makecache
 echo "=================================================="
