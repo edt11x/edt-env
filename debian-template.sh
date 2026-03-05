@@ -14,10 +14,8 @@ echo "Try to get a good update before we start"
 # Update sources.list to include contrib and non-free-firmware
 sudo sed -i '/^[^#]/ s/\bnon-free\s//g' /etc/apt/sources.list
 sudo sed -i '/^[^#]/ s/\bnon-free$//g' /etc/apt/sources.list
-sudo sed -i '/^[^#]/ s/\(main\)/\1 non-free-firmware/g' /etc/apt/sources.list
-sudo sed -i '/^[^#]/ s/\bnon-free-firmware\b\(.*\)\bnon-free-firmware\b/non-free-firmware \1/' /etc/apt/sources.list
-sudo sed -i '/^[^#]/ s/\(main\)/\1 contrib/g' /etc/apt/sources.list
-sudo sed -i '/^[^#]/ s/\bcontrib\b\(.*\)\bcontrib\b/contrib \1/' /etc/apt/sources.list
+sudo sed -i '/^[^#]/{ /\bnon-free-firmware\b/! s/\bmain\b/main non-free-firmware/ }' /etc/apt/sources.list
+sudo sed -i '/^[^#]/{ /\bcontrib\b/! s/\bnon-free-firmware\b/non-free-firmware contrib/ }' /etc/apt/sources.list
 
 # Remove node, we want to use Node Version Manager, nvm
 sudo apt-get remove -y nodejs node-grunt-cli || true

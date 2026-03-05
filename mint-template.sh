@@ -1,6 +1,6 @@
 #!/bin/bash
 echo Try to get a good update before we start
-sudo add-apt-repository ppa:mmacp/ripgrep
+grep -rq 'mmacp/ripgrep' /etc/apt/sources.list /etc/apt/sources.list.d/ 2>/dev/null || sudo add-apt-repository ppa:mmacp/ripgrep
 sudo apt update
 sudo apt upgrade -y
 sudo apt autoremove -y
