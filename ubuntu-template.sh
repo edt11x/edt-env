@@ -279,7 +279,7 @@ EOF
     fi
 
     sudo apt update
-    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-buildx
     sudo systemctl status docker
     sudo docker run hello-world
 else
