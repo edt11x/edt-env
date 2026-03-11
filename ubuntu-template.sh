@@ -191,13 +191,15 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
+set -x
 sudo apt update --fix-missing -y
 sudo apt --fix-broken install -y
 sudo apt autoremove -y
 sudo apt-mark showhold
-sudo apt check
+sudo apt-get check
 sudo dpkg --audit
 sudo dpkg -l | grep -E '^..r'
+set +x
 echo " "
 echo " "
 echo "=================================================="
