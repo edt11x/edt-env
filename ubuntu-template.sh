@@ -194,6 +194,10 @@ fi
 sudo apt update --fix-missing -y
 sudo apt --fix-broken install -y
 sudo apt autoremove -y
+sudo apt-mark showhold
+sudo apt check
+sudo dpkg --audit
+sudo dpkg -l | grep -E '^..r'
 echo " "
 echo " "
 echo "=================================================="
