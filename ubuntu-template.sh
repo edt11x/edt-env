@@ -191,6 +191,7 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
+sudo apt update --fix-missing -y
 sudo apt --fix-broken install -y
 sudo apt autoremove -y
 echo " "
