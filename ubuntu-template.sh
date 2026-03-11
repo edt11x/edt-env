@@ -198,7 +198,16 @@ sudo apt autoremove -y
 sudo apt-mark showhold
 sudo apt-get check
 sudo dpkg --audit
+set +e
 sudo dpkg -l | grep -E '^..r'
+if [ $? = 0 ]
+then
+    echo "Found packages that need reconfigured"
+    exit 1
+else
+    echo "No packages need to be reconfigured"
+fi
+set -e
 set +x
 echo " "
 echo " "
