@@ -311,9 +311,9 @@ EOF
     fi
 
     sudo apt update
-    for i in containerd runc docker.io docker-buildx-plugin docker-compose-plugin docker-buildx
+    for i in containerd runc docker.io docker-compose-plugin docker-buildx docker-buildx-plugin
     do
-        sudo apt install "$i"
+        sudo apt install "$i" -y
     done
     sudo systemctl status docker
     sudo docker run hello-world
