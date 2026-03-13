@@ -38,7 +38,6 @@ cargo \
 chrpath \
 clang \
 cmake \
-containerd \
 cpio \
 cppcheck \
 crossbuild-essential-arm64 \
@@ -48,7 +47,6 @@ debianutils \
 diffstat \
 dnsmasq \
 dnsutils \
-docker.io \
 doxygen \
 dstat \
 ethtool \
@@ -278,7 +276,21 @@ VERSION=$(lsb_release -rs)
 # Compare the version
 if (( $(echo "$VERSION >= 22.04" | bc -l) )); then
     echo "Ubuntu version is at least 22.04"
-    sudo apt remove -y $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+    # Remove any Docker packages installed from Ubuntu repositories (not Docker's official repo)
+    UBUNTU_DOCKER_PKGS="docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc"
+    PKGS_TO_REMOVE=""
+    for pkg in $UBUNTU_DOCKER_PKGS; do
+        if dpkg -l "$pkg" 2>/dev/null | grep -q '^ii'; then
+            PKGS_TO_REMOVE="$PKGS_TO_REMOVE $pkg"
+        fi
+    done
+    if [ -n "$PKGS_TO_REMOVE" ]; then
+        echo "Removing Ubuntu-repository Docker packages:$PKGS_TO_REMOVE"
+        # shellcheck disable=SC2086
+        sudo apt remove -y $PKGS_TO_REMOVE
+    else
+        echo "No Ubuntu-repository Docker packages found to remove."
+    fi
     # Add Docker's official GPG key:
     sudo apt update
     sudo apt install -y ca-certificates curl
