@@ -184,6 +184,7 @@ parcellite \
 uhubctl \
 xfce4 \
 xfce4-goodies \
+shellcheck \
 
 if [ $? = 0 ]
 then
