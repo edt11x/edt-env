@@ -184,7 +184,7 @@ xfce4 \
 xfce4-goodies \
 shellcheck \
 shfmt \
-python-bashate \
+python3-bashate \
 devscripts \
 
 if [ $? = 0 ]
