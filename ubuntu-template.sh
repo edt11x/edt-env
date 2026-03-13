@@ -311,10 +311,12 @@ EOF
     fi
 
     sudo apt update
+    sudo systemctl stop docker.service || true
     for i in containerd runc docker.io docker-compose-plugin docker-buildx docker-buildx-plugin
     do
         sudo apt install "$i" -y
     done
+    sudo systemctl start docker.service || true
     sudo systemctl status docker
     sudo docker run hello-world
 else
