@@ -312,13 +312,14 @@ EOF
 
     sudo apt update
     sudo systemctl stop docker.service || true
-    for i in containerd runc docker.io docker-compose-plugin docker-buildx docker-buildx-plugin
-    do
-        sudo apt install "$i" -y
-    done
-    sudo systemctl start docker.service || true
-    sudo systemctl status docker
-    sudo docker run hello-world
+    sudo systemctl stop docker.socket || true
+    sudo apt install -y docker.io docker-compose-plugin docker-buildx-plugin
+    sudo systemctl enable --now docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    docker version
+    docker compose version
+    docker run hello-world
 else
     echo "Ubuntu version is less than 22.04"
     echo "We will skip the official Docker version"
