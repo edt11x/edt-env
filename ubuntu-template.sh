@@ -185,6 +185,9 @@ uhubctl \
 xfce4 \
 xfce4-goodies \
 shellcheck \
+shfmt \
+python-bashate \
+devscripts \
 
 if [ $? = 0 ]
 then
