@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Try to get a good update before we start
 sudo apt update
-sudo apt upgrade -y
+sudo apt upgrade -y --allow-downgrades
 sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
