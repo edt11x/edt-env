@@ -188,6 +188,7 @@ shellcheck \
 shfmt \
 python-bashate \
 devscripts \
+flatpak \
 
 if [ $? = 0 ]
 then
