@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Try to get a good update before we start
 sudo apt update
-sudo apt upgrade -y
+sudo apt upgrade -y --allow-downgrades
 sudo apt autoremove -y
 echo Try to get rid of the packages we do not want
 if [[ $(apt-cache search --names-only '^oss4-dev-.*') ]]
@@ -38,7 +38,6 @@ cargo \
 chrpath \
 clang \
 cmake \
-containerd \
 cpio \
 cppcheck \
 crossbuild-essential-arm64 \
@@ -48,7 +47,6 @@ debianutils \
 diffstat \
 dnsmasq \
 dnsutils \
-docker.io \
 doxygen \
 dstat \
 ethtool \
@@ -186,7 +184,7 @@ xfce4 \
 xfce4-goodies \
 shellcheck \
 shfmt \
-python-bashate \
+python3-bashate \
 devscripts \
 flatpak \
 
@@ -279,7 +277,21 @@ VERSION=$(lsb_release -rs)
 # Compare the version
 if (( $(echo "$VERSION >= 22.04" | bc -l) )); then
     echo "Ubuntu version is at least 22.04"
-    sudo apt remove -y $(dpkg --get-selections docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc | cut -f1)
+    # Remove any Docker packages installed from Ubuntu repositories (not Docker's official repo)
+    UBUNTU_DOCKER_PKGS="docker.io docker-compose docker-compose-v2 docker-doc podman-docker containerd runc"
+    PKGS_TO_REMOVE=""
+    for pkg in $UBUNTU_DOCKER_PKGS; do
+        if dpkg -l "$pkg" 2>/dev/null | grep -q '^ii'; then
+            PKGS_TO_REMOVE="$PKGS_TO_REMOVE $pkg"
+        fi
+    done
+    if [ -n "$PKGS_TO_REMOVE" ]; then
+        echo "Removing Ubuntu-repository Docker packages:$PKGS_TO_REMOVE"
+        # shellcheck disable=SC2086
+        sudo apt remove -y $PKGS_TO_REMOVE
+    else
+        echo "No Ubuntu-repository Docker packages found to remove."
+    fi
     # Add Docker's official GPG key:
     sudo apt update
     sudo apt install -y ca-certificates curl
@@ -300,9 +312,15 @@ EOF
     fi
 
     sudo apt update
-    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-buildx
-    sudo systemctl status docker
-    sudo docker run hello-world
+    sudo systemctl stop docker.service || true
+    sudo systemctl stop docker.socket || true
+    sudo apt install -y docker.io docker-compose-plugin docker-buildx-plugin
+    sudo systemctl enable --now docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    docker version
+    docker compose version
+    docker run hello-world
 else
     echo "Ubuntu version is less than 22.04"
     echo "We will skip the official Docker version"
