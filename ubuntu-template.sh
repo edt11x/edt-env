@@ -194,6 +194,16 @@ then
 else
     echo "Something is WRONG with the individual package install !!!"
 fi
+
+systemd-detect-virt
+if [ $? = 0 ]
+then
+    echo "Installing open-vm-tools for the Virtual Machine"
+    sudo apt install open-vm-tools
+else
+    echo "Not a Virtual Machine, not installing open-vm-tools"
+fi
+
 set -x
 sudo apt update --fix-missing -y
 sudo apt --fix-broken install -y
