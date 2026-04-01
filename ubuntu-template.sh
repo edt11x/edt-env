@@ -203,6 +203,33 @@ else
     echo "Not a Virtual Machine, not installing open-vm-tools"
 fi
 
+# Primary detection using systemd (most reliable on Ubuntu)
+VIRT=$(systemd-detect-virt 2>/dev/null || echo "none")
+
+# Fallback/additional checks for robustness
+IS_QEMU=false
+
+if [[ "$VIRT" == "qemu" || "$VIRT" == "kvm" ]]; then
+    IS_QEMU=true
+else
+    # Extra checks in case detection is masked
+    if grep -qi qemu /proc/cpuinfo 2>/dev/null; then
+        IS_QEMU=true
+    elif sudo dmidecode -s system-manufacturer 2>/dev/null | grep -qi qemu; then
+        IS_QEMU=true
+    elif sudo dmidecode -s system-product-name 2>/dev/null | grep -qiE 'qemu|standard pc'; then
+        IS_QEMU=true
+    fi
+fi
+
+if $IS_QEMU
+then
+    echo "Installing qemu-guest-agent"
+    sudo apt install -y qemu-guest-agent
+else
+    echo "We are not running under QEMU"
+fi
+
 set -x
 sudo apt update --fix-missing -y
 sudo apt --fix-broken install -y
