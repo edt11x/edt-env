@@ -183,7 +183,6 @@ uhubctl \
 xfce4 \
 xfce4-goodies \
 shellcheck \
-shfmt \
 python3-bashate \
 devscripts \
 flatpak \
