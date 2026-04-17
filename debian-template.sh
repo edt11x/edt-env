@@ -127,7 +127,7 @@ sudo apt-get -y --ignore-missing install \
     sshpass uhubctl flatpak qelectrotech fuse3 gnome-system-monitor gnome-usage \
     gnome-logs automake m4 libtirpc-dev libaio-dev libnuma-dev libcap-dev \
     libprotobuf-c-dev libacl1-dev libselinux1-dev knot-dnsutils shellcheck \
-    seahorse
+    seahorse iperf
 
 sudo apt-get --fix-broken install -y
 sudo apt-get autoremove -y
