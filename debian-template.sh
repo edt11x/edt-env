@@ -127,7 +127,9 @@ sudo apt-get -y --ignore-missing install \
     sshpass uhubctl flatpak qelectrotech fuse3 gnome-system-monitor gnome-usage \
     gnome-logs automake m4 libtirpc-dev libaio-dev libnuma-dev libcap-dev \
     libprotobuf-c-dev libacl1-dev libselinux1-dev knot-dnsutils shellcheck \
-    seahorse iperf
+    seahorse iperf libfontconfig1-dev libfreetype-dev libxcb1-dev \
+    libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev \
+    libxkbcommon-dev libwayland-dev wayland-protocols Pkg-config
 
 sudo apt-get --fix-broken install -y
 sudo apt-get autoremove -y
