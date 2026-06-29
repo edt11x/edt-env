@@ -188,6 +188,7 @@ devscripts \
 flatpak \
 ffmpeg \
 rpm \
+rpmlint \
 
 if [ $? = 0 ]
 then
