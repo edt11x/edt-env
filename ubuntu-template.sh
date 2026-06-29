@@ -187,6 +187,7 @@ python3-bashate \
 devscripts \
 flatpak \
 ffmpeg \
+rpm \
 
 if [ $? = 0 ]
 then
