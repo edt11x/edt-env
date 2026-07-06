@@ -189,6 +189,7 @@ flatpak \
 ffmpeg \
 rpm \
 rpmlint \
+rpi-imager \
 
 if [ $? = 0 ]
 then
