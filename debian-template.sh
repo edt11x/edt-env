@@ -130,7 +130,7 @@ sudo apt-get -y --ignore-missing install \
     seahorse iperf libfontconfig1-dev libfreetype-dev libxcb1-dev \
     libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev \
     libxkbcommon-dev libwayland-dev wayland-protocols Pkg-config \
-    exfatprogs dosfstools f3
+    exfatprogs dosfstools f3 btop
 
 sudo apt-get --fix-broken install -y
 sudo apt-get autoremove -y
