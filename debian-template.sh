@@ -129,7 +129,7 @@ sudo apt-get -y --ignore-missing install \
     libprotobuf-c-dev libacl1-dev libselinux1-dev knot-dnsutils shellcheck \
     seahorse iperf libfontconfig1-dev libfreetype-dev libxcb1-dev \
     libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev \
-    libxkbcommon-dev libwayland-dev wayland-protocols Pkg-config \
+    libxkbcommon-dev libwayland-dev wayland-protocols \
     exfatprogs dosfstools f3 btop
 
 sudo apt-get --fix-broken install -y
