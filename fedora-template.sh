@@ -78,3 +78,5 @@ echo "Trying pip"
 pip install wic kas anthropic
 
 mkdir -p "$HOME/.tmux"
+echo "Done."
+exit 0
