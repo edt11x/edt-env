@@ -20,8 +20,26 @@ sudo apt --fix-broken install -y
 sudo apt install -y qemu-system
 echo "Done with things that might fail."
 echo Try all the packages we think will succeed
+
+# Get the Ubuntu version (also used later for Docker)
+VERSION=$(lsb_release -rs)
+
+# These packages are not available on Ubuntu 26.04 or higher
+if dpkg --compare-versions "$VERSION" lt 26.04; then
+    echo "Ubuntu $VERSION is older than 26.04; installing packages not available on 26.04+"
+    sudo apt -y --ignore-missing install \
+    2to3 \
+    g++-9-aarch64-linux-gnu \
+    gcc-9-aarch64-linux-gnu \
+    liblz4-tool \
+    libu2f-udev \
+    ntpdate \
+    qemu-user-static
+else
+    echo "Ubuntu $VERSION is 26.04 or higher; skipping packages that are not available"
+fi
+
 sudo apt -y --ignore-missing install \
-2to3 \
 apache2 \
 apt-file \
 astyle \
@@ -51,10 +69,8 @@ doxygen \
 dstat \
 ethtool \
 file \
-g++-9-aarch64-linux-gnu \
 g++-aarch64-linux-gnu \
 gawk \
-gcc-9-aarch64-linux-gnu \
 gcc-aarch64-linux-gnu \
 gdb-multiarch \
 gdb \
@@ -86,7 +102,6 @@ libev-dev \
 libevent-dev \
 libffi-dev \
 libfile-dircompare-perl \
-liblz4-tool \
 libncurses5-dev \
 libperl-dev \
 libsdl1.2-dev \
@@ -94,7 +109,6 @@ libsnmp-dev \
 libssl-dev \
 libsqlite3-dev \
 libtool \
-libu2f-udev \
 locales \
 locate \
 lshw \
@@ -107,7 +121,6 @@ mtd-utils \
 mosh \
 mtr \
 net-tools \
-ntpdate \
 openvpn \
 p7zip-full \
 par2 \
@@ -129,7 +142,6 @@ python3-tk \
 python3-venv \
 python3-virtualenv \
 qemu-system-arm \
-qemu-user-static \
 quilt \
 remmina remmina-plugin-rdp remmina-plugin-vnc \
 ripgrep \
@@ -311,10 +323,7 @@ echo "=================================================="
 echo "Try to install Docker from the Docker site"
 echo "=================================================="
 
-# Get the Ubuntu version
-VERSION=$(lsb_release -rs)
-
-# Compare the version
+# Compare the Ubuntu version detected earlier
 if (( $(echo "$VERSION >= 22.04" | bc -l) )); then
     echo "Ubuntu version is at least 22.04"
     # Remove any Docker packages installed from Ubuntu repositories (not Docker's official repo)
