@@ -39,6 +39,15 @@ else
     echo "Ubuntu $VERSION is 26.04 or higher; skipping packages that are not available"
 fi
 
+# rpi-imager is not available on Ubuntu 20.04 or older
+if dpkg --compare-versions "$VERSION" gt 20.04; then
+    echo "Ubuntu $VERSION is newer than 20.04; installing rpi-imager"
+    sudo apt -y --ignore-missing install \
+    rpi-imager
+else
+    echo "Ubuntu $VERSION is 20.04 or older; skipping rpi-imager (not available)"
+fi
+
 sudo apt -y --ignore-missing install \
 apache2 \
 apt-file \
@@ -201,7 +210,6 @@ flatpak \
 ffmpeg \
 rpm \
 rpmlint \
-rpi-imager \
 
 if [ $? = 0 ]
 then
