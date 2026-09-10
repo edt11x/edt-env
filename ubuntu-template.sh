@@ -1,4 +1,93 @@
 #!/bin/bash
+
+# If the script stops early, report the failing command, exit code, and why.
+
+describe_failure() {
+    local cmd=$1
+    local code=$2
+    case $cmd in
+        *'apt '*|*'apt-get '*|*'dpkg '*)
+            echo "A package-manager command failed. Check package names, apt repositories, and network access."
+            ;;
+        *wget*|*curl*)
+            echo "A download failed. Check network connectivity and the remote URL."
+            ;;
+        *snap*)
+            echo "A snap command failed. Check that snapd is running and the snap name is valid."
+            ;;
+        *npm*)
+            echo "An npm command failed."
+            ;;
+        *'pip '*|*'pip3 '*)
+            echo "A pip command failed. Python packages may be OS-managed."
+            ;;
+        *docker*)
+            echo "A Docker command failed. Check that Docker is installed and the daemon is running."
+            ;;
+        *systemctl*)
+            echo "A systemd command failed."
+            ;;
+        exit\ *)
+            echo "The script called exit ${code} before finishing normally."
+            ;;
+        *)
+            echo "The command exited with status ${code}, so the script stopped (errexit / set -e)."
+            ;;
+    esac
+}
+
+report_early_exit() {
+    local exit_code=$1
+    local failed_cmd=$2
+    local line_no=$3
+
+    trap - ERR EXIT
+    set +x
+
+    local description
+    description=$(describe_failure "$failed_cmd" "$exit_code")
+
+    {
+        echo
+        echo "=================================================="
+        echo "ERROR: ubuntu-template.sh ended early"
+        echo "=================================================="
+        echo "Failing command : ${failed_cmd}"
+        echo "Exit code       : ${exit_code}"
+        echo "Line            : ${line_no}"
+        echo "Description     : ${description}"
+        echo "=================================================="
+    } >&2
+}
+
+on_error() {
+    local exit_code=$1
+    local line_no=$2
+    local failed_cmd=$3
+
+    # Honour set +e so expected failures do not abort the script.
+    case $- in
+        *e*) ;;
+        *) return 0 ;;
+    esac
+
+    report_early_exit "$exit_code" "$failed_cmd" "$line_no"
+    exit "$exit_code"
+}
+
+on_exit() {
+    local exit_code=$1
+    local failed_cmd=$2
+
+    if [ "$exit_code" -eq 0 ]; then
+        return 0
+    fi
+    report_early_exit "$exit_code" "$failed_cmd" "n/a"
+}
+
+trap 'on_error $? $LINENO "$BASH_COMMAND"' ERR
+trap 'on_exit $? "$BASH_COMMAND"' EXIT
+
 echo Try to get a good update before we start
 sudo apt update
 sudo apt upgrade -y --allow-downgrades
@@ -218,8 +307,7 @@ else
     echo "Something is WRONG with the individual package install !!!"
 fi
 
-systemd-detect-virt
-if [ $? = 0 ]
+if systemd-detect-virt
 then
     echo "Installing open-vm-tools for the Virtual Machine"
     sudo apt install open-vm-tools
