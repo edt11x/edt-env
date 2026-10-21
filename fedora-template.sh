@@ -65,6 +65,10 @@ PACKAGES=(
     xfce4-statusnotifier-plugin gnome-weather automake autoconf m4 bison flex 
     kernel-devel libtirpc-devel libaio-devel numactl-devel protobuf-c-devel 
     libacl-devel knot-utils ShellCheck seahorse orage gh cryptsetup
+    libxkbcommon-x11-devel-0 libXcursor-devel-0 libxkbcommon-devel-0 mesa-libEGL-devel-0
+    libXfixes-devel-0 libXi-devel-0 mesa-libGL-devel-0 wayland-devel-0
+    mesa-libGL-0 mesa-filesystem-0 mesa-libgbm-0 mesa-libEGL-0 mesa-dri-drivers-0
+    mesa-vulkan-drivers-0
 )
 
 echo "Installing main packages..."
