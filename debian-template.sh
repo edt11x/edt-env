@@ -1,4 +1,48 @@
 #!/usr/bin/env bash
+
+DEBIAN_TEMPLATE_VERSION="0.1.0"
+
+# Return 0 when this release should install packages that are missing on
+# Debian 20.04 and earlier, including Debian 10 and older.
+# Dotted VERSION_IDs (18.04, 20.04) are compared to 20.04.
+# Integer Debian IDs of 11 and newer still install them: a raw compare of
+# 12 or 13 against 20.04 would treat those releases as older.
+install_post_2004_packages() {
+    local ver="${1:-}"
+    if [[ -z "$ver" ]]; then
+        return 0
+    fi
+    if [[ "$ver" == *.* ]]; then
+        if dpkg --compare-versions "$ver" le 20.04; then
+            return 1
+        fi
+        return 0
+    fi
+    if dpkg --compare-versions "$ver" le 10; then
+        return 1
+    fi
+    return 0
+}
+
+if [[ "${BASH_SOURCE[0]}" != "$0" ]]; then
+    return 0
+fi
+
+if [[ "${1:-}" == "-V" || "${1:-}" == "--version" ]]; then
+    echo "debian-template.sh ${DEBIAN_TEMPLATE_VERSION}"
+    exit 0
+fi
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+    cat <<EOF
+debian-template.sh ${DEBIAN_TEMPLATE_VERSION}
+Provision a Debian environment.
+
+Usage: debian-template.sh [-h|--help] [-V|--version]
+EOF
+    exit 0
+fi
+
 set -x
 
 # List of packages in order of preference
@@ -98,39 +142,64 @@ else
     echo "This is not a Debian-based system or /etc/os-release is missing Debian information."
 fi
 
+# These packages are not available on Debian 20.04 or earlier.
+PKG_VERSION_ID="${DEBIAN_VERSION_ID:-}"
+if [[ -z "$PKG_VERSION_ID" && -r /etc/os-release ]]; then
+    PKG_VERSION_ID=$(grep "^VERSION_ID=" /etc/os-release | head -n1 | cut -d'=' -f2 | tr -d '"' || true)
+fi
+
+if install_post_2004_packages "$PKG_VERSION_ID"; then
+    echo "Debian ${PKG_VERSION_ID:-unknown} is newer than 20.04; installing packages not available on 20.04 or earlier"
+    sudo apt-get -y --ignore-missing install \
+        btop \
+        docker-clean \
+        exfatprogs \
+        firmware-linux-nonfree \
+        git-filter-repo \
+        gstreamer1.0-plugins-bad-apps \
+        kas \
+        mesa-utils-bin \
+        python3-full \
+        shfmt \
+        sqlite3-tools \
+        zst
+else
+    echo "Debian $PKG_VERSION_ID is 20.04 or earlier; skipping packages that are not available"
+fi
+
 sudo apt-get -y --ignore-missing install \
     apache2 apt-file apt-transport-https astyle autoconf baobab bash bc binfmt-support bison \
     bridge-utils build-essential ca-certificates cargo ccache chrpath clang cmake cpio \
     cppcheck curl dclock debianutils default-jre default-jre-headless diffstat dnsmasq \
-    dnsutils docker-clean docker-compose docker-doc docker-registry docker.io doxygen \
-    dstat ethtool file firmware-linux-nonfree flex fping gawk gcc gcc-aarch64-linux-gnu \
-    gdb git git-filter-repo glances gnome-tweaks gnupg graphviz gtkterm gzip htop \
-    inetutils-tools inetutils-traceroute iperf3 iproute2 iputils-ping iwyu kas keepassxc \
+    dnsutils docker-compose docker-doc docker-registry docker.io doxygen \
+    dstat ethtool file flex fping gawk gcc gcc-aarch64-linux-gnu \
+    gdb git glances gnome-tweaks gnupg graphviz gtkterm gzip htop \
+    inetutils-tools inetutils-traceroute iperf3 iproute2 iputils-ping iwyu keepassxc \
     kpartx ldap-utils libc-ares-dev libc6-dev libcurl4-openssl-dev libfile-dircompare-perl \
     libelf-dev libev-dev libevent-dev libffi-dev libftdi1-dev libgl1-mesa-dri libglx-mesa0 \
     libncurses5-dev libperl-dev libpopt-dev libsdl1.2-dev libsnmp-dev libsqlite3-0 \
     libsqlite3-dev libssl-dev libtool libu2f-udev libvirt-clients libvirt-daemon-system \
     locales locate lsb-release lshw lxd lzop make meld mesa-common-dev mesa-utils \
-    mesa-utils-bin mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers minicom \
+    mesa-va-drivers mesa-vdpau-drivers mesa-vulkan-drivers minicom \
     mtd-utils mtr net-tools nvme-cli openvpn p7zip-full par2 php pipx procps prometheus \
-    putty python3 python3-dev python3-git python3-gpg python3-full python3-jinja2 \
+    putty python3 python3-dev python3-git python3-gpg python3-jinja2 \
     python3-pexpect python3-pip python3-selenium python3-subunit python3-tk python3-venv \
     python3-virtualenv qemu-kvm qemu-system-arm qemu-user-static qml-module-qtquick2 \
     qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtquick-templates2 \
     qml-module-qtquick-window2 qml-module-qtgraphicaleffects quilt rsync ripgrep ruby \
-    rust-all scons screen secure-delete shfmt snapd snmp snmpd socat sqlite3 \
-    sqlite3-tools sudo swaks sysstat systemd-timesyncd tcpdump texinfo tightvncserver \
+    rust-all scons screen secure-delete snapd snmp snmpd socat sqlite3 \
+    sudo swaks sysstat systemd-timesyncd tcpdump texinfo tightvncserver \
     tio tmux tmux-plugin-manager u-boot-tools unzip vim vim-gtk3 virt-manager wget \
     xfce4 xfce4-goodies xrdp xsltproc xterm xz-utils zlib1g zlib1g-dev zstd iftop \
-    nload bmon hping3 ifstat systemd-coredump zst remmina gstreamer1.0-libav \
-    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-bad-apps \
+    nload bmon hping3 ifstat systemd-coredump remmina gstreamer1.0-libav \
+    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
     sshpass uhubctl flatpak qelectrotech fuse3 gnome-system-monitor gnome-usage \
     gnome-logs automake m4 libtirpc-dev libaio-dev libnuma-dev libcap-dev \
     libprotobuf-c-dev libacl1-dev libselinux1-dev knot-dnsutils shellcheck \
     seahorse iperf libfontconfig1-dev libfreetype-dev libxcb1-dev \
     libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev \
     libxkbcommon-dev libwayland-dev wayland-protocols \
-    exfatprogs dosfstools f3 btop
+    dosfstools f3
 
 sudo apt-get --fix-broken install -y
 sudo apt-get autoremove -y
