@@ -156,7 +156,6 @@ if install_post_2004_packages "$PKG_VERSION_ID"; then
         exfatprogs \
         firmware-linux-nonfree \
         git-filter-repo \
-        gstreamer1.0-plugins-bad-apps \
         kas \
         mesa-utils-bin \
         python3-full \
