@@ -456,16 +456,20 @@ Signed-By: /etc/apt/keyrings/docker.asc
 EOF
     fi
 
+    set -x
     sudo apt update
     sudo systemctl stop docker.service || true
     sudo systemctl stop docker.socket || true
-    sudo apt install -y docker.io docker-compose-plugin docker-buildx-plugin
+    sudo apt install -y docker.io
+    sudo apt install -y docker-compose-plugin
+    sudo apt install -y docker-buildx-plugin
     sudo systemctl enable --now docker
     sudo usermod -aG docker $USER
-    newgrp docker
+    # newgrp docker
     docker version
     docker compose version
     docker run hello-world
+    set +x
 else
     echo "Ubuntu version is less than 22.04"
     echo "We will skip the official Docker version"
