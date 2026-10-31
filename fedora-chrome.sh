@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 set -x
-USE_OLD_METHOD=0
+USE_OLD_METHOD=1
 if [ $USE_OLD_METHOD = 1 ]
 then
     sudo dnf install -y fedora-workstation-repositories

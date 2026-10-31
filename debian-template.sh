@@ -68,8 +68,9 @@ sudo apt-get purge -y nodejs node-grunt-cli || true
 # Normal update
 sudo apt-get update
 sudo apt-get upgrade -y
+sudo apt-get full-upgrade -y
 # Remove dependencies and obsolete packages
-sudo apt-get autoremove -y
+sudo apt-get autoremove -y --purge
 
 echo "Try to get rid of the packages we do not want"
 if apt-cache search --names-only '^oss4-dev-.*' | grep -q 'oss4-dev'; then
