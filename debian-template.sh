@@ -68,7 +68,6 @@ sudo apt-get purge -y nodejs node-grunt-cli || true
 # Normal update
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get full-upgrade -y
 # Remove dependencies and obsolete packages
 sudo apt-get autoremove -y --purge
 
