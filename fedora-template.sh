@@ -68,7 +68,7 @@ PACKAGES=(
     libxkbcommon-x11-devel-0 libXcursor-devel-0 libxkbcommon-devel-0 mesa-libEGL-devel-0
     libXfixes-devel-0 libXi-devel-0 mesa-libGL-devel-0 wayland-devel-0
     mesa-libGL-0 mesa-filesystem-0 mesa-libgbm-0 mesa-libEGL-0 mesa-dri-drivers-0
-    mesa-vulkan-drivers-0
+    mesa-vulkan-drivers-0 vlc
 )
 
 echo "Installing main packages..."
