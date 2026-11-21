@@ -154,7 +154,6 @@ if install_post_2004_packages "$PKG_VERSION_ID"; then
         btop \
         docker-clean \
         exfatprogs \
-        firmware-linux-nonfree \
         git-filter-repo \
         kas \
         mesa-utils-bin \
@@ -200,7 +199,9 @@ sudo apt-get -y --ignore-missing install \
     libxkbcommon-dev libwayland-dev wayland-protocols \
     dosfstools f3 nmap
 
+sudo apt remove firmware-nvidia-graphics
 sudo apt-get --fix-broken install -y
+sudo dpkg --configure -a
 sudo apt-get autoremove -y
 sudo locale-gen en_US.UTF-8
 sudo usermod -aG docker "$(whoami)"
