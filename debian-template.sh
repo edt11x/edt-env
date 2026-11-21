@@ -199,7 +199,7 @@ sudo apt-get -y --ignore-missing install \
     libxkbcommon-dev libwayland-dev wayland-protocols \
     dosfstools f3 nmap
 
-sudo apt remove firmware-nvidia-graphics
+sudo apt remove -y firmware-nvidia-graphics
 sudo apt-get --fix-broken install -y
 sudo dpkg --configure -a
 sudo apt-get autoremove -y
